@@ -1,28 +1,21 @@
 export const hero = {
   name: 'Chandisa Randeni',
   role: 'Full-stack Developer',
-  tagline: 'Building developer-first products with a terminal aesthetic and reliable delivery.',
+  tagline: 'Building developer-first products with a terminal calm and reliable delivery.',
   summary:
-    'I architect and ship web experiences that feel like great CLIs—fast, focused, and low-noise. From frontend polish to backend reliability and DevOps, I keep teams shipping confidently.',
+    'I architect and ship web experiences that feel like great CLIs - fast, focused, and low-noise. From frontend polish to backend reliability and DevOps, I keep teams shipping confidently.',
   location: 'Remote / Global',
   availability: 'Accepting new projects',
   email: 'you@example.com',
-  github: 'https://github.com/your-handle',
-  linkedin: 'https://www.linkedin.com',
-  profileImage: 'src\\assets\\profile.jpg',
+  github: 'https://github.com/chandisarandeni',
+  linkedin: 'https://www.linkedin.com/in/chandisarandeni',
+  profileImage: 'src/assets/profile.jpg',
 }
 
-export const stats = [
-  { label: 'Experience', value: '4+ yrs' },
-  { label: 'Specialty', value: 'Web · DevOps · AI tooling' },
-  { label: 'Timezone', value: 'UTC±0 flexible' },
-  { label: 'Collab', value: 'Async & paired' },
-]
-
 export const terminalEntries = [
-  { prompt: 'whoami', output: 'Chandi — crafting focused, developer-centered products with terminal calm.' },
+  { prompt: 'whoami', output: 'Chandi - crafting focused, developer-centered products with terminal calm.' },
   { prompt: 'cat mission.txt', output: 'Ship crisp UI + reliable services + automation so teams stay fast.' },
-  { prompt: 'ls values/', output: 'clarity · delivery · curiosity · ownership · pragmatism' },
+  { prompt: 'ls values/', output: 'clarity / delivery / curiosity / ownership / pragmatism' },
 ]
 
 export const projects = [
@@ -62,13 +55,13 @@ export const education = [
   {
     title: 'B.Sc. Computer Science',
     place: 'Your University',
-    years: '2019 — 2023',
+    years: '2019 - 2023',
     notes: 'Focused on distributed systems, UI engineering, and software design.',
   },
   {
     title: 'Certifications / Workshops',
-    place: 'Cloud · DevOps · Security',
-    years: '2023 — Present',
+    place: 'Cloud / DevOps / Security',
+    years: '2023 - Present',
     notes: 'Add your key certs, workshops, bootcamps, and notable trainings.',
   },
 ]

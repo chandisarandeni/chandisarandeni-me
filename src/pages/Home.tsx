@@ -5,7 +5,7 @@ import Skills from '../components/Skills'
 import TerminalLog from '../components/TerminalLog'
 import Education from '../components/Education'
 import Footer from '../components/Footer'
-import { education, hero, projects, skills, stats, terminalEntries, tools } from '../utils/data'
+import { education, hero, projects, skills, terminalEntries, tools } from '../utils/data'
 
 function Home() {
   return (
@@ -30,7 +30,6 @@ function Home() {
           email={hero.email}
           github={hero.github}
           linkedin={hero.linkedin}
-          stats={stats}
           footerSlot={
             <div className="flex flex-wrap gap-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-200">
               <span className="rounded-full border border-emerald-300/30 bg-emerald-400/10 px-3 py-1">frontend systems</span>
@@ -50,7 +49,7 @@ function Home() {
                 Ops Pulse
               </div>
               <span className="rounded-full border border-slate-800 bg-slate-950 px-2 py-1 text-[10px] font-semibold text-slate-200">
-                status · green
+                status: green
               </span>
             </div>
             <div className="space-y-3 text-sm">
