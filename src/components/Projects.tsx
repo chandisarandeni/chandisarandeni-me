@@ -14,7 +14,7 @@ type ProjectsProps = {
 
 function Projects({ items }: ProjectsProps) {
   return (
-    <section id="work" className="mb-12">
+    <section id="work" className="mb-12 scroll-mt-30">
       <SectionHeader
         label="ls projects/"
         title="Recent Work"

@@ -19,7 +19,7 @@ function Skills({ skills, tools }: SkillsProps) {
   ]
 
   return (
-    <section id="stack" className="mb-12">
+    <section id="stack" className="mb-12 scroll-mt-28">
       <SectionHeader label="cat stack.txt" title="Skills & Tools" />
       <div className="grid gap-4 md:grid-cols-4">
         {blocks.map((block) => (

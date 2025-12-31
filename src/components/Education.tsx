@@ -19,7 +19,7 @@ function Education({ items }: EducationProps) {
       .filter(Boolean)
 
   return (
-    <section id="education" className="mb-12">
+    <section id="education" className="mb-12 scroll-mt-30">
       <SectionHeader label="history education/" title="Education" />
       <div className="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/75 p-5 shadow-[0_10px_32px_rgba(0,0,0,0.32)]">
         {items.map((item) => {
