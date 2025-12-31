@@ -1,73 +1,49 @@
-# React + TypeScript + Vite
+# Chandisa Randeni · Portfolio (React + Vite + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern, terminal-inspired portfolio site with smooth-scrolling navigation, animated cards, and structured content for a software developer.
 
-Currently, two official plugins are available:
+## Features
+- Sticky top navigation with smooth scroll anchors (`Home`, `Log`, `Education`, `Work`, `Stack`)
+- Hero with dual-column layout, availability and location badges, focus areas, and collaboration signals
+- Sections for terminal-style intro log, education timeline, projects, and skills/tools
+- Subtle “cloud” background layer plus reveal-on-scroll animations for cards
+- Dark, developer-first theme using Tailwind CSS utilities
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
+- React 19, TypeScript, Vite
+- Tailwind CSS (utility classes + a few custom CSS animations)
 
-## React Compiler
+## Getting Started
+1) Install dependencies:
+   ```bash
+   npm install
+   ```
+2) Run the dev server:
+   ```bash
+   npm run dev
+   ```
+3) Production build:
+   ```bash
+   npm run build
+   ```
+4) Preview the production build:
+   ```bash
+   npm run preview
+   ```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Structure
+- `src/pages/Home.tsx` — page shell, layout order, and section composition
+- `src/components/` — hero, header/nav, projects, skills, education, terminal log, footer
+- `src/utils/data.ts` — single place to edit profile info, projects, skills, education, and social links
+- `src/index.css` — global theme, smooth scrolling, cloud/reveal animations, base styles
 
-## Expanding the ESLint configuration
+## Customizing Content
+Update `src/utils/data.ts`:
+- `hero`: name, role, tagline, summary, contact links, profile image
+- `projects`: name, description, stack, link, status
+- `skills`/`tools`: edit arrays to match your stack
+- `education`: titles, places, years, and notes (bulleted automatically)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Notes
+- Smooth scrolling is enabled globally; section anchors include `scroll-mt-28` to offset the sticky nav.
+- Text selection and image dragging are disabled in global styles; adjust in `src/index.css` if you want them enabled.
