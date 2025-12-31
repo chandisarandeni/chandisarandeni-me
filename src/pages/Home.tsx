@@ -13,7 +13,12 @@ function Home() {
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(52,211,153,0.12),transparent_40%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_15%,rgba(56,189,248,0.12),transparent_38%)]" />
-        <div className="absolute inset-0 opacity-60 bg-[linear-gradient(90deg,rgba(15,23,42,0.85)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.85)_1px,transparent_1px)] bg-size-[90px_90px]" />
+        <div className="absolute inset-0 opacity-60 bg-[linear-gradient(90deg,rgba(15,23,42,0.85)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.85)_1px,transparent_1px)] [background-size:90px_90px]" />
+        <div className="clouds">
+          <span className="cloud cloud-a" />
+          <span className="cloud cloud-b" />
+          <span className="cloud cloud-c" />
+        </div>
       </div>
 
       <main className="relative mx-auto max-w-6xl px-4 py-10 md:py-16">
@@ -42,7 +47,7 @@ function Home() {
 
         <div className="mb-12 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
           <TerminalLog entries={terminalEntries} />
-          <div className="rounded-3xl border border-cyan-300/25 bg-slate-900/75 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.32)]">
+          <div className="reveal reveal-delay-1 rounded-3xl border border-cyan-300/25 bg-slate-900/75 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.32)]">
             <div className="mb-3 flex items-center justify-between text-xs uppercase tracking-[0.25em] text-cyan-100">
               <div className="flex items-center gap-2">
                 <span className="h-2 w-2 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.9)]" />

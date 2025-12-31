@@ -54,8 +54,8 @@ function Hero({
   ]
 
   return (
-    <section id="hero" className="mb-12 grid scroll-mt-45 gap-6 lg:grid-cols-[1.3fr_1fr]">
-      <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/80 p-7 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
+    <section id="hero" className="mb-12 grid scroll-mt-28 gap-6 lg:grid-cols-[1.3fr_1fr]">
+      <div className="reveal relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/80 p-7 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(52,211,153,0.12),transparent_42%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_22%,rgba(59,130,246,0.12),transparent_44%)]" />
         <div className="relative space-y-5">
@@ -101,7 +101,7 @@ function Hero({
       </div>
 
       <div className="grid gap-4">
-        <div className="relative overflow-hidden rounded-3xl border border-emerald-300/30 bg-slate-950/85 p-5 shadow-[0_0_26px_rgba(52,211,153,0.12)]">
+        <div className="reveal reveal-delay-1 relative overflow-hidden rounded-3xl border border-emerald-300/30 bg-slate-950/85 p-5 shadow-[0_0_26px_rgba(52,211,153,0.12)]">
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_22%,rgba(52,211,153,0.18),transparent_48%)]" />
           <div className="relative space-y-3">
             <div className="flex items-center gap-4">
@@ -134,13 +134,13 @@ function Hero({
             </p>
             <div className="flex flex-wrap gap-2 text-sm">
               <a
-                className="rounded-lg border border-emerald-300/60 bg-emerald-400/10 px-3 py-2 font-semibold text-emerald-100 transition hover:-translate-y-[2px] hover:border-emerald-200 hover:text-white"
+                className="rounded-lg border border-emerald-300/60 bg-emerald-400/10 px-3 py-2 font-semibold text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-200 hover:text-white"
                 href={`mailto:${email}`}
               >
                 email me
               </a>
               <a
-                className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 font-semibold text-slate-200 transition hover:-translate-y-[2px] hover:border-emerald-300/60 hover:text-white"
+                className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:text-white"
                 href={github}
                 target="_blank"
                 rel="noreferrer"
@@ -148,7 +148,7 @@ function Hero({
                 github
               </a>
               <a
-                className="rounded-lg border border-slate-800 px-3 py-2 font-semibold text-slate-200 transition hover:-translate-y-[2px] hover:border-emerald-300/60 hover:text-white"
+                className="rounded-lg border border-slate-800 px-3 py-2 font-semibold text-slate-200 transition hover:-translate-y-0.5 hover:border-emerald-300/60 hover:text-white"
                 href={linkedin}
                 target="_blank"
                 rel="noreferrer"
@@ -159,7 +159,7 @@ function Hero({
           </div>
         </div>
 
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/75 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.32)]">
+        <div className="reveal reveal-delay-2 rounded-3xl border border-slate-800 bg-slate-900/75 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.32)]">
           <div className="mb-3 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-emerald-100">
             <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]" />
             collaboration signals

@@ -14,7 +14,7 @@ type ProjectsProps = {
 
 function Projects({ items }: ProjectsProps) {
   return (
-    <section id="work" className="mb-12 scroll-mt-30">
+    <section id="work" className="mb-12 scroll-mt-28">
       <SectionHeader
         label="ls projects/"
         title="Recent Work"
@@ -26,10 +26,10 @@ function Projects({ items }: ProjectsProps) {
       />
 
       <div className="grid gap-4 md:grid-cols-2">
-        {items.map((project) => (
+        {items.map((project, index) => (
           <article
             key={project.name}
-            className="group flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 p-5 transition duration-200 hover:-translate-y-[3px] hover:border-emerald-300/40"
+            className={`group flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 p-5 transition duration-200 hover:-translate-y-0.75 hover:border-emerald-300/40 ${index % 2 === 0 ? 'reveal' : 'reveal reveal-delay-1'}`}
           >
             <div className="flex items-start justify-between gap-3">
               <div>
@@ -53,7 +53,7 @@ function Projects({ items }: ProjectsProps) {
                 </span>
               ))}
             </div>
-            <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-emerald-400/60 to-transparent opacity-0 transition duration-200 group-hover:opacity-100" />
+            <div className="mt-4 h-px w-full bg-linear-to-r from-transparent via-emerald-400/60 to-transparent opacity-0 transition duration-200 group-hover:opacity-100" />
           </article>
         ))}
       </div>

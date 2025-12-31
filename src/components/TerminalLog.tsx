@@ -7,7 +7,7 @@ function TerminalLog({ entries, title = 'session.log' }: TerminalLogProps) {
   return (
     <section
       id="log"
-      className="scroll-mt-28 rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.32)]"
+      className="reveal scroll-mt-28 rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-[0_8px_30px_rgba(0,0,0,0.32)]"
     >
       <div className="mb-4 flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-emerald-300/80">
         <span className="h-2 w-2 rounded-full bg-lime-400" />

@@ -22,13 +22,13 @@ function Education({ items }: EducationProps) {
     <section id="education" className="mb-12 scroll-mt-30">
       <SectionHeader label="history education/" title="Education" />
       <div className="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/75 p-5 shadow-[0_10px_32px_rgba(0,0,0,0.32)]">
-        {items.map((item) => {
+        {items.map((item, idx) => {
           const noteLines = formatNotes(item.notes)
           const isOngoing = item.years.toLowerCase().includes('present')
           return (
             <article
               key={`${item.title}-${item.years}`}
-              className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60 p-5 shadow-inner shadow-emerald-500/5"
+              className={`reveal ${idx % 2 === 0 ? 'reveal-delay-1' : 'reveal-delay-2'} relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/60 p-5 shadow-inner shadow-emerald-500/5`}
             >
               <div className="absolute left-4 top-0 h-full w-px bg-slate-800" aria-hidden="true" />
               <div className="relative grid gap-4 md:grid-cols-[1fr_auto] md:items-start">

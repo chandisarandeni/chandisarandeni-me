@@ -25,7 +25,7 @@ function Skills({ skills, tools }: SkillsProps) {
         {blocks.map((block) => (
           <div
             key={block.title}
-            className="rounded-2xl border border-slate-800 bg-slate-900/75 p-5 shadow-inner shadow-emerald-500/10"
+            className="reveal rounded-2xl border border-slate-800 bg-slate-900/75 p-5 shadow-inner shadow-emerald-500/10"
           >
             <p className="text-xs uppercase tracking-[0.25em] text-emerald-300/80">{block.title}</p>
             <div className="mt-3 flex flex-wrap gap-2 text-sm">
@@ -37,7 +37,7 @@ function Skills({ skills, tools }: SkillsProps) {
             </div>
           </div>
         ))}
-        <div className="rounded-2xl border border-emerald-300/30 bg-slate-900/85 p-5 shadow-[0_0_26px_rgba(52,211,153,0.14)]">
+        <div className="reveal reveal-delay-1 rounded-2xl border border-emerald-300/30 bg-slate-900/85 p-5 shadow-[0_0_26px_rgba(52,211,153,0.14)]">
           <p className="text-xs uppercase tracking-[0.25em] text-emerald-300/80">Tools</p>
           <div className="mt-3 flex flex-wrap gap-2 text-sm">
             {tools.map((tool) => (
