@@ -1,6 +1,6 @@
 export const hero = {
-  name: 'Chandi Sarandeni',
-  role: 'Full-stack Engineer',
+  name: 'Chandisa Randeni',
+  role: 'Full-stack Developer',
   tagline: 'Building developer-first products with a terminal aesthetic and reliable delivery.',
   summary:
     'I architect and ship web experiences that feel like great CLIs—fast, focused, and low-noise. From frontend polish to backend reliability and DevOps, I keep teams shipping confidently.',
@@ -9,7 +9,7 @@ export const hero = {
   email: 'you@example.com',
   github: 'https://github.com/your-handle',
   linkedin: 'https://www.linkedin.com',
-  profileImage: '/profile.jpg',
+  profileImage: 'src\\assets\\profile.jpg',
 }
 
 export const stats = [
