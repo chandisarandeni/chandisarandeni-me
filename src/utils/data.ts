@@ -13,8 +13,14 @@ export const hero = {
 }
 
 export const terminalEntries = [
-  { prompt: 'whoami', output: 'Chandi - crafting focused, developer-centered products with terminal calm.' },
-  { prompt: 'cat mission.txt', output: 'Ship crisp UI + reliable services + automation so teams stay fast.' },
+  {
+    prompt: 'whoami',
+    output: 'Chandi - crafting focused, developer-centered products with terminal calm.',
+  },
+  {
+    prompt: 'cat mission.txt',
+    output: 'Ship crisp UI + reliable services + automation so teams stay fast.',
+  },
   { prompt: 'ls values/', output: 'clarity / delivery / curiosity / ownership / pragmatism' },
 ]
 
@@ -49,19 +55,47 @@ export const skills = {
   devops: ['Docker', 'CI/CD', 'GitHub Actions', 'Vercel', 'AWS basics'],
 }
 
-export const tools = ['VS Code', 'Neovim', 'Postman', 'Notion', 'Linear', 'Figma', 'Supabase', 'Insomnia']
+export const tools = [
+  'VS Code',
+  'Neovim',
+  'Postman',
+  'Notion',
+  'Linear',
+  'Figma',
+  'Supabase',
+  'Insomnia',
+]
 
 export const education = [
   {
-    title: 'B.Sc. Computer Science',
-    place: 'Your University',
-    years: '2019 - 2023',
-    notes: 'Focused on distributed systems, UI engineering, and software design.',
+    title: 'Undergraduate',
+    place: 'National Institute of Business Management',
+    years: '2024 Jan - Present',
+    notes:
+      'Tutor : Providing tutoring support for programming modules; Year 2: (Reading); Year 1 : GPA 3.91 / 4.0',
   },
   {
-    title: 'Certifications / Workshops',
-    place: 'Cloud / DevOps / Security',
-    years: '2023 - Present',
-    notes: 'Add your key certs, workshops, bootcamps, and notable trainings.',
+    title: 'Diploma in Information Technology',
+    place: 'IMBS Green Campus',
+    years: '2024 - 2025',
+    notes: 'Awarded Prof. Sarath Amunugama Gold Medal; GPA: 4.0/4.0.',
+  },
+  {
+    title: 'Certificate in Software Engineering',
+    place: 'National Institute of Business Management',
+    years: '2023 - 2024',
+    notes: 'Score: 97.7% Best Performance.',
+  },
+  {
+    title: 'Certificate in Cyber Security and Networking',
+    place: 'Nextgen Campus',
+    years: '2021',
+    notes: 'Focused on security and networking fundamentals.',
+  },
+  {
+    title: 'Introduction to Networking (CCNA 1 v7)',
+    place: 'SLIIT',
+    years: '2020 - 2021',
+    notes: 'Completed CCNA 1 v7 track.',
   },
 ]
