@@ -69,9 +69,9 @@ function Home() {
           </div>
         </div>
 
+        <Education items={education} />
         <Projects items={projects} />
         <Skills skills={skills} tools={tools} />
-        <Education items={education} />
         <Footer email={hero.email} github={hero.github} linkedin={hero.linkedin} />
       </main>
     </div>
