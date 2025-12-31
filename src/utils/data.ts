@@ -1,9 +1,9 @@
 export const hero = {
   name: 'Chandisa Randeni',
   role: 'Full-stack Developer',
-  tagline: 'Building developer-first products with a terminal calm and reliable delivery.',
-  summary:
-    'I architect and ship web experiences that feel like great CLIs - fast, focused, and low-noise. From frontend polish to backend reliability and DevOps, I keep teams shipping confidently.',
+  tagline:
+    'I am a student developer with experience working onreal-world projects using modern technologies.',
+  summary: `I enjoy real-world projects using modern technologies. I enjoy learning new skills, solving problems, and building practical applications. I’m eager to grow my experience, improve my knowledge, and contribute to meaningful projects as part of a professional team.`,
   location: 'Remote / Global',
   availability: 'Accepting new projects',
   email: 'chandisarandeni@gmail.com',
@@ -97,5 +97,20 @@ export const education = [
     place: 'SLIIT',
     years: '2020 - 2021',
     notes: 'Completed CCNA 1 v7 track.',
+  },
+]
+
+export const achievements = [
+  {
+    title: 'Prof. Sarath Amunugama Gold Medal',
+    place: 'IMBS Green Campus',
+    year: '2025',
+    note: 'Best Performance 2025',
+  },
+  {
+    title: 'UNESCO Project',
+    place: 'Colombo Children’s Book Society',
+    year: '2015',
+    note: 'Contributed to Colombo Children’s Book Society initiative.',
   },
 ]

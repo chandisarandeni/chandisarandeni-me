@@ -4,8 +4,9 @@ import Projects from '../components/Projects'
 import Skills from '../components/Skills'
 import TerminalLog from '../components/TerminalLog'
 import Education from '../components/Education'
+import Achievements from '../components/Achievements'
 import Footer from '../components/Footer'
-import { education, hero, projects, skills, terminalEntries, tools } from '../utils/data'
+import { achievements, education, hero, projects, skills, terminalEntries, tools } from '../utils/data'
 
 function Home() {
   return (
@@ -75,6 +76,7 @@ function Home() {
         </div>
 
         <Education items={education} />
+        <Achievements items={achievements} />
         <Projects items={projects} />
         <Skills skills={skills} tools={tools} />
         <Footer email={hero.email} github={hero.github} linkedin={hero.linkedin} />

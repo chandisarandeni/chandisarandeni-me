@@ -24,6 +24,9 @@ function Header({ email, github, linkedin }: HeaderProps) {
         <a className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 hover:border-emerald-300/50 hover:text-white" href="#education">
           education
         </a>
+        <a className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 hover:border-emerald-300/50 hover:text-white" href="#achievements">
+          achievements
+        </a>
         <a className="rounded-md border border-slate-800 bg-slate-950 px-3 py-2 hover:border-emerald-300/50 hover:text-white" href="#work">
           work
         </a>
