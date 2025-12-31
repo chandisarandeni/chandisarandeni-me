@@ -6,7 +6,7 @@ export const hero = {
     'I architect and ship web experiences that feel like great CLIs - fast, focused, and low-noise. From frontend polish to backend reliability and DevOps, I keep teams shipping confidently.',
   location: 'Remote / Global',
   availability: 'Accepting new projects',
-  email: 'you@example.com',
+  email: 'chandisarandeni@gmail.com',
   github: 'https://github.com/chandisarandeni',
   linkedin: 'https://www.linkedin.com/in/chandisarandeni',
   profileImage: 'src/assets/profile.jpg',

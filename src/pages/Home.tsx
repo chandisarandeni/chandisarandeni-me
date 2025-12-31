@@ -13,7 +13,7 @@ function Home() {
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(52,211,153,0.12),transparent_40%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_15%,rgba(56,189,248,0.12),transparent_38%)]" />
-        <div className="absolute inset-0 opacity-60 bg-[linear-gradient(90deg,rgba(15,23,42,0.85)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.85)_1px,transparent_1px)] [background-size:90px_90px]" />
+        <div className="absolute inset-0 opacity-60 bg-[linear-gradient(90deg,rgba(15,23,42,0.85)_1px,transparent_1px),linear-gradient(rgba(15,23,42,0.85)_1px,transparent_1px)] bg-size-[90px_90px]" />
         <div className="clouds">
           <span className="cloud cloud-a" />
           <span className="cloud cloud-b" />
