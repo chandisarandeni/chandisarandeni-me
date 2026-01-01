@@ -15,13 +15,13 @@ export const hero = {
 export const terminalEntries = [
   {
     prompt: 'whoami',
-    output: 'Chandi - crafting focused, developer-centered products with terminal calm.',
+    output: 'Chandisa Randeni - crafting focused, reliable, and efficient code.',
   },
   {
     prompt: 'cat mission.txt',
-    output: 'Ship crisp UI + reliable services + automation so teams stay fast.',
+    output: 'ship crisp UI + reliable services + automation so teams stay fast.',
   },
-  { prompt: 'ls values/', output: 'clarity / delivery / curiosity / ownership / pragmatism' },
+  { prompt: 'ls focus/', output: 'code quality / on time delivery / code optimization' },
 ]
 
 export const projects = [
