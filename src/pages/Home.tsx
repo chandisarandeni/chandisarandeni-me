@@ -7,8 +7,28 @@ import Education from '../components/Education'
 import Achievements from '../components/Achievements'
 import Footer from '../components/Footer'
 import { achievements, education, hero, projects, skills, terminalEntries, tools } from '../utils/data'
+import { useEffect } from 'react'
 
 function Home() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            obs.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.2 },
+    )
+
+    const revealEls = document.querySelectorAll<HTMLElement>('.reveal')
+    revealEls.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="relative min-h-screen bg-slate-950 text-slate-100">
       <div className="pointer-events-none absolute inset-0">

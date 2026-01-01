@@ -115,7 +115,6 @@ img {
 .reveal {
   opacity: 0;
   transform: translateY(14px) scale(0.995);
-  animation: revealUp 0.7s ease forwards;
 }
 
 .reveal-delay-1 {
@@ -128,6 +127,10 @@ img {
 
 .reveal-delay-3 {
   animation-delay: 0.32s;
+}
+
+.reveal.is-visible {
+  animation: revealUp 0.7s ease forwards;
 }
 
 @keyframes revealUp {
