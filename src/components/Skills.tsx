@@ -5,6 +5,7 @@ type SkillsProps = {
     languages: string[]
     frontend: string[]
     backend: string[]
+    databases: string[]
     devops: string[]
   }
   tools: string[]
@@ -15,13 +16,14 @@ function Skills({ skills, tools }: SkillsProps) {
     { title: 'Languages', items: skills.languages },
     { title: 'Frontend', items: skills.frontend },
     { title: 'Backend', items: skills.backend },
+    { title: 'Databases', items: skills.databases },
     { title: 'DevOps', items: skills.devops },
   ]
 
   return (
     <section id="stack" className="mb-12 scroll-mt-28">
       <SectionHeader label="cat stack.txt" title="Skills & Tools" />
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {blocks.map((block) => (
           <div
             key={block.title}

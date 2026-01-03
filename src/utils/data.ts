@@ -79,10 +79,10 @@ export const skills = {
     '🟢 Node.js',
     '🚂 Express',
     '🟣 NestJS',
-    '🐘 PHP Laravel',
+    '🐘 Laravel',
     '🔗 REST APIs',
   ],
-  Databases:[
+  databases: [
     '🍃 MongoDB',
     '🗄️ MySQL',
     '🐘 PostgreSQL',
@@ -91,7 +91,6 @@ export const skills = {
     '⚙️ GitHub Actions',
     '🚀 CI/CD basics',
     '🔄 API integration',
-    '🧪 Testing & QA',
   ],
 }
 
@@ -101,8 +100,6 @@ export const tools = [
   '🎨 Figma',
   '🐙 GitHub',
   '📝 Notion',
-  '🖥️ Electron',
-  '🗄️ MongoDB tools',
 ]
 
 export const education = [
