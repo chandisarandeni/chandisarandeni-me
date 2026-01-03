@@ -74,7 +74,7 @@ function Hero({
             <h1 className="text-3xl font-semibold text-white md:text-4xl lg:text-5xl">{name}</h1>
             <p className="text-lg text-emerald-100">{tagline}</p>
           </div>
-          <p className="max-w-3xl text-base text-slate-200 md:text-lg">{summary}</p>
+          <p className="max-w-3xl text-sm text-slate-200 md:text-base">{summary}</p>
           <div className="grid gap-3 sm:grid-cols-2">
             {workStreams.map((item) => (
               <div
