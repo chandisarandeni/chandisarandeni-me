@@ -44,7 +44,7 @@ function Home() {
       </div>
 
       <main className="relative mx-auto max-w-6xl px-4 py-10 md:py-16">
-        <Header email={hero.email} github={hero.github} linkedin={hero.linkedin} />
+        <Header />
 
         <Hero
           name={hero.name}

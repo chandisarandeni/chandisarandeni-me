@@ -19,6 +19,56 @@ type ExperienceProps = {
 }
 
 function Experience({ items }: ExperienceProps) {
+  const monthIndex: Record<string, number> = {
+    jan: 0,
+    feb: 1,
+    mar: 2,
+    apr: 3,
+    may: 4,
+    jun: 5,
+    jul: 6,
+    aug: 7,
+    sep: 8,
+    oct: 9,
+    nov: 10,
+    dec: 11,
+  }
+
+  const parseDate = (value: string) => {
+    const match = value.trim().toLowerCase().match(/(\d{4})\s*([a-z]{3})/)
+    if (!match) return null
+    const [, yearStr, monthStr] = match
+    const month = monthIndex[monthStr] ?? 0
+    const year = Number(yearStr)
+    return new Date(year, month, 1)
+  }
+
+  const getPeriodDates = (period: string) => {
+    const [startRaw, endRaw] = period.split('-').map((part) => part.trim())
+    const startDate = parseDate(startRaw) ?? new Date()
+    const endDate =
+      (endRaw && !/present/i.test(endRaw) ? parseDate(endRaw) : null) ?? new Date()
+    return { startDate, endDate }
+  }
+
+  const formatDuration = (period: string) => {
+    const { startDate, endDate } = getPeriodDates(period)
+    const startTotalMonths = startDate.getFullYear() * 12 + startDate.getMonth()
+    const endTotalMonths = endDate.getFullYear() * 12 + endDate.getMonth()
+    const diff = Math.max(0, endTotalMonths - startTotalMonths)
+    if (diff === 0) return '<1 mo'
+    const years = Math.floor(diff / 12)
+    const months = diff % 12
+    const parts = []
+    if (years > 0) parts.push(`${years} yr${years > 1 ? 's' : ''}`)
+    if (months > 0) parts.push(`${months} mo${months > 1 ? 's' : ''}`)
+    return parts.join(' ')
+  }
+
+  const sortedItems = [...items].sort(
+    (a, b) => getPeriodDates(b.period).startDate.getTime() - getPeriodDates(a.period).startDate.getTime(),
+  )
+
   return (
     <section id="experience" className="mb-12 scroll-mt-28">
       <SectionHeader
@@ -32,7 +82,7 @@ function Experience({ items }: ExperienceProps) {
       />
 
       <div className="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/75 p-5 shadow-[0_10px_32px_rgba(0,0,0,0.32)]">
-        {items.map((item, idx) => {
+        {sortedItems.map((item, idx) => {
           const isCurrent = item.period.toLowerCase().includes('present')
           const hasProjects = (item.projects?.length ?? 0) > 0
           return (
@@ -70,9 +120,14 @@ function Experience({ items }: ExperienceProps) {
                   </div>
                 </div>
                 <div className="flex flex-col items-start gap-3 md:items-end">
-                  <span className="rounded-full border border-emerald-300/30 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-emerald-100">
-                    {isCurrent ? 'active' : 'shipped'}
-                  </span>
+                  <div className="flex flex-wrap items-center gap-2 md:justify-end">
+                    <span className="rounded-full border border-emerald-300/30 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-emerald-100">
+                      {isCurrent ? 'active' : 'shipped'}
+                    </span>
+                    <span className="rounded-full border border-slate-700 bg-slate-900 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-200">
+                      {formatDuration(item.period)}
+                    </span>
+                  </div>
                   {hasProjects && (
                     <div className="w-full max-w-xs rounded-xl border border-emerald-300/30 bg-emerald-400/5 px-4 py-3 text-[12px] text-slate-200 shadow-inner shadow-emerald-500/10">
                       <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-emerald-200">Projects shipped</p>
