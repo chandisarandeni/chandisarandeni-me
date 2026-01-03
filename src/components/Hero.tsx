@@ -54,7 +54,7 @@ function Hero({
   ]
 
   return (
-    <section id="hero" className="mb-12 grid scroll-mt-28 gap-6 lg:grid-cols-[1.3fr_1fr]">
+    <section id="hero" className="mb-12 grid scroll-mt-45 gap-6 lg:grid-cols-[1.3fr_1fr]">
       <div className="reveal relative overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/80 p-7 shadow-[0_16px_40px_rgba(0,0,0,0.35)]">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(52,211,153,0.12),transparent_42%)]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_82%_22%,rgba(59,130,246,0.12),transparent_44%)]" />
