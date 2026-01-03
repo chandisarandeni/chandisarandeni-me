@@ -61,46 +61,14 @@ export const projects = [
 ]
 
 export const skills = {
-  languages: [
-    '🟦 TypeScript',
-    '🟨 JavaScript',
-    '☕ Java',
-    '💠 C#',
-    '🗄️ SQL',
-  ],
-  frontend: [
-    '⚛️ React',
-    '🖥️ Electron',
-    '⚡ NextJS',
-    '🎨 Tailwind',
-    '⚡ Vite',
-  ],
-  backend: [
-    '🟢 Node.js',
-    '🚂 Express',
-    '🟣 NestJS',
-    '🐘 Laravel',
-    '🔗 REST APIs',
-  ],
-  databases: [
-    '🍃 MongoDB',
-    '🗄️ MySQL',
-    '🐘 PostgreSQL',
-  ],
-  devops: [
-    '⚙️ GitHub Actions',
-    '🚀 CI/CD basics',
-    '🔄 API integration',
-  ],
+  languages: ['🟦 TypeScript', '🟨 JavaScript', '☕ Java', '💠 C#', '🗄️ SQL'],
+  frontend: ['⚛️ React', '🖥️ Electron', '⚡ NextJS', '🎨 Tailwind', '⚡ Vite'],
+  backend: ['🟢 Node.js', '🚂 Express', '🟣 NestJS', '🐘 Laravel', '🔗 REST APIs'],
+  databases: ['🍃 MongoDB', '🗄️ MySQL', '🐘 PostgreSQL'],
+  devops: ['⚙️ GitHub Actions', '🚀 CI/CD basics', '🔄 API integration'],
 }
 
-export const tools = [
-  '🧠 VS Code',
-  '📮 Postman',
-  '🎨 Figma',
-  '🐙 GitHub',
-  '📝 Notion',
-]
+export const tools = ['🧠 VS Code', '📮 Postman', '🎨 Figma', '🐙 GitHub', '📝 Notion']
 
 export const education = [
   {
@@ -149,39 +117,63 @@ export const achievements = [
 
 export const experience = [
   {
-    company: 'SanrooLK Solar',
-    role: 'Software Engineer (Intern)',
-    period: 'dY". 2025 Jul - Present',
+    company: 'Toursurv (Pvt) Ltd',
+    role: 'Software Developer (Intern)',
+    period: '2025 Oct - Present',
     location: 'Remote / Hybrid',
     impact: [
-      'Delivering updates to the sales and maintenance desktop app used by field teams.',
-      'Refined product, sales, and ticketing flows to remove double entry and speed up handoffs.',
-      'Set up release notes and smoke-test checklists so technicians can adopt new builds safely.',
+      'Implement functional software features based on client requirements',
+      'Collaborate with cross-functional teams to deliver reliable applications',
+      'Maintain and improve existing codebases for performance and usability',
     ],
-    stack: ['.NET', 'WPF', 'MongoDB', 'Desktop ops'],
+    stack: ['ReactJS', 'NestJS', 'MongoDB', 'Electron'],
+    projects: [
+      {
+        name: 'POS Master V3',
+        summary: 'POS system revamp with modern UI, offline support, and multi-store management.',
+      },
+      {
+        name: 'Kettarama Temple Web',
+        summary: 'Website for Kettarama Temple with event, blog management.',
+      },
+    ],
   },
   {
-    company: 'Lab Ticket (Cancer Hospital)',
+    company: 'Thusitha ICT LK',
     role: 'Full-stack Developer',
-    period: 'dY". 2025 May - 2025 Jun',
-    location: 'On-site',
-    impact: [
-      'Built an Electron + Express tool that issues QR-coded blood tubes to reduce manual work.',
-      'Automated label printing and audit trails so nurses can trace every tube.',
-      'Coordinated with lab staff to tune the UI for high-volume morning batches.',
-    ],
-    stack: ['Electron', 'Express', 'Node.js', 'QR scanning'],
-  },
-  {
-    company: 'Animix',
-    role: 'Open-source Maintainer',
-    period: 'dY". 2025 Apr - Present',
+    period: '2024 May - 2025 Jun',
     location: 'Remote',
     impact: [
-      'Created a CSS/JS animation library with playground examples for frontend teams.',
-      'Documented patterns and added contribution guidelines to onboard new maintainers.',
-      'Ship fixes and improvements weekly based on community feedback.',
+      'Build and maintain the LMS web application',
+      'Implement secure system for students to access course materials and track progress',
     ],
-    stack: ['React', 'Tailwind CSS', 'Animations', 'Docs'],
+    stack: ['React', 'Node.js', 'Express', 'MongoDB'],
+    projects: [
+      {
+        name: 'LMS platform',
+        summary: 'Web app for course delivery, student progress, and secure material access.',
+      },
+    ],
+  },
+  {
+    company: 'Freelance / Open Source',
+    role: 'Software Developer',
+    period: '2023 Apr - Present',
+    location: 'Remote',
+    impact: ['Controbuted to open-source projects and built public tools'],
+    stack: ['React', 'Tailwind CSS', 'Node.js'],
+    projects: [
+      {
+        name: 'Animix',
+        summary: 'Animation playground and component library for frontend teams.',
+        link: 'https://animix-dev.vercel.app/',
+      },
+      {
+
+        name: 'Rahukalayam',
+        summary: 'Website for Rahukalayam astrology services.', 
+        link: 'https://rahukalayam.vercel.app/',
+      }
+    ],
   },
 ]

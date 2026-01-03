@@ -7,6 +7,11 @@ type ExperienceItem = {
   location: string
   impact: string[]
   stack: string[]
+  projects?: {
+    name: string
+    summary?: string
+    link?: string
+  }[]
 }
 
 type ExperienceProps = {
@@ -29,7 +34,7 @@ function Experience({ items }: ExperienceProps) {
       <div className="space-y-4 rounded-2xl border border-slate-800 bg-slate-900/75 p-5 shadow-[0_10px_32px_rgba(0,0,0,0.32)]">
         {items.map((item, idx) => {
           const isCurrent = item.period.toLowerCase().includes('present')
-          const primaryImpact = item.impact[0] ?? 'Shipping reliable releases with the team.'
+          const hasProjects = (item.projects?.length ?? 0) > 0
           return (
             <article
               key={`${item.company}-${item.role}-${item.period}`}
@@ -64,14 +69,38 @@ function Experience({ items }: ExperienceProps) {
                     ))}
                   </div>
                 </div>
-                <div className="flex flex-col items-start gap-2 md:items-end">
+                <div className="flex flex-col items-start gap-3 md:items-end">
                   <span className="rounded-full border border-emerald-300/30 bg-emerald-400/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.15em] text-emerald-100">
                     {isCurrent ? 'active' : 'shipped'}
                   </span>
-                  <div className="rounded-xl border border-slate-800 bg-slate-950 px-4 py-3 text-[12px] text-slate-200 shadow-inner shadow-emerald-500/5">
-                    <p className="text-[11px] uppercase tracking-[0.2em] text-emerald-300/80">Focus</p>
-                    <p className="text-slate-200">{primaryImpact}</p>
-                  </div>
+                  {hasProjects && (
+                    <div className="w-full max-w-xs rounded-xl border border-emerald-300/30 bg-emerald-400/5 px-4 py-3 text-[12px] text-slate-200 shadow-inner shadow-emerald-500/10">
+                      <p className="mb-2 text-[11px] uppercase tracking-[0.2em] text-emerald-200">Projects shipped</p>
+                      <ul className="space-y-2 text-left md:text-right">
+                        {item.projects?.map((project) => (
+                          <li key={project.name} className="space-y-1">
+                            <div className="flex items-center gap-2 md:justify-end">
+                              <span className="inline-flex items-center gap-2 rounded-md border border-emerald-300/30 bg-slate-950/80 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-100">
+                                <span className="h-1.5 w-1.5 rounded-full bg-emerald-300 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
+                                {project.name}
+                              </span>
+                              {project.link && (
+                                <a
+                                  className="rounded-md border border-emerald-300/40 bg-emerald-400/10 px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-100 transition hover:-translate-y-0.5 hover:border-emerald-200 hover:text-white"
+                                  href={project.link}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  view
+                                </a>
+                              )}
+                            </div>
+                            {project.summary && <p className="text-[12px] text-slate-300">{project.summary}</p>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </div>
             </article>
