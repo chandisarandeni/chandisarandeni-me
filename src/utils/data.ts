@@ -1,3 +1,5 @@
+import profileImg from '../assets/profile.jpg'
+
 export const hero = {
   name: '👨‍💻 Chandisa Randeni',
   role: '🎓 Undergraduate · Developer Student',
@@ -9,7 +11,7 @@ export const hero = {
   email: 'chandisarandeni@gmail.com',
   github: 'https://github.com/chandisarandeni',
   linkedin: 'https://www.linkedin.com/in/chandisarandeni',
-  profileImage: 'src/assets/profile.jpg',
+  profileImage: profileImg,
 }
 
 export const terminalEntries = [
