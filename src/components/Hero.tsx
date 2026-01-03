@@ -122,10 +122,6 @@ function Hero({
                 <p className="text-lg font-semibold text-white">{name}</p>
                 <p className="text-slate-300">{role}</p>
                 <p className="text-slate-400">{location}</p>
-                <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-emerald-100">
-                  <span className="h-2 w-2 rounded-full bg-lime-400 shadow-[0_0_10px_rgba(132,204,22,0.8)]" />
-                  {availability}
-                </div>
               </div>
             </div>
             <p className="text-sm text-slate-200">
