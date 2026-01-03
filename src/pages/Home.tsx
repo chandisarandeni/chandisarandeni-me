@@ -5,8 +5,9 @@ import Skills from '../components/Skills'
 import TerminalLog from '../components/TerminalLog'
 import Education from '../components/Education'
 import Achievements from '../components/Achievements'
+import Experience from '../components/Experience'
 import Footer from '../components/Footer'
-import { achievements, education, hero, projects, skills, terminalEntries, tools } from '../utils/data'
+import { achievements, education, experience, hero, projects, skills, terminalEntries, tools } from '../utils/data'
 import { useEffect } from 'react'
 
 function Home() {
@@ -95,6 +96,7 @@ function Home() {
           </div>
         </div>
 
+        <Experience items={experience} />
         <Education items={education} />
         <Achievements items={achievements} />
         <Projects items={projects} />

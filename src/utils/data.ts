@@ -6,9 +6,9 @@ export const hero = {
     'I am a student developer with experience on real-world projects using modern technologies. I enjoy learning new skills, solving problems, and building practical applications. I am eager to grow my experience, improve my knowledge, and contribute to meaningful projects as part of a professional team.',
   location: '🌍 Remote / Global',
   availability: '✅ Accepting new projects',
-  email: '📧 chandisarandeni@gmail.com',
-  github: '🐙 https://github.com/chandisarandeni',
-  linkedin: '💼 https://www.linkedin.com/in/chandisarandeni',
+  email: 'chandisarandeni@gmail.com',
+  github: 'https://github.com/chandisarandeni',
+  linkedin: 'https://www.linkedin.com/in/chandisarandeni',
   profileImage: 'src/assets/profile.jpg',
 }
 
@@ -61,10 +61,38 @@ export const projects = [
 ]
 
 export const skills = {
-  languages: ['🟦 TypeScript', '🟨 JavaScript', '🐍 Python', '💠 C#', '🗄️ SQL'],
-  frontend: ['⚛️ React', '🎨 Tailwind CSS', '🧩 Bootstrap', '🖥️ Electron', '⚡ Vite'],
-  backend: ['🟢 Node.js', '🚂 Express', '🔗 REST APIs', '🍃 MongoDB', '🐘 PostgreSQL'],
-  devops: ['🔄 API integration', '🚀 CI/CD basics', '⚙️ GitHub Actions', '🧪 Testing & QA'],
+  languages: [
+    '🟦 TypeScript',
+    '🟨 JavaScript',
+    '☕ Java',
+    '💠 C#',
+    '🗄️ SQL',
+  ],
+  frontend: [
+    '⚛️ React',
+    '🖥️ Electron',
+    '⚡ NextJS',
+    '🎨 Tailwind',
+    '⚡ Vite',
+  ],
+  backend: [
+    '🟢 Node.js',
+    '🚂 Express',
+    '🟣 NestJS',
+    '🐘 PHP Laravel',
+    '🔗 REST APIs',
+  ],
+  Databases:[
+    '🍃 MongoDB',
+    '🗄️ MySQL',
+    '🐘 PostgreSQL',
+  ],
+  devops: [
+    '⚙️ GitHub Actions',
+    '🚀 CI/CD basics',
+    '🔄 API integration',
+    '🧪 Testing & QA',
+  ],
 }
 
 export const tools = [
@@ -73,8 +101,6 @@ export const tools = [
   '🎨 Figma',
   '🐙 GitHub',
   '📝 Notion',
-  '📊 Linear',
-  '👥 Userfeel',
   '🖥️ Electron',
   '🗄️ MongoDB tools',
 ]
@@ -121,5 +147,44 @@ export const achievements = [
     place: 'Colombo Children’s Book Society',
     year: '📅 2015',
     note: '📚 Contributed to community education initiative',
+  },
+]
+
+export const experience = [
+  {
+    company: 'SanrooLK Solar',
+    role: 'Software Engineer (Intern)',
+    period: 'dY". 2025 Jul - Present',
+    location: 'Remote / Hybrid',
+    impact: [
+      'Delivering updates to the sales and maintenance desktop app used by field teams.',
+      'Refined product, sales, and ticketing flows to remove double entry and speed up handoffs.',
+      'Set up release notes and smoke-test checklists so technicians can adopt new builds safely.',
+    ],
+    stack: ['.NET', 'WPF', 'MongoDB', 'Desktop ops'],
+  },
+  {
+    company: 'Lab Ticket (Cancer Hospital)',
+    role: 'Full-stack Developer',
+    period: 'dY". 2025 May - 2025 Jun',
+    location: 'On-site',
+    impact: [
+      'Built an Electron + Express tool that issues QR-coded blood tubes to reduce manual work.',
+      'Automated label printing and audit trails so nurses can trace every tube.',
+      'Coordinated with lab staff to tune the UI for high-volume morning batches.',
+    ],
+    stack: ['Electron', 'Express', 'Node.js', 'QR scanning'],
+  },
+  {
+    company: 'Animix',
+    role: 'Open-source Maintainer',
+    period: 'dY". 2025 Apr - Present',
+    location: 'Remote',
+    impact: [
+      'Created a CSS/JS animation library with playground examples for frontend teams.',
+      'Documented patterns and added contribution guidelines to onboard new maintainers.',
+      'Ship fixes and improvements weekly based on community feedback.',
+    ],
+    stack: ['React', 'Tailwind CSS', 'Animations', 'Docs'],
   },
 ]
