@@ -31,6 +31,13 @@ export const terminalEntries = [
 
 export const projects = [
   {
+    name: '⚡ Net Speed',
+    description: 'Lightweight network speed test app with real-time graphs with accurate results.',
+    stack: ['React', 'Tailwind', 'Node.js'],
+    link: 'https://netspeed.innozoft.com/',
+    status: '📅 2025 Dec - present',
+  },
+  {
     name: '🧪 Lab Ticket',
     description:
       'Optimized blood tube issuing system for Cancer Hospital, reducing manual effort and processing time.',
