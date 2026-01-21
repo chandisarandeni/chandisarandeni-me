@@ -31,6 +31,13 @@ export const terminalEntries = [
 
 export const projects = [
   {
+    name: '⚡ Net Speed',
+    description: 'Lightweight network speed test app with real-time graphs with accurate results.',
+    stack: ['React', 'Tailwind', 'Node.js'],
+    link: 'https://netspeed.innozoft.com/',
+    status: '📅 2025 Dec - present',
+  },
+  {
     name: '🧪 Lab Ticket',
     description:
       'Optimized blood tube issuing system for Cancer Hospital, reducing manual effort and processing time.',
@@ -158,24 +165,27 @@ export const experience = [
     ],
   },
   {
-    company: 'Freelance / Open Source',
-    role: 'Software Developer',
-    period: '2023 Apr - Present',
+    company: 'Innozoft Solutions',
+    role: 'Freelance Developer / Founder',
+    period: '2025 Apr - Present',
     location: 'Remote',
-    impact: ['Controbuted to open-source projects and built public tools'],
+    impact: [
+      'Controbuted to open-source projects and built public tools',
+      'Developed web applications for small businesses and personal projects',
+      'Managed end-to-end project delivery from requirements to deployment',
+    ],
     stack: ['React', 'Tailwind CSS', 'Node.js'],
     projects: [
       {
         name: 'Animix',
         summary: 'Animation playground and component library for frontend teams.',
-        link: 'https://animix-dev.vercel.app/',
+        link: 'https://animix.innozoft.com/',
       },
       {
-
         name: 'Rahukalayam',
-        summary: 'Website for Rahukalayam astrology services.', 
-        link: 'https://rahukalayam.vercel.app/',
-      }
+        summary: 'Website for Rahukalayam astrology services.',
+        link: 'https://rahukalam.innozoft.com/',
+      },
     ],
   },
 ]
