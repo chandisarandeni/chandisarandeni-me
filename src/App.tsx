@@ -1,14 +1,8 @@
-import CustomCursor from './components/CustomCursor'
 import './index.css'
 import Home from './pages/Home'
 
 function App() {
-  return (
-    <>
-      <CustomCursor />
-      <Home />
-    </>
-  )
+  return <Home />
 }
 
 export default App

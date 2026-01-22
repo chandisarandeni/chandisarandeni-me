@@ -53,13 +53,6 @@ export const projects = [
     status: '📅 2025 Apr',
   },
   {
-    name: '🔐 SaltGuard',
-    description: 'Password salting and hashing demo CLI to teach secure storage techniques.',
-    stack: ['Node.js', 'Express', 'CLI'],
-    link: 'https://github.com/chandisarandeni/express-password-salting',
-    status: '📅 2025 Jan - 2025 Mar',
-  },
-  {
     name: '☀️ SanrooLK Desktop',
     description:
       'WPF + MongoDB app for product, sales, and maintenance management for a solar company.',
@@ -70,11 +63,11 @@ export const projects = [
 ]
 
 export const skills = {
-  languages: ['🟦 TypeScript', '🟨 JavaScript', '☕ Java', '💠 C#', '🗄️ SQL'],
+  languages: ['🟦 TS', '🟨 JS', '☕ Java', '💠 C#', '🗄️ SQL'],
   frontend: ['⚛️ React', '🖥️ Electron', '⚡ NextJS', '🎨 Tailwind', '⚡ Vite'],
   backend: ['🟢 Node.js', '🚂 Express', '🟣 NestJS', '🐘 Laravel', '🔗 REST APIs'],
-  databases: ['🍃 MongoDB', '🗄️ MySQL', '🐘 PostgreSQL'],
-  devops: ['⚙️ GitHub Actions', '🚀 CI/CD basics', '🔄 API integration'],
+  databases: ['🍃 MongoDB', '🗄️ MySQL', '🐘 Postgre'],
+  devops: ['⚙️ GitHub', '🚀 CI/CD', '🔄 API dev'],
 }
 
 export const tools = ['🧠 VS Code', '📮 Postman', '🎨 Figma', '🐙 GitHub', '📝 Notion']
@@ -188,4 +181,16 @@ export const experience = [
       },
     ],
   },
+  {
+    company: 'NIBM City University',
+    role: 'Tutor',
+    period: '2025 Jun - Present',
+    location: 'On-site',
+    impact: [
+      'Provide tutoring support for programming modules to undergraduate students',
+      'Assist students in understanding complex programming concepts and practical applications',
+    ],
+    stack: ['Java', 'C#', 'Database Systems', 'Web Development', 'C Programming'],
+
+  }
 ]
