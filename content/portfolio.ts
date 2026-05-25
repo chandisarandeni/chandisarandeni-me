@@ -9,7 +9,7 @@ export const portfolioData: PortfolioData = {
     tagline: "Building fast, modern web products with React, Next.js, and NestJS.",
     summary:
       "Full Stack Developer with 2+ years of freelance and internship experience delivering responsive, secure, and user-focused web products.",
-    location: "Thalawathugoda, Sri Lanka",
+    location: "Sri Lanka",
     primaryAction: {
       label: "View Projects",
       url: "#projects",
@@ -296,7 +296,7 @@ export const portfolioData: PortfolioData = {
   // --------------------- Contact ------------------
   contact: {
     email: "chandisarandeni@gmail.com",
-    location: "Madiwela Road, Thalawathugoda, Sri Lanka",
+    location: "",
     availability: "Open to software engineering, frontend, and full stack opportunities.",
     links: [
       { label: "GitHub", url: "https://github.com/chandisarandeni" },
