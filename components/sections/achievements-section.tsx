@@ -1,4 +1,5 @@
 import { ContentCard } from "@/components/ui/content-card";
+import { Reveal } from "@/components/ui/Reveal";
 import { SectionShell } from "@/components/ui/section-shell";
 import type { PortfolioSectionId } from "@/components/ui/section-nav";
 import type { PortfolioData } from "@/types/portfolio";
@@ -20,24 +21,26 @@ export function AchievementsSection({
       description="Academic recognition and technical community contributions."
     >
       <div className="grid gap-4 md:grid-cols-2">
-        {data.map((item) => (
-          <ContentCard key={`${item.title}-${item.date}`}>
-            <h3 className="text-lg font-semibold text-app-fg">{item.title}</h3>
-            <p className="mt-1 text-sm text-muted-fg">
-              {[item.issuer, item.date].filter(Boolean).join(" - ")}
-            </p>
-            <p className="mt-3 text-sm leading-7 text-muted-fg">{item.summary}</p>
-            {item.link ? (
-              <a
-                href={item.link}
-                target="_blank"
-                rel="noreferrer noopener"
-                className="mt-4 inline-flex text-sm font-semibold text-accent hover:opacity-85"
-              >
-                View details
-              </a>
-            ) : null}
-          </ContentCard>
+        {data.map((item, index) => (
+          <Reveal key={`${item.title}-${item.date}`} delayMs={index * 70} variant="fade-up">
+            <ContentCard>
+              <h3 className="text-lg font-semibold text-app-fg">{item.title}</h3>
+              <p className="mt-1 text-sm text-muted-fg">
+                {[item.issuer, item.date].filter(Boolean).join(" - ")}
+              </p>
+              <p className="mt-3 text-sm leading-7 text-muted-fg">{item.summary}</p>
+              {item.link ? (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="mt-4 inline-flex text-sm font-semibold text-accent hover:opacity-85"
+                >
+                  View details
+                </a>
+              ) : null}
+            </ContentCard>
+          </Reveal>
         ))}
       </div>
     </SectionShell>

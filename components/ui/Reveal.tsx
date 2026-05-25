@@ -3,10 +3,14 @@
 import { useEffect, useRef } from "react";
 import type { HTMLAttributes } from "react";
 
+type RevealVariant = "fade-up" | "fade-in" | "scale-in" | "timeline-item";
+
 type RevealProps = HTMLAttributes<HTMLDivElement> & {
   delayMs?: number;
   threshold?: number;
   once?: boolean;
+  variant?: RevealVariant;
+  distancePx?: number;
 };
 
 export function Reveal({
@@ -15,6 +19,8 @@ export function Reveal({
   delayMs = 0,
   threshold = 0.15,
   once = true,
+  variant = "fade-up",
+  distancePx,
   ...props
 }: RevealProps) {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -42,6 +48,10 @@ export function Reveal({
     }
 
     element.style.setProperty("--reveal-delay", `${delayMs}ms`);
+    if (typeof distancePx === "number") {
+      element.style.setProperty("--reveal-distance", `${distancePx}px`);
+    }
+    element.dataset.revealVariant = variant;
 
     // ============= Viewport Reveal =============
     // --------------------- Start animation only when section intersects ------------------
@@ -68,8 +78,13 @@ export function Reveal({
 
     observer.observe(element);
 
-    return () => observer.disconnect();
-  }, [delayMs, once, threshold]);
+    return () => {
+      observer.disconnect();
+      if (typeof distancePx === "number") {
+        element.style.removeProperty("--reveal-distance");
+      }
+    };
+  }, [delayMs, distancePx, once, threshold, variant]);
 
   return (
     <div ref={ref} className={`reveal-section ${className}`.trim()} {...props}>

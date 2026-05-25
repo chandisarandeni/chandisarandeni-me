@@ -1,4 +1,5 @@
 import { SectionShell } from "@/components/ui/section-shell";
+import { Reveal } from "@/components/ui/Reveal";
 import type { PortfolioData } from "@/types/portfolio";
 import type { PortfolioSectionId } from "@/components/ui/section-nav";
 
@@ -16,16 +17,23 @@ export function AboutSection({ data, id = "about" }: AboutSectionProps) {
       description="The background and mindset behind how I design, build, and ship reliable products."
     >
       <div className="card-lift space-y-4 rounded-2xl p-5 leading-8 text-muted-fg sm:p-6">
-        {data.paragraphs.map((paragraph) => (
-          <p key={paragraph}>{paragraph}</p>
+        {data.paragraphs.map((paragraph, index) => (
+          <Reveal key={paragraph} delayMs={index * 80} variant="fade-up">
+            <p>{paragraph}</p>
+          </Reveal>
         ))}
         <ul className="mt-5 flex flex-wrap gap-2">
-          {data.focusAreas.map((area) => (
-            <li
-              key={area}
-              className="rounded-full border border-border-muted bg-surface-strong px-3 py-1 text-xs font-semibold uppercase tracking-wide text-app-fg"
-            >
-              {area}
+          {data.focusAreas.map((area, index) => (
+            <li key={area}>
+              <Reveal
+                delayMs={220 + index * 50}
+                variant="scale-in"
+                distancePx={10}
+              >
+                <span className="inline-flex rounded-full border border-border-muted bg-surface-strong px-3 py-1 text-xs font-semibold uppercase tracking-wide text-app-fg">
+                  {area}
+                </span>
+              </Reveal>
             </li>
           ))}
         </ul>

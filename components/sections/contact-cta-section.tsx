@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa6";
 import { SectionShell } from "@/components/ui/section-shell";
+import { Reveal } from "@/components/ui/Reveal";
 import type { PortfolioSectionId } from "@/components/ui/section-nav";
 import type { PortfolioData } from "@/types/portfolio";
 
@@ -69,27 +70,28 @@ export function ContactCtaSection({
             Direct Contacts
           </p>
           <ul className="mt-3 grid gap-3 sm:grid-cols-3">
-            {contactChannels.map((channel) => {
+            {contactChannels.map((channel, index) => {
               const Icon = channel.icon;
               const isExternal = channel.href.startsWith("http");
 
               return (
                 <li key={channel.key}>
-                  <a
-                    href={channel.href}
-                    target={isExternal ? "_blank" : undefined}
-                    rel={isExternal ? "noreferrer noopener" : undefined}
-                    className="contact-secondary-btn tap-target inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold"
-                  >
-                    <Icon className="h-4 w-4" aria-hidden />
-                    <span>{channel.label}</span>
-                  </a>
+                  <Reveal delayMs={120 + index * 60} variant="scale-in" distancePx={8}>
+                    <a
+                      href={channel.href}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noreferrer noopener" : undefined}
+                      className="contact-channel contact-secondary-btn tap-target inline-flex h-11 w-full items-center justify-center gap-2 rounded-xl px-4 text-sm font-semibold"
+                    >
+                      <Icon className="h-4 w-4" aria-hidden />
+                      <span>{channel.label}</span>
+                    </a>
+                  </Reveal>
                 </li>
               );
             })}
           </ul>
         </div>
-
       </div>
     </SectionShell>
   );
