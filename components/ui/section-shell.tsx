@@ -21,11 +21,11 @@ export function SectionShell({
   children,
 }: SectionShellProps) {
   return (
-    <section id={id} className={`scroll-mt-24 py-10 sm:py-12 lg:py-14 ${className ?? ""}`}>
+    <section id={id} className={`scroll-mt-32 ${className ?? ""}`}>
       <div className="content-gutter mx-auto w-full max-w-6xl">
         <Reveal>
           {(eyebrow || title || description) && (
-            <header className="mb-6 sm:mb-8">
+            <header className="mb-5 sm:mb-6">
               {eyebrow && (
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
                   {eyebrow}

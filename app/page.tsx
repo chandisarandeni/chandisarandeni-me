@@ -7,7 +7,6 @@ export default function Home() {
       data={portfolioData}
       heroProfileImageSrc="/images/profile.jpg"
       heroProfileImageAlt="Portrait of Chandisa Randeni"
-      className="space-y-0"
     />
   );
 }

@@ -34,9 +34,12 @@ export function PortfolioSectionsLayout({
   // ============= Navigation Priority =============
   // --------------------- Source Order ------------------
   const resolvedNavLinks = navLinks ?? DEFAULT_PORTFOLIO_NAV_LINKS;
+  const layoutClassName = ["space-y-8 sm:space-y-10 lg:space-y-12", className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div className={className}>
+    <div className={layoutClassName}>
       {showTopNav && <PortfolioTopNav links={resolvedNavLinks} />}
 
       {/* ============= Section Composition ============= */}
