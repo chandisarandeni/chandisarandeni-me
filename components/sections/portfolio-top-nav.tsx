@@ -22,7 +22,9 @@ export function PortfolioTopNav({ links, className }: PortfolioTopNavProps) {
     >
       <div className="content-gutter mx-auto w-full max-w-6xl py-3 sm:py-3.5">
         <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <ul className="nav-scroll order-2 flex snap-x snap-mandatory items-center gap-1.5 overflow-x-auto pb-1 md:order-1 md:pb-0">
+          {/* ============= Mobile Width Guard ============= */}
+          {/* --------------------- Keep horizontal nav scrolling inside its own width ------------------ */}
+          <ul className="nav-scroll order-2 flex w-full max-w-full snap-x snap-mandatory items-center gap-1.5 overflow-x-auto pb-1 md:order-1 md:pb-0">
             {navLinks.map((link) => (
               <li key={link.id} className="shrink-0 snap-start">
                 <a

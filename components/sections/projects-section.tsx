@@ -42,6 +42,9 @@ export function ProjectsSection({ data, id = "projects" }: ProjectsSectionProps)
       <div className="grid gap-4 lg:grid-cols-2">
         {data.map((project, index) => {
           const projectLinks = getProjectLinks(project);
+          // ============= Action Docking =============
+          // --------------------- Keep links pinned despite variable card content ------------------
+          const hasProjectLinks = projectLinks.length > 0;
 
           return (
             <Reveal key={project.name} delayMs={index * 80} variant="fade-up">
@@ -75,23 +78,25 @@ export function ProjectsSection({ data, id = "projects" }: ProjectsSectionProps)
                   ))}
                 </ul>
 
-                {projectLinks.length > 0 ? (
-                  <div className="mt-5 flex flex-wrap gap-3">
-                    {projectLinks.map((link) => {
-                      const external = isExternalLink(link.href);
+                {hasProjectLinks ? (
+                  <div className="mt-auto pt-5">
+                    <div className="flex flex-wrap gap-3">
+                      {projectLinks.map((link) => {
+                        const external = isExternalLink(link.href);
 
-                      return (
-                        <a
-                          key={link.href}
-                          href={link.href}
-                          target={external ? "_blank" : undefined}
-                          rel={external ? "noreferrer noopener" : undefined}
-                          className="tap-target inline-flex rounded-full border border-border-strong px-4 py-2 text-xs font-semibold uppercase tracking-wide text-app-fg transition-colors hover:bg-surface-strong"
-                        >
-                          {link.label}
-                        </a>
-                      );
-                    })}
+                        return (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            target={external ? "_blank" : undefined}
+                            rel={external ? "noreferrer noopener" : undefined}
+                            className="tap-target inline-flex rounded-full border border-border-strong px-4 py-2 text-xs font-semibold uppercase tracking-wide text-app-fg transition-colors hover:bg-surface-strong"
+                          >
+                            {link.label}
+                          </a>
+                        );
+                      })}
+                    </div>
                   </div>
                 ) : null}
               </ContentCard>

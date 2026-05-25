@@ -86,6 +86,8 @@ body {
   font-family: var(--font-sans), "Segoe UI", system-ui, sans-serif;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 h1,
@@ -104,6 +106,11 @@ pre,
 kbd,
 samp {
   font-family: var(--font-mono), "Courier New", monospace;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
 }
 
 a,
@@ -292,6 +299,26 @@ summary {
   backdrop-filter: blur(14px);
 }
 
+.profile-google-ring {
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    #4285f4 0deg,
+    #ea4335 90deg,
+    #fbbc05 180deg,
+    #34a853 270deg,
+    #4285f4 360deg
+  );
+  animation: google-ring-spin 14s linear infinite;
+  will-change: transform;
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 calc(100% - 5px)
+  );
+  mask: radial-gradient(farthest-side, transparent calc(100% - 6px), #000 calc(100% - 5px));
+}
+
 .card-lift:hover,
 .card-lift:focus-within {
   transform: translateY(-4px);
@@ -426,6 +453,11 @@ summary {
   transform: scaleY(1) !important;
 }
 
+:root[data-motion="off"] .profile-google-ring {
+  animation: none !important;
+  transform: none !important;
+}
+
 @keyframes nav-drop-in {
   from {
     opacity: 0;
@@ -488,6 +520,15 @@ summary {
   }
 }
 
+@keyframes google-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -505,5 +546,10 @@ summary {
 
   .timeline-draw::before {
     transform: scaleY(1);
+  }
+
+  .profile-google-ring {
+    animation: none !important;
+    transform: none !important;
   }
 }

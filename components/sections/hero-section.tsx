@@ -17,6 +17,10 @@ export function HeroSection({
   profileImageSrc = "/images/profile.jpg",
   profileImageAlt,
 }: HeroSectionProps) {
+  // ============= Avatar Semantics =============
+  // --------------------- Keep a reliable fallback while ring styling remains decorative ------------------
+  const resolvedProfileImageAlt = profileImageAlt ?? `${data.name} profile photo`;
+
   return (
     <section
       id={id}
@@ -24,15 +28,19 @@ export function HeroSection({
     >
       <div className="content-gutter mx-auto grid w-full max-w-6xl gap-8 md:grid-cols-[auto_1fr] md:items-center">
         <Reveal variant="scale-in" delayMs={40} className="mx-auto md:mx-0">
-          <div className="relative h-40 w-40 overflow-hidden rounded-full border-4 border-surface shadow-lg ring-2 ring-accent sm:h-48 sm:w-48">
-            <Image
-              src={profileImageSrc}
-              alt={profileImageAlt ?? `${data.name} profile photo`}
-              fill
-              sizes="(max-width: 640px) 160px, 192px"
-              className="object-cover"
-              priority
-            />
+          <div className="relative h-40 w-40 sm:h-48 sm:w-48">
+            <div aria-hidden="true" className="profile-google-ring absolute inset-0 rounded-full" />
+            <div className="absolute inset-[6px] overflow-hidden rounded-full border-4 border-surface shadow-lg">
+              <Image
+                src={profileImageSrc}
+                alt={resolvedProfileImageAlt}
+                fill
+                sizes="(max-width: 640px) 160px, 192px"
+                className="select-none object-cover"
+                draggable={false}
+                priority
+              />
+            </div>
           </div>
         </Reveal>
 
@@ -71,14 +79,14 @@ export function HeroSection({
               >
                 {data.primaryAction.label}
               </a>
-            {data.secondaryAction ? (
-              <a
-                href={data.secondaryAction.url}
-                className="tap-target inline-flex h-11 items-center justify-center rounded-full border border-border-strong px-6 text-sm font-semibold text-app-fg transition-colors hover:bg-surface-strong"
-              >
-                {data.secondaryAction.label}
-              </a>
-            ) : null}
+              {data.secondaryAction ? (
+                <a
+                  href={data.secondaryAction.url}
+                  className="tap-target inline-flex h-11 items-center justify-center rounded-full border border-border-strong px-6 text-sm font-semibold text-app-fg transition-colors hover:bg-surface-strong"
+                >
+                  {data.secondaryAction.label}
+                </a>
+              ) : null}
             </div>
           </Reveal>
         </div>
