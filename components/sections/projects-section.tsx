@@ -1,3 +1,4 @@
+import { FaArrowRight } from "react-icons/fa6";
 import { ContentCard } from "@/components/ui/content-card";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionShell } from "@/components/ui/section-shell";
@@ -29,6 +30,12 @@ function getProjectLinks(project: ProjectItem) {
   return linkEntries.filter((entry): entry is { label: string; href: string } =>
     Boolean(entry.href)
   );
+}
+
+function shouldShowDirectionalArrow(label: string) {
+  // ============= Directional Cue Scope =============
+  // --------------------- Limit arrows to navigation-heavy project actions ------------------
+  return /^(live|repository)$/i.test(label);
 }
 
 export function ProjectsSection({ data, id = "projects" }: ProjectsSectionProps) {
@@ -83,6 +90,7 @@ export function ProjectsSection({ data, id = "projects" }: ProjectsSectionProps)
                     <div className="flex flex-wrap gap-3">
                       {projectLinks.map((link) => {
                         const external = isExternalLink(link.href);
+                        const showDirectionalArrow = shouldShowDirectionalArrow(link.label);
 
                         return (
                           <a
@@ -90,9 +98,12 @@ export function ProjectsSection({ data, id = "projects" }: ProjectsSectionProps)
                             href={link.href}
                             target={external ? "_blank" : undefined}
                             rel={external ? "noreferrer noopener" : undefined}
-                            className="tap-target inline-flex rounded-full border border-border-strong px-4 py-2 text-xs font-semibold uppercase tracking-wide text-app-fg transition-colors hover:bg-surface-strong"
+                            className="tap-target inline-flex items-center gap-1.5 rounded-full border border-border-strong px-4 py-2 text-xs font-semibold uppercase tracking-wide text-app-fg transition-colors hover:bg-surface-strong"
                           >
-                            {link.label}
+                            <span>{link.label}</span>
+                            {showDirectionalArrow ? (
+                              <FaArrowRight className="h-3.5 w-3.5" aria-hidden />
+                            ) : null}
                           </a>
                         );
                       })}
