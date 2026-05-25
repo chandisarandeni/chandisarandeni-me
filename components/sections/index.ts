@@ -1,0 +1,10 @@
+export { AboutSection } from "@/components/sections/about-section";
+export { AchievementsSection } from "@/components/sections/achievements-section";
+export { ContactCtaSection } from "@/components/sections/contact-cta-section";
+export { EducationSection } from "@/components/sections/education-section";
+export { ExperienceSection } from "@/components/sections/experience-section";
+export { HeroSection } from "@/components/sections/hero-section";
+export { PortfolioSectionsLayout } from "@/components/sections/portfolio-sections-layout";
+export { PortfolioTopNav } from "@/components/sections/portfolio-top-nav";
+export { ProjectsSection } from "@/components/sections/projects-section";
+export { SkillsSection } from "@/components/sections/skills-section";
