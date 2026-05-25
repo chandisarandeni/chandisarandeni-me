@@ -266,6 +266,8 @@ summary {
   border-radius: 1rem;
   background: color-mix(in oklab, var(--surface) 96%, transparent);
   padding: 0.35rem;
+  width: 100%;
+  box-shadow: 0 18px 40px -30px rgb(8 22 38 / 0.68);
 }
 
 .motion-nav-enter {
