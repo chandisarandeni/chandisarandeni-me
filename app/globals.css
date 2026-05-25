@@ -79,6 +79,10 @@ body {
   min-height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--app-bg);
@@ -241,6 +245,29 @@ summary {
   display: none;
 }
 
+.mobile-nav-toggle {
+  border: 1px solid var(--border-muted);
+  background: color-mix(in oklab, var(--surface) 95%, var(--muted) 5%);
+  color: var(--app-fg);
+  transition:
+    border-color 180ms var(--ease-standard),
+    background-color 180ms var(--ease-standard),
+    color 180ms var(--ease-standard);
+}
+
+.mobile-nav-toggle:hover,
+.mobile-nav-toggle:focus-visible {
+  border-color: var(--border-strong);
+  background: color-mix(in oklab, var(--surface-strong) 72%, transparent);
+}
+
+.mobile-nav-panel {
+  border: 1px solid var(--border-muted);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--surface) 96%, transparent);
+  padding: 0.35rem;
+}
+
 .motion-nav-enter {
   animation: nav-drop-in var(--motion-duration-slow) var(--ease-emphasis) both;
 }
@@ -374,40 +401,45 @@ summary {
 }
 
 .nav-underline {
-  position: relative;
   text-decoration: none;
 }
 
 .nav-chip {
-  transition:
-    transform var(--motion-duration-fast) var(--ease-standard),
-    border-color var(--motion-duration-fast) var(--ease-standard),
-    background-color var(--motion-duration-fast) var(--ease-standard),
-    color var(--motion-duration-fast) var(--ease-standard);
+  position: relative;
 }
 
-.nav-chip:hover,
-.nav-chip:focus-visible {
-  transform: translateY(-2px);
+.nav-chip-label {
+  position: relative;
+  z-index: 2;
 }
 
-.nav-underline::after {
+.nav-chip::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.16em;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.32rem;
+  z-index: 1;
   height: 2px;
-  background: var(--accent);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--accent) 92%, transparent);
   transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 260ms var(--ease-standard);
+  transform-origin: center;
+  transition: transform 300ms var(--ease-emphasis);
 }
 
-.nav-underline:hover::after,
-.nav-underline:focus-visible::after,
-.nav-underline[aria-current="page"]::after {
+.nav-chip:focus-visible::after {
   transform: scaleX(1);
+}
+
+.nav-chip[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-chip:hover::after {
+    transform: scaleX(1);
+  }
 }
 
 .timeline-draw {
@@ -434,7 +466,6 @@ summary {
   animation-duration: 1ms !important;
   animation-iteration-count: 1 !important;
   transition-duration: 1ms !important;
-  scroll-behavior: auto !important;
 }
 
 :root[data-motion="off"] .reveal-section {
@@ -536,7 +567,6 @@ summary {
     animation-duration: 1ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
-    scroll-behavior: auto !important;
   }
 
   .reveal-section {
