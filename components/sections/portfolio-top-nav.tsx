@@ -89,16 +89,16 @@ export function PortfolioTopNav({ links, className }: PortfolioTopNavProps) {
       aria-label="Portfolio sections"
       className={`portfolio-nav motion-nav-enter sticky top-2 z-40 rounded-2xl border border-border-muted shadow-sm ${className ?? ""}`}
     >
-      <div className="content-gutter mx-auto w-full max-w-6xl py-3 sm:py-3.5">
+      <div className="layout-frame py-3 sm:py-3.5">
         <div className="relative md:hidden">
-          <div className="flex items-center justify-between gap-3">
+          <div className="flex min-w-0 items-center justify-between gap-2">
             <button
               ref={mobileMenuToggleRef}
               type="button"
               aria-expanded={isMobileMenuOpen}
               aria-controls={mobileMenuPanelId}
               aria-label={isMobileMenuOpen ? "Close section menu" : "Open section menu"}
-              className="mobile-nav-toggle tap-target inline-flex items-center rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em]"
+              className="mobile-nav-toggle tap-target inline-flex shrink-0 items-center rounded-full px-3.5 py-2 text-[11px] font-semibold uppercase tracking-[0.14em]"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
             >
               {isMobileMenuOpen ? (
@@ -107,7 +107,7 @@ export function PortfolioTopNav({ links, className }: PortfolioTopNavProps) {
                 <FaBars className="h-3.5 w-3.5" aria-hidden />
               )}
             </button>
-            <div className="shrink-0">
+            <div className="min-w-0 shrink">
               <ThemeToggle />
             </div>
           </div>

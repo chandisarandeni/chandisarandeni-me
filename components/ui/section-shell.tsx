@@ -20,29 +20,36 @@ export function SectionShell({
   className,
   children,
 }: SectionShellProps) {
+  // ============= Section Intro Presence =============
+  // --------------------- Keep body full-width for sections that intentionally omit intro copy ------------------
+  const hasIntroContent = Boolean(eyebrow || title || description);
+
   return (
     <section id={id} className={`scroll-mt-32 ${className ?? ""}`}>
-      <div className="content-gutter mx-auto w-full max-w-6xl">
-        <Reveal>
-          {(eyebrow || title || description) && (
-            <header className="mb-5 sm:mb-6">
-              {eyebrow && (
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-                  {eyebrow}
-                </p>
-              )}
-              <h2 className="mt-2 text-3xl font-semibold tracking-tight text-app-fg">
-                {title}
-              </h2>
-              {description && (
-                <p className="mt-3 max-w-3xl text-base leading-7 text-muted-fg">
-                  {description}
-                </p>
-              )}
-            </header>
-          )}
-          {children}
-        </Reveal>
+      <div className="layout-frame">
+        <div className="grid gap-6 lg:gap-8 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.65fr)] xl:items-start">
+          {hasIntroContent ? (
+            <Reveal className="xl:sticky xl:top-24">
+              <header className="space-y-2">
+                {eyebrow ? (
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+                    {eyebrow}
+                  </p>
+                ) : null}
+                <h2 className="text-3xl font-semibold tracking-tight text-app-fg sm:text-4xl">
+                  {title}
+                </h2>
+                {description ? (
+                  <p className="max-w-[36ch] text-base leading-7 text-muted-fg">
+                    {description}
+                  </p>
+                ) : null}
+              </header>
+            </Reveal>
+          ) : null}
+
+          <div className={hasIntroContent ? "min-w-0" : "min-w-0 xl:col-span-2"}>{children}</div>
+        </div>
       </div>
     </section>
   );

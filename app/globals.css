@@ -3,6 +3,7 @@
 
 :root {
   color-scheme: light;
+  --layout-max-width: 1360px;
   --app-bg: #f4f7fa;
   --app-fg: #111c26;
   --surface: #ffffff;
@@ -92,6 +93,7 @@ body {
   text-rendering: optimizeLegibility;
   user-select: none;
   -webkit-user-select: none;
+  overflow-x: hidden;
 }
 
 h1,
@@ -162,24 +164,26 @@ summary {
 
 .shell-root {
   min-height: 100dvh;
-  width: min(100%, 1200px);
+  width: 100%;
   margin-inline: auto;
   display: flex;
   flex-direction: column;
 }
 
-.content-gutter {
+.layout-frame {
+  width: min(100%, var(--layout-max-width));
+  margin-inline: auto;
   padding-inline: 1rem;
 }
 
 @media (min-width: 768px) {
-  .content-gutter {
+  .layout-frame {
     padding-inline: 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
-  .content-gutter {
+  .layout-frame {
     padding-inline: 2rem;
   }
 }
@@ -205,6 +209,7 @@ summary {
 .theme-toggle {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   gap: 0.35rem;
   padding: 0.2rem;
   border: 1px solid var(--border-muted);
@@ -216,6 +221,8 @@ summary {
 .theme-toggle-btn {
   border: 0;
   border-radius: 999px;
+  flex: 1 1 auto;
+  min-width: 0;
   padding-inline: 0.95rem;
   color: var(--muted-fg);
   background: transparent;
@@ -441,6 +448,18 @@ summary {
 @media (hover: hover) and (pointer: fine) {
   .nav-chip:hover::after {
     transform: scaleX(1);
+  }
+}
+
+@media (max-width: 420px) {
+  .theme-toggle {
+    gap: 0.2rem;
+    padding: 0.16rem;
+  }
+
+  .theme-toggle-btn {
+    padding-inline: 0.75rem;
+    font-size: 0.8rem;
   }
 }
 
