@@ -272,7 +272,9 @@ summary {
   border: 1px solid var(--border-muted);
   border-radius: 1rem;
   background: color-mix(in oklab, var(--surface) 96%, transparent);
-  padding: 0.35rem;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  padding: 0.45rem;
   width: 100%;
   box-shadow: 0 18px 40px -30px rgb(8 22 38 / 0.68);
 }
@@ -333,6 +335,14 @@ summary {
   background: color-mix(in oklab, var(--surface) 88%, transparent);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
+}
+
+.portfolio-nav {
+  box-shadow: 0 14px 32px -26px rgb(8 22 38 / 0.56);
+}
+
+.hero-panel {
+  box-shadow: 0 22px 46px -30px rgb(8 22 38 / 0.48);
 }
 
 .profile-google-ring {
@@ -415,6 +425,11 @@ summary {
 
 .nav-chip {
   position: relative;
+  border: 1px solid transparent;
+  transition:
+    border-color 180ms var(--ease-standard),
+    background-color 180ms var(--ease-standard),
+    color 180ms var(--ease-standard);
 }
 
 .nav-chip-label {
@@ -425,9 +440,9 @@ summary {
 .nav-chip::after {
   content: "";
   position: absolute;
-  left: 0.75rem;
-  right: 0.75rem;
-  bottom: 0.32rem;
+  left: 0.82rem;
+  right: 0.82rem;
+  bottom: 0.36rem;
   z-index: 1;
   height: 2px;
   border-radius: 999px;
@@ -441,11 +456,24 @@ summary {
   transform: scaleX(1);
 }
 
+.nav-chip:focus-visible,
+.nav-chip[aria-current="page"] {
+  background: color-mix(in oklab, var(--surface-strong) 72%, transparent);
+  border-color: color-mix(in oklab, var(--border-muted) 80%, transparent);
+  color: var(--app-fg);
+}
+
 .nav-chip[aria-current="page"]::after {
   transform: scaleX(1);
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .nav-chip:hover {
+    background: color-mix(in oklab, var(--surface-strong) 72%, transparent);
+    border-color: color-mix(in oklab, var(--border-muted) 80%, transparent);
+    color: var(--app-fg);
+  }
+
   .nav-chip:hover::after {
     transform: scaleX(1);
   }
