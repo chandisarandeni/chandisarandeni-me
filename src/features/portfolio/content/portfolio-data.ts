@@ -1,4 +1,4 @@
-import type { PortfolioData } from "@/types/portfolio";
+import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
 
 // ============= Portfolio Content =============
 export const portfolioData: PortfolioData = {
@@ -310,3 +310,4 @@ export const portfolioData: PortfolioData = {
 };
 
 export default portfolioData;
+

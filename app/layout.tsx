@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
-import { getThemeInitScript } from "@/lib/theme";
+import { getThemeInitScript } from "@/src/shared/theme/theme";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -22,7 +22,7 @@ const jetBrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Chandisa Randeni | Portfolio",
+  title: "Chandisa Randeni",
   description:
     "Professional portfolio of Chandisa Randeni - Full Stack Developer and Frontend Developer.",
 };
@@ -60,3 +60,4 @@ export default function RootLayout({
     </html>
   );
 }
+

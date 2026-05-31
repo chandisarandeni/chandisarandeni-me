@@ -24,3 +24,4 @@ export const DEFAULT_PORTFOLIO_NAV_LINKS: PortfolioNavLink[] = [
   { id: "achievements", label: "Achievements" },
   { id: "contact", label: "Contact" },
 ];
+

@@ -1,8 +1,8 @@
-import { ContentCard } from "@/components/ui/content-card";
-import { Reveal } from "@/components/ui/Reveal";
-import type { PortfolioData, SkillCategory } from "@/types/portfolio";
-import { SectionShell } from "@/components/ui/section-shell";
-import type { PortfolioSectionId } from "@/components/ui/section-nav";
+import { ContentCard } from "@/src/shared/ui/content-card";
+import { Reveal } from "@/src/shared/ui/reveal";
+import type { PortfolioData, SkillCategory } from "@/src/features/portfolio/types/portfolio";
+import { SectionShell } from "@/src/shared/ui/section-shell";
+import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
 
 type SkillsSectionProps = {
   data: PortfolioData["skills"];
@@ -41,3 +41,4 @@ export function SkillsSection({ data, id = "skills" }: SkillsSectionProps) {
     </SectionShell>
   );
 }
+

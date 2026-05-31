@@ -1,8 +1,8 @@
-import { ContentCard } from "@/components/ui/content-card";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionShell } from "@/components/ui/section-shell";
-import type { PortfolioSectionId } from "@/components/ui/section-nav";
-import type { PortfolioData } from "@/types/portfolio";
+import { ContentCard } from "@/src/shared/ui/content-card";
+import { Reveal } from "@/src/shared/ui/reveal";
+import { SectionShell } from "@/src/shared/ui/section-shell";
+import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
+import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
 
 type AchievementsSectionProps = {
   data: PortfolioData["achievements"];
@@ -46,3 +46,4 @@ export function AchievementsSection({
     </SectionShell>
   );
 }
+

@@ -14,3 +14,4 @@ export function ContentCard({ children, className }: ContentCardProps) {
     </article>
   );
 }
+

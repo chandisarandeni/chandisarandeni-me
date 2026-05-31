@@ -1,7 +1,7 @@
-import { SectionShell } from "@/components/ui/section-shell";
-import { Reveal } from "@/components/ui/Reveal";
-import type { PortfolioData } from "@/types/portfolio";
-import type { PortfolioSectionId } from "@/components/ui/section-nav";
+import { SectionShell } from "@/src/shared/ui/section-shell";
+import { Reveal } from "@/src/shared/ui/reveal";
+import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
+import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
 
 type AboutSectionProps = {
   data: PortfolioData["about"];
@@ -41,3 +41,4 @@ export function AboutSection({ data, id = "about" }: AboutSectionProps) {
     </SectionShell>
   );
 }
+

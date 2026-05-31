@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import type { PortfolioSectionId } from "@/components/ui/section-nav";
-import { Reveal } from "@/components/ui/Reveal";
+import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
+import { Reveal } from "@/src/shared/ui/reveal";
 
 type SectionShellProps = {
   id: PortfolioSectionId;
@@ -54,3 +54,4 @@ export function SectionShell({
     </section>
   );
 }
+

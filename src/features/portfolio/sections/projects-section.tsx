@@ -1,9 +1,9 @@
 import { FaArrowRight } from "react-icons/fa6";
-import { ContentCard } from "@/components/ui/content-card";
-import { Reveal } from "@/components/ui/Reveal";
-import { SectionShell } from "@/components/ui/section-shell";
-import type { PortfolioSectionId } from "@/components/ui/section-nav";
-import type { PortfolioData, ProjectItem } from "@/types/portfolio";
+import { ContentCard } from "@/src/shared/ui/content-card";
+import { Reveal } from "@/src/shared/ui/reveal";
+import { SectionShell } from "@/src/shared/ui/section-shell";
+import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
+import type { PortfolioData, ProjectItem } from "@/src/features/portfolio/types/portfolio";
 
 type ProjectsSectionProps = {
   data: PortfolioData["projects"];
@@ -118,3 +118,4 @@ export function ProjectsSection({ data, id = "projects" }: ProjectsSectionProps)
     </SectionShell>
   );
 }
+

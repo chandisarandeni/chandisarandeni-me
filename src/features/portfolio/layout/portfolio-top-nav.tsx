@@ -5,8 +5,8 @@ import { FaBars, FaXmark } from "react-icons/fa6";
 import {
   DEFAULT_PORTFOLIO_NAV_LINKS,
   type PortfolioNavLink,
-} from "@/components/ui/section-nav";
-import { ThemeToggle } from "@/components/ui/ThemeToggle";
+} from "@/src/shared/ui/section-nav";
+import { ThemeToggle } from "@/src/shared/ui/theme-toggle";
 
 type PortfolioTopNavProps = {
   links?: PortfolioNavLink[];
@@ -162,3 +162,4 @@ export function PortfolioTopNav({ links, className }: PortfolioTopNavProps) {
     </div>
   );
 }
+

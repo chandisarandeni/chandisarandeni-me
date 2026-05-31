@@ -97,3 +97,4 @@ export interface PortfolioData {
   achievements: AchievementItem[];
   contact: ContactSection;
 }
+

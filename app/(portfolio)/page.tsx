@@ -1,5 +1,5 @@
-import { PortfolioSectionsLayout } from "@/components/sections";
-import portfolioData from "@/content/portfolio";
+import { PortfolioSectionsLayout } from "@/src/features/portfolio";
+import { portfolioData } from "@/src/features/portfolio";
 
 export default function Home() {
   return (
@@ -10,3 +10,5 @@ export default function Home() {
     />
   );
 }
+
+

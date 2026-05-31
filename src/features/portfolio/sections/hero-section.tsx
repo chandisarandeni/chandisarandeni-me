@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-import type { PortfolioData } from "@/types/portfolio";
-import type { PortfolioSectionId } from "@/components/ui/section-nav";
-import { Reveal } from "@/components/ui/Reveal";
+import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
+import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
+import { Reveal } from "@/src/shared/ui/reveal";
 
 type HeroSectionProps = {
   data: PortfolioData["hero"];
@@ -95,3 +95,4 @@ export function HeroSection({
     </section>
   );
 }
+

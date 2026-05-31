@@ -1,18 +1,18 @@
 import {
   DEFAULT_PORTFOLIO_NAV_LINKS,
   type PortfolioNavLink,
-} from "@/components/ui/section-nav";
-import type { PortfolioData } from "@/types/portfolio";
+} from "@/src/shared/ui/section-nav";
+import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
 
-import { AboutSection } from "@/components/sections/about-section";
-import { AchievementsSection } from "@/components/sections/achievements-section";
-import { ContactCtaSection } from "@/components/sections/contact-cta-section";
-import { EducationSection } from "@/components/sections/education-section";
-import { ExperienceSection } from "@/components/sections/experience-section";
-import { HeroSection } from "@/components/sections/hero-section";
-import { PortfolioTopNav } from "@/components/sections/portfolio-top-nav";
-import { ProjectsSection } from "@/components/sections/projects-section";
-import { SkillsSection } from "@/components/sections/skills-section";
+import { AboutSection } from "@/src/features/portfolio/sections/about-section";
+import { AchievementsSection } from "@/src/features/portfolio/sections/achievements-section";
+import { ContactCtaSection } from "@/src/features/portfolio/sections/contact-cta-section";
+import { EducationSection } from "@/src/features/portfolio/sections/education-section";
+import { ExperienceSection } from "@/src/features/portfolio/sections/experience-section";
+import { HeroSection } from "@/src/features/portfolio/sections/hero-section";
+import { PortfolioTopNav } from "@/src/features/portfolio/layout/portfolio-top-nav";
+import { ProjectsSection } from "@/src/features/portfolio/sections/projects-section";
+import { SkillsSection } from "@/src/features/portfolio/sections/skills-section";
 
 type PortfolioSectionsLayoutProps = {
   data: PortfolioData;
@@ -58,3 +58,5 @@ export function PortfolioSectionsLayout({
     </div>
   );
 }
+
+
