@@ -3,6 +3,7 @@
 
 :root {
   color-scheme: light;
+  view-transition-name: root;
   --layout-max-width: 1360px;
   --app-bg: #f4f7fa;
   --app-fg: #111c26;
@@ -28,6 +29,10 @@
   --motion-distance-md: 20px;
   --motion-scale-soft: 0.985;
   --motion-mode: running;
+  --theme-transition-duration: 680ms;
+  --theme-transition-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --theme-x: 50vw;
+  --theme-y: 40vh;
 }
 
 :root[data-theme="dark"] {
@@ -86,6 +91,7 @@ html {
 
 body {
   margin: 0;
+  position: relative;
   background: var(--app-bg);
   color: var(--app-fg);
   font-family: var(--font-sans), "Segoe UI", system-ui, sans-serif;
@@ -94,6 +100,62 @@ body {
   user-select: none;
   -webkit-user-select: none;
   overflow-x: hidden;
+}
+
+/* ============= Theme Transition Layer ============= */
+/* --------------------- Keep a cinematic fallback when View Transition API is unavailable ------------------ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -24vmax;
+  pointer-events: none;
+  z-index: 1200;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at var(--theme-x) var(--theme-y),
+      color-mix(in oklab, var(--accent) 28%, transparent) 0%,
+      color-mix(in oklab, var(--accent) 8%, transparent) 22%,
+      transparent 64%
+    ),
+    linear-gradient(
+      130deg,
+      color-mix(in oklab, var(--surface) 34%, transparent) 0%,
+      transparent 62%
+    );
+  transform: scale(0.94);
+  filter: saturate(1.04);
+}
+
+:root[data-theme-transition="running"] body::before {
+  animation: theme-fallback-overlay var(--theme-transition-duration) var(--theme-transition-ease)
+    both;
+}
+
+:root[data-theme-transition="running"] .shell-root {
+  animation: theme-fallback-settle var(--theme-transition-duration) var(--theme-transition-ease)
+    both;
+}
+
+::view-transition-group(root) {
+  animation-duration: var(--theme-transition-duration);
+  animation-timing-function: var(--theme-transition-ease);
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--theme-transition-duration);
+  animation-timing-function: var(--theme-transition-ease);
+  animation-fill-mode: both;
+}
+
+::view-transition-old(root) {
+  animation-name: theme-cinematic-old;
+}
+
+::view-transition-new(root) {
+  animation-name: theme-cinematic-new;
+  transform-origin: var(--theme-x) var(--theme-y);
 }
 
 h1,
@@ -210,8 +272,7 @@ summary {
   display: inline-flex;
   align-items: center;
   max-width: 100%;
-  gap: 0.35rem;
-  padding: 0.2rem;
+  padding: 0.18rem;
   border: 1px solid var(--border-muted);
   border-radius: 999px;
   background: color-mix(in oklab, var(--surface) 90%, var(--muted) 10%);
@@ -221,27 +282,54 @@ summary {
 .theme-toggle-btn {
   border: 0;
   border-radius: 999px;
-  flex: 1 1 auto;
-  min-width: 0;
-  padding-inline: 0.95rem;
-  color: var(--muted-fg);
-  background: transparent;
-  font-size: 0.86rem;
-  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.55rem;
+  height: 2.55rem;
+  background: color-mix(in oklab, var(--surface) 84%, var(--muted) 16%);
+  color: var(--app-fg);
   transition:
     background-color 180ms var(--ease-standard),
     color 180ms var(--ease-standard),
+    transform 180ms var(--ease-standard),
+    box-shadow 180ms var(--ease-standard);
+}
+
+.theme-toggle-btn:hover {
+  background: color-mix(in oklab, var(--surface-strong) 78%, transparent);
+}
+
+.theme-toggle-btn:focus-visible {
+  background: color-mix(in oklab, var(--surface-strong) 75%, transparent);
+  box-shadow: 0 0 0 3px var(--focus-ring-soft);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.97);
+}
+
+.theme-toggle-icon-wrap {
+  position: relative;
+  width: 1.18rem;
+  height: 1.18rem;
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: scale(0.86);
+  transition:
+    opacity 180ms var(--ease-standard),
     transform 180ms var(--ease-standard);
 }
 
-.theme-toggle-btn[data-active="true"] {
-  color: var(--accent-contrast);
-  background: var(--accent);
-}
-
-.theme-toggle-btn:not([data-active="true"]):hover {
-  background: color-mix(in oklab, var(--surface-strong) 75%, transparent);
-  color: var(--app-fg);
+.theme-toggle-icon[data-visible="true"] {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .nav-scroll {
@@ -480,13 +568,12 @@ summary {
 
 @media (max-width: 420px) {
   .theme-toggle {
-    gap: 0.2rem;
-    padding: 0.16rem;
+    padding: 0.14rem;
   }
 
   .theme-toggle-btn {
-    padding-inline: 0.75rem;
-    font-size: 0.8rem;
+    width: 2.35rem;
+    height: 2.35rem;
   }
 }
 
@@ -535,6 +622,13 @@ summary {
 :root[data-motion="off"] .profile-google-ring {
   animation: none !important;
   transform: none !important;
+}
+
+:root[data-motion="off"] body::before,
+:root[data-motion="off"] .shell-root {
+  animation: none !important;
+  opacity: 0 !important;
+  filter: none !important;
 }
 
 @keyframes nav-drop-in {
@@ -608,6 +702,57 @@ summary {
   }
 }
 
+@keyframes theme-cinematic-old {
+  0% {
+    opacity: 1;
+    filter: blur(0) saturate(1) brightness(1);
+  }
+  100% {
+    opacity: 0.1;
+    filter: blur(11px) saturate(0.96) brightness(0.92);
+  }
+}
+
+@keyframes theme-cinematic-new {
+  0% {
+    opacity: 0;
+    clip-path: circle(14vmax at var(--theme-x) var(--theme-y));
+    filter: blur(14px) saturate(1.07) brightness(1.08);
+  }
+  55% {
+    opacity: 0.82;
+    clip-path: circle(92vmax at var(--theme-x) var(--theme-y));
+  }
+  100% {
+    opacity: 1;
+    clip-path: circle(180vmax at var(--theme-x) var(--theme-y));
+    filter: blur(0) saturate(1) brightness(1);
+  }
+}
+
+@keyframes theme-fallback-overlay {
+  0% {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  32% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.09);
+  }
+}
+
+@keyframes theme-fallback-settle {
+  0% {
+    filter: saturate(1.04) brightness(1.05);
+  }
+  100% {
+    filter: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -629,5 +774,14 @@ summary {
   .profile-google-ring {
     animation: none !important;
     transform: none !important;
+  }
+
+  body::before,
+  .shell-root,
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+    opacity: 0 !important;
+    filter: none !important;
   }
 }
