@@ -6,7 +6,8 @@ export const portfolioData: PortfolioData = {
   hero: {
     name: "Chandisa Randeni",
     role: "Full Stack Developer | Frontend Developer",
-    tagline: "Building fast, modern web products with React, Next.js, and NestJS.",
+    tagline:
+      "Building fast, modern web products with React, Next.js, and NestJS.",
     summary:
       "Full Stack Developer with 2+ years of freelance and internship experience delivering responsive, secure, and user-focused web products.",
     location: "Sri Lanka",
@@ -93,13 +94,7 @@ export const portfolioData: PortfolioData = {
       role: "Full Stack Developer",
       description:
         "Developing a full stack educational productivity platform with student portals, analytics, and progress tracking workflows.",
-      technologies: [
-        "Next.js",
-        "Electron.js",
-        "NestJS",
-        "PostgreSQL",
-        "AWS",
-      ],
+      technologies: ["Next.js", "Electron.js", "NestJS", "PostgreSQL", "AWS"],
       highlights: [
         "Building responsive web and desktop interfaces for student account workflows.",
         "Designing role-aware backend services for secure academic data handling.",
@@ -145,40 +140,6 @@ export const portfolioData: PortfolioData = {
   // --------------------- Experience ------------------
   experience: [
     {
-      company: "TOURSURV PVT LTD",
-      role: "Full Stack Developer Intern (Hybrid)",
-      location: "Sri Lanka",
-      period: "Oct 2025 - Apr 2026",
-      summary:
-        "Contributed to full stack web and desktop application delivery across multiple company projects in a team environment.",
-      achievements: [
-        "Contributed to 4 projects and supported requirement gathering, frontend, and backend implementation.",
-        "Completed UAT support successfully for 3 project deliveries.",
-        "Delivered maintainable features under tight timelines and evolving requirements.",
-      ],
-      technologies: [
-        "Next.js",
-        "React.js",
-        "TypeScript",
-        "Tailwind CSS",
-        "NestJS",
-      ],
-    },
-    {
-      company: "Innozoft",
-      role: "Software Developer and Maintenance (Freelance)",
-      location: "Sri Lanka",
-      period: "Mar 2024 - Present",
-      summary:
-        "Building and maintaining web software products focused on usability, responsiveness, and practical business outcomes.",
-      achievements: [
-        "Delivered frontend and full stack solutions for real client needs.",
-        "Managed feature planning, implementation, and support iterations.",
-        "Built clean interfaces for dashboards, portfolio sites, and student-oriented tools.",
-      ],
-      technologies: ["React.js", "Next.js", "NestJS", "TypeScript", "MySQL"],
-    },
-    {
       company: "NIBM Worldwide Colombo 07",
       role: "Tutor (Part-Time)",
       location: "Colombo, Sri Lanka",
@@ -190,7 +151,27 @@ export const portfolioData: PortfolioData = {
         "Explained technical concepts in simple, actionable steps.",
         "Supported coursework and lab exercises with structured troubleshooting.",
       ],
-      technologies: ["C", "C#", "Java", "Web Development", "Database Management"],
+      technologies: [
+        "C",
+        "C#",
+        "Java",
+        "Web Development",
+        "Database Management",
+      ],
+    },
+    {
+      company: "Innozoft",
+      role: "Open Source Software Developer (Freelance)",
+      location: "Sri Lanka",
+      period: "Mar 2024 - Present",
+      summary:
+        "Building and maintaining web software products focused on usability, responsiveness, and practical business outcomes.",
+      achievements: [
+        "Delivered frontend and full stack solutions for real client needs.",
+        "Managed feature planning, implementation, and support iterations.",
+        "Built clean interfaces for dashboards, portfolio sites, and student-oriented tools.",
+      ],
+      technologies: ["React.js", "Next.js", "NestJS", "TypeScript", "MySQL"],
     },
   ],
 
@@ -198,7 +179,8 @@ export const portfolioData: PortfolioData = {
   education: [
     {
       institution: "National Institute of Business Management (NIBM)",
-      qualification: "BSc (Hons) Computer Science with Applied Artificial Intelligence",
+      qualification:
+        "BSc (Hons) Computer Science with Applied Artificial Intelligence",
       location: "Colombo 07, Sri Lanka",
       period: "2024 - Present",
       details: [
@@ -210,9 +192,7 @@ export const portfolioData: PortfolioData = {
       qualification: "Higher National Diploma in Software Engineering",
       location: "Colombo 07, Sri Lanka",
       period: "Reading",
-      details: [
-        "Current GPA: 3.85/4.0.",
-      ],
+      details: ["Current GPA: 3.85/4.0."],
     },
     {
       institution: "National Institute of Business Management (NIBM)",
@@ -229,28 +209,21 @@ export const portfolioData: PortfolioData = {
       qualification: "Diploma in Information Technology",
       location: "Sri Lanka",
       period: "Jan 2024 - Jan 2025",
-      details: [
-        "GPA: 4.0/4.0.",
-        "Awarded Prof. Sarath Amunugama Gold Medal.",
-      ],
+      details: ["GPA: 4.0/4.0.", "Awarded Prof. Sarath Amunugama Gold Medal."],
     },
     {
       institution: "NextGen Campus",
       qualification: "Certificate in Cyber Security and Networking",
       location: "Sri Lanka",
       period: "Apr 2021 - Oct 2021",
-      details: [
-        "Foundation in networking and security concepts.",
-      ],
+      details: ["Foundation in networking and security concepts."],
     },
     {
       institution: "SLIIT",
       qualification: "Introduction to Networking (CCNA1 v7)",
       location: "Sri Lanka",
       period: "Mar 2020 - Mar 2021",
-      details: [
-        "Completed networking fundamentals track.",
-      ],
+      details: ["Completed networking fundamentals track."],
     },
   ],
 
@@ -297,7 +270,8 @@ export const portfolioData: PortfolioData = {
   contact: {
     email: "chandisarandeni@gmail.com",
     location: "",
-    availability: "Open to software engineering, frontend, and full stack opportunities.",
+    availability:
+      "Open to software engineering, frontend, and full stack opportunities.",
     links: [
       { label: "GitHub", url: "https://github.com/chandisarandeni" },
       {
@@ -310,4 +284,3 @@ export const portfolioData: PortfolioData = {
 };
 
 export default portfolioData;
-
