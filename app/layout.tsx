@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
-import { getThemeInitScript } from "@/src/shared/theme/theme";
+import { getThemeInitScript } from "@/src/_pages/home/components/theme";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({

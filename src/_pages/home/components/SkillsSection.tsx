@@ -1,11 +1,20 @@
-import { ContentCard } from "@/src/shared/ui/content-card";
-import { Reveal } from "@/src/shared/ui/reveal";
-import type { PortfolioData, SkillCategory } from "@/src/features/portfolio/types/portfolio";
-import { SectionShell } from "@/src/shared/ui/section-shell";
-import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
+import { ContentCard } from "./ContentCard";
+import { Reveal } from "./Reveal";
+import { SectionShell } from "./SectionShell";
+import type { PortfolioSectionId } from "./section-nav";
+
+type SkillCategory = {
+  category: string;
+  items: string[];
+};
+
+type SkillsSectionData = {
+  summary: string;
+  categories: SkillCategory[];
+};
 
 type SkillsSectionProps = {
-  data: PortfolioData["skills"];
+  data: SkillsSectionData;
   id?: PortfolioSectionId;
 };
 

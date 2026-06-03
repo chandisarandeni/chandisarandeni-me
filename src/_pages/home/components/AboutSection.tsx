@@ -1,10 +1,15 @@
-import { SectionShell } from "@/src/shared/ui/section-shell";
-import { Reveal } from "@/src/shared/ui/reveal";
-import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
-import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
+import { Reveal } from "./Reveal";
+import { SectionShell } from "./SectionShell";
+import type { PortfolioSectionId } from "./section-nav";
+
+type AboutSectionData = {
+  title?: string;
+  paragraphs: string[];
+  focusAreas: string[];
+};
 
 type AboutSectionProps = {
-  data: PortfolioData["about"];
+  data: AboutSectionData;
   id?: PortfolioSectionId;
 };
 

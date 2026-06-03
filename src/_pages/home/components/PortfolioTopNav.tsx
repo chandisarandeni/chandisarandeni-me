@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { type MouseEvent, useEffect, useId, useRef, useState } from "react";
 import { FaBars, FaXmark } from "react-icons/fa6";
 import {
   DEFAULT_PORTFOLIO_NAV_LINKS,
+  type PortfolioSectionId,
   type PortfolioNavLink,
-} from "@/src/shared/ui/section-nav";
-import { ThemeToggle } from "@/src/shared/ui/theme-toggle";
+} from "./section-nav";
+import { ThemeToggle } from "./ThemeToggle";
 
 type PortfolioTopNavProps = {
   links?: PortfolioNavLink[];
@@ -22,6 +23,39 @@ export function PortfolioTopNav({ links, className }: PortfolioTopNavProps) {
   const mobileMenuPanelId = useId();
   const mobileMenuPanelRef = useRef<HTMLDivElement | null>(null);
   const mobileMenuToggleRef = useRef<HTMLButtonElement | null>(null);
+
+  const handleNavLinkClick = (
+    event: MouseEvent<HTMLAnchorElement>,
+    sectionId: PortfolioSectionId
+  ) => {
+    const root = document.documentElement;
+    const scrollBehavior = root.dataset.motion === "off" ? "auto" : "smooth";
+
+    // ============= Anchor Scroll Reliability =============
+    // --------------------- Keep hash links deterministic across desktop and mobile disclosure states ------------------
+    if (sectionId === "home") {
+      event.preventDefault();
+      window.history.pushState(null, "", `${window.location.pathname}${window.location.search}`);
+      window.scrollTo({ top: 0, behavior: scrollBehavior });
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    const targetSection = document.getElementById(sectionId);
+    if (!targetSection) {
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    event.preventDefault();
+    window.history.pushState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}#${sectionId}`
+    );
+    targetSection.scrollIntoView({ behavior: scrollBehavior, block: "start" });
+    setIsMobileMenuOpen(false);
+  };
 
   useEffect(() => {
     const desktopMediaQuery = window.matchMedia("(min-width: 1024px)");
@@ -125,7 +159,7 @@ export function PortfolioTopNav({ links, className }: PortfolioTopNavProps) {
                     <a
                       href={link.id === "home" ? "#" : `#${link.id}`}
                       className="nav-chip nav-underline tap-target inline-flex w-full items-center rounded-xl px-3 py-2.5 text-xs font-semibold uppercase tracking-wide text-muted-fg"
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={(event) => handleNavLinkClick(event, link.id)}
                     >
                       <span className="nav-chip-label">{link.label}</span>
                     </a>
@@ -146,6 +180,7 @@ export function PortfolioTopNav({ links, className }: PortfolioTopNavProps) {
                     // ============= Interaction Styling Strategy =============
                     // --------------------- Keep hover animation centralized in globals.css for consistent timing and layering ------------------
                     className="nav-chip nav-underline tap-target inline-flex items-center rounded-full px-3.5 py-2 text-[11px] font-semibold uppercase tracking-wide text-muted-fg sm:text-xs"
+                    onClick={(event) => handleNavLinkClick(event, link.id)}
                   >
                     <span className="nav-chip-label">{link.label}</span>
                   </a>

@@ -1,0 +1,21 @@
+{
+  "summary": "Hands-on full stack capabilities across modern JavaScript frameworks, backend services, and databases.",
+  "categories": [
+    {
+      "category": "Frontend",
+      "items": ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "Three.js"]
+    },
+    {
+      "category": "Backend",
+      "items": ["Node.js", "NestJS", "REST API Development", "API Integration"]
+    },
+    {
+      "category": "Databases",
+      "items": ["PostgreSQL", "MongoDB", "MySQL"]
+    },
+    {
+      "category": "Tools and Delivery",
+      "items": ["Electron.js", "AWS", "Git", "Postman"]
+    }
+  ]
+}

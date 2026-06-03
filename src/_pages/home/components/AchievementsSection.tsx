@@ -1,11 +1,18 @@
-import { ContentCard } from "@/src/shared/ui/content-card";
-import { Reveal } from "@/src/shared/ui/reveal";
-import { SectionShell } from "@/src/shared/ui/section-shell";
-import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
-import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
+import { ContentCard } from "./ContentCard";
+import { Reveal } from "./Reveal";
+import { SectionShell } from "./SectionShell";
+import type { PortfolioSectionId } from "./section-nav";
+
+type AchievementItem = {
+  title: string;
+  issuer: string;
+  date: string;
+  summary: string;
+  link?: string;
+};
 
 type AchievementsSectionProps = {
-  data: PortfolioData["achievements"];
+  data: AchievementItem[];
   id?: PortfolioSectionId;
 };
 

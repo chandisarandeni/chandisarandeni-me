@@ -1,0 +1,15 @@
+{
+  "name": "Chandisa Randeni",
+  "role": "Full Stack Developer | Frontend Developer",
+  "tagline": "Building fast, modern web products with React, Next.js, and NestJS.",
+  "summary": "Full Stack Developer with 2+ years of freelance and internship experience delivering responsive, secure, and user-focused web products.",
+  "location": "Sri Lanka",
+  "primaryAction": {
+    "label": "View Projects",
+    "url": "#projects"
+  },
+  "secondaryAction": {
+    "label": "Contact Me",
+    "url": "#contact"
+  }
+}

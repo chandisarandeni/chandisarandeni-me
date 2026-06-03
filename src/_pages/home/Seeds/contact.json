@@ -1,0 +1,19 @@
+{
+  "email": "chandisarandeni@gmail.com",
+  "location": "",
+  "availability": "Open to software engineering, frontend, and full stack opportunities.",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/chandisarandeni"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/chandisarandeni/"
+    },
+    {
+      "label": "Email",
+      "url": "mailto:chandisarandeni@gmail.com"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
-import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
-import { Reveal } from "@/src/shared/ui/reveal";
+import { Reveal } from "./Reveal";
+import type { PortfolioSectionId } from "./section-nav";
 
 type SectionShellProps = {
   id: PortfolioSectionId;

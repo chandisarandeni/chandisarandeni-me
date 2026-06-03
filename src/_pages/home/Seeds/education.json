@@ -1,0 +1,49 @@
+[
+  {
+    "institution": "National Institute of Business Management (NIBM)",
+    "qualification": "BSc (Hons) Computer Science with Applied Artificial Intelligence",
+    "location": "Colombo 07, Sri Lanka",
+    "period": "2024 - Present",
+    "details": [
+      "Undergraduate program focused on applied AI and software engineering practice."
+    ]
+  },
+  {
+    "institution": "National Institute of Business Management (NIBM)",
+    "qualification": "Higher National Diploma in Software Engineering",
+    "location": "Colombo 07, Sri Lanka",
+    "period": "Reading",
+    "details": ["Current GPA: 3.85/4.0."]
+  },
+  {
+    "institution": "National Institute of Business Management (NIBM)",
+    "qualification": "Diploma in Software Engineering",
+    "location": "Colombo 07, Sri Lanka",
+    "period": "Completed",
+    "details": [
+      "GPA: 3.91/4.0.",
+      "Certificate in Software Engineering with best performance 97.7%."
+    ]
+  },
+  {
+    "institution": "IMBS Green Campus",
+    "qualification": "Diploma in Information Technology",
+    "location": "Sri Lanka",
+    "period": "Jan 2024 - Jan 2025",
+    "details": ["GPA: 4.0/4.0.", "Awarded Prof. Sarath Amunugama Gold Medal."]
+  },
+  {
+    "institution": "NextGen Campus",
+    "qualification": "Certificate in Cyber Security and Networking",
+    "location": "Sri Lanka",
+    "period": "Apr 2021 - Oct 2021",
+    "details": ["Foundation in networking and security concepts."]
+  },
+  {
+    "institution": "SLIIT",
+    "qualification": "Introduction to Networking (CCNA1 v7)",
+    "location": "Sri Lanka",
+    "period": "Mar 2020 - Mar 2021",
+    "details": ["Completed networking fundamentals track."]
+  }
+]

@@ -1,0 +1,28 @@
+[
+  {
+    "company": "NIBM Worldwide Colombo 07",
+    "role": "Tutor (Part-Time)",
+    "location": "Colombo, Sri Lanka",
+    "period": "Jun 2025 - Present",
+    "summary": "Providing academic support for programming modules with practical sessions and technical guidance.",
+    "achievements": [
+      "Mentored students in C, C#, Java, web development, and database fundamentals.",
+      "Explained technical concepts in simple, actionable steps.",
+      "Supported coursework and lab exercises with structured troubleshooting."
+    ],
+    "technologies": ["C", "C#", "Java", "Web Development", "Database Management"]
+  },
+  {
+    "company": "Innozoft",
+    "role": "Open Source Software Developer (Freelance)",
+    "location": "Sri Lanka",
+    "period": "Mar 2024 - Present",
+    "summary": "Building and maintaining web software products focused on usability, responsiveness, and practical business outcomes.",
+    "achievements": [
+      "Delivered frontend and full stack solutions for real client needs.",
+      "Managed feature planning, implementation, and support iterations.",
+      "Built clean interfaces for dashboards, portfolio sites, and student-oriented tools."
+    ],
+    "technologies": ["React.js", "Next.js", "NestJS", "TypeScript", "MySQL"]
+  }
+]

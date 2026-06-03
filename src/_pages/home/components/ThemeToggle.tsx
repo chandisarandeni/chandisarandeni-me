@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { BsBrightnessHighFill, BsStars } from "react-icons/bs";
-import { DEFAULT_THEME, isTheme, THEME_STORAGE_KEY, type Theme } from "@/src/shared/theme/theme";
+import { DEFAULT_THEME, isTheme, THEME_STORAGE_KEY, type Theme } from "./theme";
 
 type ViewTransitionController = {
   finished: Promise<void>;

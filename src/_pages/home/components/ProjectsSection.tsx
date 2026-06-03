@@ -1,12 +1,26 @@
 import { FaArrowRight } from "react-icons/fa6";
-import { ContentCard } from "@/src/shared/ui/content-card";
-import { Reveal } from "@/src/shared/ui/reveal";
-import { SectionShell } from "@/src/shared/ui/section-shell";
-import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
-import type { PortfolioData, ProjectItem } from "@/src/features/portfolio/types/portfolio";
+import { ContentCard } from "./ContentCard";
+import { Reveal } from "./Reveal";
+import { SectionShell } from "./SectionShell";
+import type { PortfolioSectionId } from "./section-nav";
+
+type ProjectItem = {
+  name: string;
+  status: string;
+  period: string;
+  role: string;
+  description: string;
+  technologies: string[];
+  highlights: string[];
+  links?: {
+    repositoryUrl?: string;
+    liveUrl?: string;
+    caseStudyUrl?: string;
+  };
+};
 
 type ProjectsSectionProps = {
-  data: PortfolioData["projects"];
+  data: ProjectItem[];
   id?: PortfolioSectionId;
 };
 

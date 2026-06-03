@@ -1,0 +1,63 @@
+[
+  {
+    "name": "Innozoft Official Website",
+    "status": "completed",
+    "period": "May 2025 - Jun 2025",
+    "role": "Frontend Developer",
+    "description": "Built the official website for Innozoft Solutions with modern, responsive layouts and interaction-focused user flows.",
+    "technologies": ["React.js", "Three.js", "Tailwind CSS"],
+    "highlights": [
+      "Designed smooth animations and polished section transitions for better engagement.",
+      "Created clean content architecture for service pages and product communication.",
+      "Contributed to improved business visibility, helping secure new customer projects."
+    ],
+    "links": {
+      "liveUrl": "https://www.innozoft.com"
+    }
+  },
+  {
+    "name": "TrackAdemic",
+    "status": "in-progress",
+    "period": "Mar 2026 - Present",
+    "role": "Full Stack Developer",
+    "description": "Developing a full stack educational productivity platform with student portals, analytics, and progress tracking workflows.",
+    "technologies": ["Next.js", "Electron.js", "NestJS", "PostgreSQL", "AWS"],
+    "highlights": [
+      "Building responsive web and desktop interfaces for student account workflows.",
+      "Designing role-aware backend services for secure academic data handling.",
+      "Deploying and maintaining iterative feature updates on managed cloud infrastructure."
+    ]
+  },
+  {
+    "name": "Lab Ticket",
+    "status": "completed",
+    "period": "May 2025 - Jun 2025",
+    "role": "Web Application Support",
+    "description": "Supported optimization of a blood tube issuing workflow at Apeksha Hospital, Maharagama by improving process efficiency and usability.",
+    "technologies": ["Workflow Optimization", "Web Application Support"],
+    "highlights": [
+      "Reduced manual workflow bottlenecks in ticket handling steps.",
+      "Improved day-to-day operator usability and process consistency.",
+      "Contributed to smoother healthcare support service delivery."
+    ],
+    "links": {
+      "repositoryUrl": "https://github.com/chandisarandeni/lab-ticket"
+    }
+  },
+  {
+    "name": "Professional Animix",
+    "status": "in-progress",
+    "period": "Mar 2025 - Present",
+    "role": "Frontend Developer",
+    "description": "Developing an open source platform for reusable CSS and JavaScript animations tailored for modern web development.",
+    "technologies": ["CSS", "JavaScript", "Web Animations"],
+    "highlights": [
+      "Built reusable animation components for quicker integration into projects.",
+      "Focused on developer-friendly animation previews and selection patterns.",
+      "Continuously refining interaction quality and extensibility."
+    ],
+    "links": {
+      "liveUrl": "https://animix.innozoft.com/"
+    }
+  }
+]

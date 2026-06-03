@@ -1,13 +1,27 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
 
-import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
-import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
-import { Reveal } from "@/src/shared/ui/reveal";
+import { Reveal } from "./Reveal";
+import type { PortfolioSectionId } from "./section-nav";
+
+type HeroAction = {
+  label: string;
+  url: string;
+};
+
+type HeroSectionData = {
+  name: string;
+  role: string;
+  tagline: string;
+  summary: string;
+  location: string;
+  primaryAction: HeroAction;
+  secondaryAction?: HeroAction;
+};
 
 type HeroSectionProps = {
-  data: PortfolioData["hero"];
+  data: HeroSectionData;
   id?: PortfolioSectionId;
-  profileImageSrc?: string;
+  profileImageSrc?: string | StaticImageData;
   profileImageAlt?: string;
 };
 

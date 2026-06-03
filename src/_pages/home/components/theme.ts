@@ -38,11 +38,11 @@ export function getThemeInitScript() {
         root.dataset.motion = motionIsOff ? "off" : "on";
 
         if (themeFromQuery) {
-          // short local comment
+          // Persist explicitly selected QA or shared-link theme.
           localStorage.setItem(storageKey, themeFromQuery);
         }
       } catch {
-        // short local comment
+        // Fall back to a stable first paint when storage parsing fails.
         root.dataset.theme = defaultTheme;
         root.style.colorScheme = defaultTheme;
         root.dataset.motion = "on";

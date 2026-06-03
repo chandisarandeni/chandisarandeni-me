@@ -1,12 +1,21 @@
 import type { IconType } from "react-icons";
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa6";
-import { SectionShell } from "@/src/shared/ui/section-shell";
-import { Reveal } from "@/src/shared/ui/reveal";
-import type { PortfolioSectionId } from "@/src/shared/ui/section-nav";
-import type { PortfolioData } from "@/src/features/portfolio/types/portfolio";
+import { Reveal } from "./Reveal";
+import { SectionShell } from "./SectionShell";
+import type { PortfolioSectionId } from "./section-nav";
+
+type ContactSectionData = {
+  email: string;
+  location?: string;
+  availability: string;
+  links: {
+    label: string;
+    url: string;
+  }[];
+};
 
 type ContactCtaSectionProps = {
-  data: PortfolioData["contact"];
+  data: ContactSectionData;
   id?: PortfolioSectionId;
 };
 
@@ -17,7 +26,7 @@ type ContactChannel = {
   icon: IconType;
 };
 
-function getContactChannels(data: PortfolioData["contact"]): ContactChannel[] {
+function getContactChannels(data: ContactSectionData): ContactChannel[] {
   // ============= Contact Link Normalization =============
   // --------------------- Map mixed content links into stable GitHub / LinkedIn / Email actions ------------------
   const githubLink = data.links.find(
