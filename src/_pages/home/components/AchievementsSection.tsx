@@ -29,8 +29,8 @@ export function AchievementsSection({
     >
       <div className="grid gap-4 md:grid-cols-2">
         {data.map((item, index) => (
-          <Reveal key={`${item.title}-${item.date}`} delayMs={index * 70} variant="fade-up">
-            <ContentCard>
+          <Reveal key={`${item.title}-${item.date}`} delayMs={index * 70} variant="fade-up" className="h-full">
+            <ContentCard className="h-full flex flex-col">
               <h3 className="text-lg font-semibold text-app-fg">{item.title}</h3>
               <p className="mt-1 text-sm text-muted-fg">
                 {[item.issuer, item.date].filter(Boolean).join(" - ")}
