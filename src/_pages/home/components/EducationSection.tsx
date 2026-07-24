@@ -27,7 +27,7 @@ export function EducationSection({
       title="Education and Qualifications"
       description="Academic path supporting software engineering depth and practical execution."
     >
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="flex flex-col gap-4">
         {data.map((item, index) => (
           <Reveal
             key={`${item.institution}-${item.qualification}-${item.period}`}
