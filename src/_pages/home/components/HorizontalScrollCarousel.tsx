@@ -63,9 +63,24 @@ export function HorizontalScrollCarousel({
     };
   }, []);
 
+  const getMaskStyle = () => {
+    // Only blur the left edge if we have scrolled past the start
+    const leftFade = scrollProgress > 0 ? "transparent, black 16px" : "black, black 16px";
+    // Only blur the right edge if we haven't reached the end
+    const rightFade = scrollProgress < 1 ? "black calc(100% - 16px), transparent" : "black calc(100% - 16px), black";
+    
+    return `linear-gradient(to right, ${leftFade}, ${rightFade})`;
+  };
+
   return (
     <div ref={targetRef} className="relative h-[500vh]">
-      <div className="sticky top-24 flex h-[calc(100vh-6rem)] w-full items-center overflow-hidden">
+      <div 
+        className="sticky top-24 flex h-[calc(100vh-6rem)] w-full items-center overflow-hidden transition-[mask-image] duration-300"
+        style={{
+          WebkitMaskImage: getMaskStyle(),
+          maskImage: getMaskStyle()
+        }}
+      >
         <div
           ref={trackRef}
           className="flex gap-6 px-4 md:px-8 xl:px-0"

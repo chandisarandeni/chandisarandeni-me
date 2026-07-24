@@ -10,7 +10,7 @@ import { ProjectsSection } from "./components/ProjectsSection";
 import { SkillsSection } from "./components/SkillsSection";
 import type { PortfolioNavLink } from "./components/section-nav";
 import about from "./Seeds/about.json";
-import achievements from "./Seeds/achievements.json";
+import achievements from "./Seeds/achievements";
 import contact from "./Seeds/contact.json";
 import education from "./Seeds/education.json";
 import experience from "./Seeds/experience.json";

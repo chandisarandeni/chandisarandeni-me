@@ -1,3 +1,4 @@
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import { ContentCard } from "./ContentCard";
 import { HorizontalScrollCarousel } from "./HorizontalScrollCarousel";
@@ -9,7 +10,7 @@ type AchievementItem = {
   issuer: string;
   date: string;
   summary: string;
-  image?: string;
+  image?: string | StaticImageData;
   link?: string;
 };
 
