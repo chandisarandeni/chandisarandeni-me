@@ -3,30 +3,35 @@
     "title": "Prof. Sarath Amunugama Gold Medal",
     "issuer": "IMBS Green Campus",
     "date": "2025",
-    "summary": "Recognized for outstanding academic performance in Diploma in Information Technology."
+    "summary": "Recognized for outstanding academic performance in Diploma in Information Technology.",
+    "image": "https://picsum.photos/seed/medal/600/400"
   },
   {
     "title": "NIBMCodeX 2.0 | IEEEXtreme 20.0 - Chairperson",
-    "issuer": "IEEE / NIBM",
-    "date": "2026",
-    "summary": "Led the organizing committee as Chairperson, overseeing event planning, execution, and overall success."
+    "issuer": "IEEE Student Branch - NIBM",
+    "date": "2025",
+    "summary": "Led the organizing committee as Chairperson, overseeing event planning, execution, and overall success.",
+    "image": "https://picsum.photos/seed/event/600/400"
   },
   {
     "title": "ICACIT 2026 | Organizing Committee",
     "issuer": "ICACIT",
     "date": "2026",
-    "summary": "Participated in planning and execution activities as part of the organizing team for the ICACIT conference."
+    "summary": "Participated in planning and execution activities as part of the organizing team for the ICACIT conference.",
+    "image": "https://picsum.photos/seed/conference/600/400"
   },
   {
     "title": "NIBMCodeX 1.0 | IEEEXtreme 19.0 - Logistics Team Member",
-    "issuer": "IEEE / NIBM",
-    "date": "2025",
-    "summary": "Served as a Logistics Team Member, contributing to coordination and operational support during the competition."
+    "issuer": "IEEE Student Branch - NIBM",
+    "date": "2024",
+    "summary": "Served as a Logistics Team Member, contributing to coordination and operational support during the competition.",
+    "image": "https://picsum.photos/seed/logistics/600/400"
   },
   {
     "title": "IEEE Student Branch - NIBM",
     "issuer": "IEEE",
-    "date": "2025 - Present",
-    "summary": "Active student branch involvement through technical and community-oriented initiatives."
+    "date": "Active",
+    "summary": "Active student branch involvement through technical and community-oriented initiatives.",
+    "image": "https://picsum.photos/seed/students/600/400"
   }
 ]
