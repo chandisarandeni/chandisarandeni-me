@@ -27,7 +27,10 @@ export const metadata: Metadata = {
     "Professional portfolio of Chandisa Randeni - Full Stack Developer and Frontend Developer.",
 };
 
+
 const themeInitScript = getThemeInitScript();
+
+import { LenisProvider } from "@/src/components/LenisProvider";
 
 export default function RootLayout({
   children,
@@ -53,11 +56,12 @@ export default function RootLayout({
         </a>
         <div className="shell-root">
           <main id="main-content" className="flex-1">
-            {children}
+            <LenisProvider>
+              {children}
+            </LenisProvider>
           </main>
         </div>
       </body>
     </html>
   );
 }
-

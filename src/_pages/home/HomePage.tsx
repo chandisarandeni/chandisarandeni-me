@@ -9,15 +9,15 @@ import { PortfolioTopNav } from "./components/PortfolioTopNav";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { SkillsSection } from "./components/SkillsSection";
 import type { PortfolioNavLink } from "./components/section-nav";
-import about from "./Seeds/about.json";
-import achievements from "./Seeds/achievements";
-import contact from "./Seeds/contact.json";
-import education from "./Seeds/education.json";
-import experience from "./Seeds/experience.json";
-import hero from "./Seeds/hero.json";
-import navLinks from "./Seeds/nav-links.json";
-import projects from "./Seeds/projects.json";
-import skills from "./Seeds/skills.json";
+import about from "./seeds/about.json";
+import achievements from "./seeds/achievements";
+import contact from "./seeds/contact.json";
+import education from "./seeds/education.json";
+import experience from "./seeds/experience.json";
+import hero from "./seeds/hero.json";
+import navLinks from "./seeds/nav-links.json";
+import projects from "./seeds/projects.json";
+import skills from "./seeds/skills.json";
 
 export function HomePage() {
   const resolvedNavLinks = navLinks as PortfolioNavLink[];

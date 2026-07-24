@@ -65,6 +65,7 @@ export function ContactCtaSection({
       eyebrow="Contact"
       title="Let's Build Something Useful"
       className="pb-8 sm:pb-10 lg:pb-12"
+      disableSticky={true}
     >
       {/* ============= CTA Surface Harmony ============= */}
       {/* --------------------- Keep contact panel in the same neutral blur family used across all sections ------------------ */}

@@ -22,18 +22,14 @@ export function HorizontalScrollCarousel({
       const { top, height } = targetRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // The container is tall (e.g. 300vh).
-      // 'scrollableDistance' is the amount we can actually scroll it vertically
-      // while it's in view (which is height - viewportHeight).
+      // The container is tall (e.g. 250vh).
       const scrollableDistance = height - viewportHeight;
 
       if (scrollableDistance <= 0) return;
 
-      // We want a pause at both the start and end of the horizontal scroll.
-      // Let's allocate 10% of the scrollable distance as a start buffer (holds at 0),
-      // 70% for the actual horizontal scroll, and the remaining 20% as an end buffer (holds at 1).
+      // Calculate progress across the scrollable distance
       const startBuffer = scrollableDistance * 0.10;
-      const activeScrollDistance = scrollableDistance * 0.70;
+      const activeScrollDistance = scrollableDistance * 0.90;
 
       let progress = (-top - startBuffer) / activeScrollDistance;
       progress = Math.max(0, Math.min(1, progress));
@@ -43,17 +39,14 @@ export function HorizontalScrollCarousel({
 
     const handleResize = () => {
       if (!trackRef.current || !targetRef.current) return;
-      // Calculate how much we need to shift left to see the last item
       const trackWidth = trackRef.current.scrollWidth;
       const containerWidth = targetRef.current.clientWidth;
-      // We only want to scroll horizontally by the overflow amount relative to the container.
       setMaxScroll(Math.max(0, trackWidth - containerWidth));
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     window.addEventListener("resize", handleResize, { passive: true });
     
-    // Initial calculations
     handleResize();
     handleScroll();
 
@@ -64,32 +57,32 @@ export function HorizontalScrollCarousel({
   }, []);
 
   const getMaskStyle = () => {
-    // Only blur the left edge if we have scrolled past the start
     const leftFade = scrollProgress > 0 ? "transparent, black 16px" : "black, black 16px";
-    // Only blur the right edge if we haven't reached the end
     const rightFade = scrollProgress < 1 ? "black calc(100% - 16px), transparent" : "black calc(100% - 16px), black";
     
     return `linear-gradient(to right, ${leftFade}, ${rightFade})`;
   };
 
   return (
-    <div ref={targetRef} className="relative h-[500vh]">
-      <div 
-        className="sticky top-24 flex h-[calc(100vh-6rem)] w-full items-center overflow-hidden transition-[mask-image] duration-300"
-        style={{
-          WebkitMaskImage: getMaskStyle(),
-          maskImage: getMaskStyle()
-        }}
-      >
-        <div
-          ref={trackRef}
-          className="flex gap-6 px-4 md:px-8 xl:px-0"
+    <div ref={targetRef} className="relative h-[250vh]">
+      <div className="sticky top-24 flex flex-col justify-between w-full h-[calc(100vh-6rem)]">
+        <div 
+          className="flex-1 w-full flex items-start pt-0 lg:pt-4 overflow-hidden transition-[mask-image] duration-300"
           style={{
-            transform: `translateX(-${scrollProgress * maxScroll}px)`,
-            willChange: "transform",
+            WebkitMaskImage: getMaskStyle(),
+            maskImage: getMaskStyle()
           }}
         >
-          {children}
+          <div
+            ref={trackRef}
+            className="flex gap-6 px-4 md:px-8 xl:px-0"
+            style={{
+              transform: `translateX(-${scrollProgress * maxScroll}px)`,
+              willChange: "transform",
+            }}
+          >
+            {children}
+          </div>
         </div>
       </div>
     </div>

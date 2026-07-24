@@ -1,4 +1,4 @@
-import navLinks from "../Seeds/nav-links.json";
+import navLinks from "../seeds/nav-links.json";
 
 // ============= Section Anchor IDs =============
 export type PortfolioSectionId =

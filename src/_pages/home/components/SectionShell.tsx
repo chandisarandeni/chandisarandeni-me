@@ -9,6 +9,8 @@ type SectionShellProps = {
   title: string;
   description?: string;
   className?: string;
+  layout?: "grid" | "stacked";
+  disableSticky?: boolean;
   children: ReactNode;
 };
 
@@ -18,18 +20,27 @@ export function SectionShell({
   title,
   description,
   className,
+  layout = "grid",
+  disableSticky = false,
   children,
 }: SectionShellProps) {
   // ============= Section Intro Presence =============
   // --------------------- Keep body full-width for sections that intentionally omit intro copy ------------------
   const hasIntroContent = Boolean(eyebrow || title || description);
+  const isStacked = layout === "stacked";
 
   return (
     <section id={id} className={`scroll-mt-32 ${className ?? ""}`}>
       <div className="layout-frame">
-        <div className="grid gap-6 lg:gap-8 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.65fr)] xl:items-start">
+        <div 
+          className={
+            isStacked 
+              ? "flex flex-col gap-6 lg:gap-8" 
+              : "grid gap-6 lg:gap-8 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.65fr)] xl:items-start"
+          }
+        >
           {hasIntroContent ? (
-            <Reveal className="xl:sticky xl:top-24">
+            <Reveal className={isStacked || disableSticky ? "" : "xl:sticky xl:top-24"}>
               <header className="space-y-2">
                 {eyebrow ? (
                   <p className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
@@ -48,7 +59,7 @@ export function SectionShell({
             </Reveal>
           ) : null}
 
-          <div className={hasIntroContent ? "min-w-0" : "min-w-0 xl:col-span-2"}>{children}</div>
+          <div className={hasIntroContent && !isStacked ? "min-w-0" : "min-w-0 xl:col-span-2"}>{children}</div>
         </div>
       </div>
     </section>

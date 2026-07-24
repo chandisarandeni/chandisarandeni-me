@@ -29,10 +29,11 @@ export function AchievementsSection({
       eyebrow="Achievements"
       title="Recognition and Activities"
       description="Academic recognition and technical community contributions."
+      layout="stacked"
     >
       <HorizontalScrollCarousel>
         {data.map((item) => (
-          <div key={`${item.title}-${item.date}`} className="h-[450px] w-[300px] shrink-0 sm:w-[350px]">
+          <div key={`${item.title}-${item.date}`} className="h-[320px] sm:h-[380px] xl:h-[450px] w-[280px] sm:w-[320px] shrink-0 sm:w-[350px]">
             <ContentCard className="flex h-full flex-col overflow-hidden !p-0">
               {item.image && (
                 <div className="relative h-48 w-full shrink-0">
