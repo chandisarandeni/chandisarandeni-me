@@ -37,8 +37,10 @@ export function HomePage() {
       <ProjectsSection data={projects} />
       <ExperienceSection data={experience} />
       <EducationSection data={education} />
-      <AchievementsSection data={achievements} />
-      <ContactCtaSection data={contact} />
+      <div className="space-y-2 sm:space-y-4 lg:space-y-6">
+        <AchievementsSection data={achievements} />
+        <ContactCtaSection data={contact} />
+      </div>
     </div>
   );
 }

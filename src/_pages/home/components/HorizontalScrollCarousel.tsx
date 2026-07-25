@@ -10,77 +10,129 @@ type HorizontalScrollCarouselProps = {
 export function HorizontalScrollCarousel({
   children,
 }: HorizontalScrollCarouselProps) {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [maxScroll, setMaxScroll] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!targetRef.current || !trackRef.current) return;
+    const container = containerRef.current;
+    const content = contentRef.current;
+    if (!container || !content) return;
 
-      const { top, height } = targetRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
+    const easeInOutCubic = (t: number) => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-      // The container is tall (e.g. 250vh).
-      const scrollableDistance = height - viewportHeight;
+    const smoothScrollTo = (element: HTMLElement, targetLeft: number, duration: number) => {
+      const startLeft = element.scrollLeft;
+      const distance = targetLeft - startLeft;
+      let startTime: number | null = null;
 
-      if (scrollableDistance <= 0) return;
+      const animation = (currentTime: number) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        
+        element.scrollLeft = startLeft + distance * easeInOutCubic(progress);
 
-      // Calculate progress across the scrollable distance
-      const startBuffer = scrollableDistance * 0.10;
-      const activeScrollDistance = scrollableDistance * 0.90;
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      };
 
-      let progress = (-top - startBuffer) / activeScrollDistance;
-      progress = Math.max(0, Math.min(1, progress));
-
-      setScrollProgress(progress);
+      requestAnimationFrame(animation);
     };
 
-    const handleResize = () => {
-      if (!trackRef.current || !targetRef.current) return;
-      const trackWidth = trackRef.current.scrollWidth;
-      const containerWidth = targetRef.current.clientWidth;
-      setMaxScroll(Math.max(0, trackWidth - containerWidth));
-    };
+    const intervalId = setInterval(() => {
+      // If we are dragging or hovering, pause the step-scroll
+      if (isDragging || isHovered) return;
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleResize, { passive: true });
-    
-    handleResize();
-    handleScroll();
+      const firstChild = content.children[0] as HTMLElement;
+      if (!firstChild) return;
+      
+      const step = firstChild.offsetWidth + 24; // 24px is gap-6
+
+      // Wrap around seamlessly
+      if (container.scrollLeft >= content.scrollWidth - 10) {
+        container.scrollTo({ left: 0, behavior: 'auto' }); // auto = instant
+        setTimeout(() => {
+          smoothScrollTo(container, step, 800); // 800ms perfectly smooth glide
+        }, 50);
+      } else {
+        // Ensure we snap to exact increments of the step width
+        const currentStepIndex = Math.round(container.scrollLeft / step);
+        const nextLeft = (currentStepIndex + 1) * step;
+        smoothScrollTo(container, nextLeft, 800);
+      }
+    }, 3000); // 3 seconds between steps
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleResize);
+      clearInterval(intervalId);
     };
-  }, []);
+  }, [isDragging, isHovered]);
 
-  const getMaskStyle = () => {
-    const leftFade = scrollProgress > 0 ? "transparent, black 16px" : "black, black 16px";
-    const rightFade = scrollProgress < 1 ? "black calc(100% - 16px), transparent" : "black calc(100% - 16px), black";
-    
-    return `linear-gradient(to right, ${leftFade}, ${rightFade})`;
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!containerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - containerRef.current.offsetLeft);
+    setScrollLeft(containerRef.current.scrollLeft);
   };
 
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    setIsHovered(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current || !contentRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - containerRef.current.offsetLeft;
+    const walk = (startX - x) * 1.5; // Scroll speed multiplier for dragging
+    
+    let newLeft = scrollLeft + walk;
+    const contentWidth = contentRef.current.scrollWidth;
+    
+    if (newLeft < 0) {
+      newLeft += contentWidth;
+      setScrollLeft(newLeft);
+      setStartX(x);
+    } else if (newLeft >= contentWidth) {
+      newLeft -= contentWidth;
+      setScrollLeft(newLeft);
+      setStartX(x);
+    }
+    
+    containerRef.current.scrollTo({ left: newLeft, behavior: 'auto' });
+  };
+
+  const maskStyle = "linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent)";
+
   return (
-    <div ref={targetRef} className="relative h-[250vh]">
-      <div className="sticky top-24 flex flex-col justify-between w-full h-[calc(100vh-6rem)]">
-        <div 
-          className="flex-1 w-full flex items-start pt-0 lg:pt-4 overflow-hidden transition-[mask-image] duration-300"
-          style={{
-            WebkitMaskImage: getMaskStyle(),
-            maskImage: getMaskStyle()
-          }}
-        >
-          <div
-            ref={trackRef}
-            className="flex gap-6 px-4 md:px-8 xl:px-0"
-            style={{
-              transform: `translateX(-${scrollProgress * maxScroll}px)`,
-              willChange: "transform",
-            }}
-          >
+    <div className="relative w-full">
+      <div 
+        ref={containerRef}
+        className={`w-full overflow-hidden transition-[mask-image] duration-300 pb-4 pt-4 ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+        style={{
+          WebkitMaskImage: maskStyle,
+          maskImage: maskStyle
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={handleMouseLeave}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+      >
+        <div className="flex w-max">
+          <div ref={contentRef} className="flex gap-6 shrink-0 pr-6 pointer-events-none sm:pointer-events-auto">
+            {children}
+          </div>
+          <div className="flex gap-6 shrink-0 pr-6 pointer-events-none sm:pointer-events-auto" aria-hidden="true">
             {children}
           </div>
         </div>

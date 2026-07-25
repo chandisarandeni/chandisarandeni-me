@@ -11,6 +11,13 @@ const achievements = [
     image: medalImage
   },
   {
+    title: "Sri Lanka School of Internet Governance (lkSIG) | Fellowship",
+    issuer: "lkSIG",
+    date: "2025",
+    summary: "Awarded a fellowship to participate in the Sri Lanka School of Internet Governance (lkSIG), engaging in comprehensive discussions and training on internet governance topics.",
+    image: "https://picsum.photos/seed/lksig/600/400"
+  },
+  {
     title: "NIBMCodeX 2.0 | IEEEXtreme 20.0 - Chairperson",
     issuer: "IEEE / NIBM",
     date: "2025",
