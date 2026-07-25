@@ -31,6 +31,8 @@ export const metadata: Metadata = {
 const themeInitScript = getThemeInitScript();
 
 import { LenisProvider } from "@/src/components/LenisProvider";
+import { CustomCursor } from "@/src/components/CustomCursor";
+import { ScrollProgress } from "@/src/components/ScrollProgress";
 
 export default function RootLayout({
   children,
@@ -51,9 +53,11 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-app-bg text-app-fg"
       >
+        <ScrollProgress />
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
+        <CustomCursor />
         <div className="shell-root">
           <main id="main-content" className="flex-1">
             <LenisProvider>

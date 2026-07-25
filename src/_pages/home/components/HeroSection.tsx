@@ -1,6 +1,11 @@
+"use client";
+
 import Image, { type StaticImageData } from "next/image";
+import { useRef } from "react";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 
 import { Reveal } from "./Reveal";
+import { Magnetic } from "@/src/components/Magnetic";
 import type { PortfolioSectionId } from "./section-nav";
 
 type HeroAction = {
@@ -31,12 +36,39 @@ export function HeroSection({
   profileImageSrc = "/images/profile.jpg",
   profileImageAlt,
 }: HeroSectionProps) {
-  // ============= Avatar Semantics =============
-  // --------------------- Keep a reliable fallback while ring styling remains decorative ------------------
   const resolvedProfileImageAlt = profileImageAlt ?? `${data.name} profile photo`;
+  
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  
+  // Staggered text variants
+  const nameVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.05,
+        delayChildren: 0.1,
+      },
+    },
+  };
+  
+  const letterVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { type: "spring", stiffness: 200, damping: 10 }
+    },
+  };
 
   return (
-    <section id={id} className="scroll-mt-24">
+    <section id={id} className="scroll-mt-24" ref={containerRef}>
       <div className="layout-frame">
         <div className="hero-panel rounded-3xl border border-border-muted px-4 py-9 sm:px-6 sm:py-10 lg:px-8 lg:py-12 xl:px-10">
           <div className="grid gap-7 sm:gap-8 md:gap-9 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] lg:items-center">
@@ -46,11 +78,20 @@ export function HeroSection({
                   Based in {data.location}
                 </p>
               </Reveal>
-              <Reveal variant="fade-up" delayMs={170} distancePx={16}>
-                <h1 className="mx-auto mt-3 max-w-[10ch] break-words text-[clamp(2.2rem,9vw,3.05rem)] font-bold tracking-tight text-app-fg sm:max-w-none lg:mx-0 lg:text-[3.2rem] lg:leading-[1.06] xl:text-[3.45rem]">
-                  {data.name}
-                </h1>
-              </Reveal>
+              
+              <motion.h1 
+                className="mx-auto mt-3 max-w-[10ch] break-words text-[clamp(2.2rem,9vw,3.05rem)] font-bold tracking-tight text-app-fg sm:max-w-none lg:mx-0 lg:text-[3.2rem] lg:leading-[1.06] xl:text-[3.45rem]"
+                variants={nameVariants}
+                initial="hidden"
+                animate="visible"
+              >
+                {data.name.split("").map((char, index) => (
+                  <motion.span key={`${char}-${index}`} variants={letterVariants} className="inline-block">
+                    {char === " " ? "\u00A0" : char}
+                  </motion.span>
+                ))}
+              </motion.h1>
+
               <Reveal variant="fade-up" delayMs={230}>
                 <p className="mx-auto mt-2 max-w-[18ch] break-words text-xl font-medium text-muted-fg sm:max-w-none sm:text-2xl lg:mx-0">
                   {data.role}
@@ -68,27 +109,35 @@ export function HeroSection({
               </Reveal>
 
               <Reveal variant="fade-up" delayMs={420}>
-                <div className="mt-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                  <a
-                    href={data.primaryAction.url}
-                    className="tap-target inline-flex h-11 items-center justify-center rounded-full bg-accent px-6 text-sm font-semibold text-accent-contrast transition-opacity hover:opacity-90"
-                  >
-                    {data.primaryAction.label}
-                  </a>
-                  {data.secondaryAction ? (
+                <div className="mt-6 flex flex-wrap items-center justify-center gap-4 lg:justify-start">
+                  <Magnetic strength={0.2}>
                     <a
-                      href={data.secondaryAction.url}
-                      className="tap-target inline-flex h-11 items-center justify-center rounded-full border border-border-strong px-6 text-sm font-semibold text-app-fg transition-colors hover:bg-surface-strong"
+                      href={data.primaryAction.url}
+                      className="tap-target inline-flex h-11 items-center justify-center rounded-full bg-accent px-6 text-sm font-semibold text-accent-contrast transition-opacity hover:opacity-90"
                     >
-                      {data.secondaryAction.label}
+                      {data.primaryAction.label}
                     </a>
+                  </Magnetic>
+                  
+                  {data.secondaryAction ? (
+                    <Magnetic strength={0.2}>
+                      <a
+                        href={data.secondaryAction.url}
+                        className="tap-target inline-flex h-11 items-center justify-center rounded-full border border-border-strong px-6 text-sm font-semibold text-app-fg transition-colors hover:bg-surface-strong"
+                      >
+                        {data.secondaryAction.label}
+                      </a>
+                    </Magnetic>
                   ) : null}
                 </div>
               </Reveal>
             </div>
 
             <Reveal variant="scale-in" delayMs={40} className="mx-auto lg:mx-0 lg:justify-self-end">
-              <div className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-72 lg:w-72 xl:h-80 xl:w-80">
+              <motion.div 
+                className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
+                style={{ y: imageY }}
+              >
                 <div aria-hidden="true" className="profile-google-ring absolute inset-0 rounded-full" />
                 <div className="absolute inset-[6px] overflow-hidden rounded-full border-4 border-surface shadow-lg">
                   <Image
@@ -101,7 +150,7 @@ export function HeroSection({
                     priority
                   />
                 </div>
-              </div>
+              </motion.div>
             </Reveal>
           </div>
         </div>

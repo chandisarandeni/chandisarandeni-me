@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import type { HTMLAttributes } from "react";
+import { useRef } from "react";
+import { motion, useInView, type HTMLMotionProps } from "framer-motion";
+import type { ReactNode } from "react";
 
-type RevealVariant = "fade-up" | "fade-in" | "scale-in" | "timeline-item";
+type RevealVariant = "fade-up" | "fade-in" | "scale-in" | "timeline-item" | "slide-right";
 
-type RevealProps = HTMLAttributes<HTMLDivElement> & {
+type RevealProps = Omit<HTMLMotionProps<"div">, "children"> & {
+  children: ReactNode;
   delayMs?: number;
   threshold?: number;
   once?: boolean;
@@ -20,76 +22,55 @@ export function Reveal({
   threshold = 0.15,
   once = true,
   variant = "fade-up",
-  distancePx,
+  distancePx = 20,
   ...props
 }: RevealProps) {
-  const ref = useRef<HTMLDivElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once, amount: threshold });
 
-  useEffect(() => {
-    const element = ref.current;
-
-    if (!element) {
-      return;
+  const getVariants = () => {
+    switch (variant) {
+      case "fade-up":
+      case "timeline-item":
+        return {
+          hidden: { opacity: 0, y: distancePx },
+          visible: { opacity: 1, y: 0 },
+        };
+      case "slide-right":
+        return {
+          hidden: { opacity: 0, x: -distancePx },
+          visible: { opacity: 1, x: 0 },
+        };
+      case "scale-in":
+        return {
+          hidden: { opacity: 0, scale: 0.9 },
+          visible: { opacity: 1, scale: 1 },
+        };
+      case "fade-in":
+      default:
+        return {
+          hidden: { opacity: 0 },
+          visible: { opacity: 1 },
+        };
     }
-
-    // ============= Motion Controls =============
-    // --------------------- Skip observer work when QA or motion-off mode is active ------------------
-    const root = document.documentElement;
-    if (root.dataset.motion === "off") {
-      element.dataset.revealReady = "true";
-      element.dataset.revealIn = "true";
-      return;
-    }
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      element.dataset.revealReady = "true";
-      element.dataset.revealIn = "true";
-      return;
-    }
-
-    element.style.setProperty("--reveal-delay", `${delayMs}ms`);
-    if (typeof distancePx === "number") {
-      element.style.setProperty("--reveal-distance", `${distancePx}px`);
-    }
-    element.dataset.revealVariant = variant;
-
-    // ============= Viewport Reveal =============
-    // --------------------- Start animation only when section intersects ------------------
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          // ============= Staged Reveal =============
-          // --------------------- Mark ready, then animate in ------------------
-          element.dataset.revealReady = "true";
-          element.dataset.revealIn = "true";
-          if (once) {
-            observer.unobserve(element);
-          }
-          return;
-        }
-
-        if (!once) {
-          element.dataset.revealReady = "true";
-          element.dataset.revealIn = "false";
-        }
-      },
-      { threshold }
-    );
-
-    observer.observe(element);
-
-    return () => {
-      observer.disconnect();
-      if (typeof distancePx === "number") {
-        element.style.removeProperty("--reveal-distance");
-      }
-    };
-  }, [delayMs, distancePx, once, threshold, variant]);
+  };
 
   return (
-    <div ref={ref} className={`reveal-section ${className}`.trim()} {...props}>
+    <motion.div
+      ref={ref}
+      className={className}
+      variants={getVariants()}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      transition={{
+        duration: 0.7,
+        delay: delayMs / 1000,
+        ease: [0.21, 0.47, 0.32, 0.98], // smooth custom ease out
+      }}
+      {...props}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
