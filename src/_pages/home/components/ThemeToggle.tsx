@@ -48,11 +48,11 @@ function subscribeToThemeChange(onStoreChange: () => void) {
   // ============= Theme Sync Channel =============
   // --------------------- React to local toggles plus cross-tab storage updates ------------------
   const handleThemeChange = () => onStoreChange();
+  
   const handleStorageChange = (event: StorageEvent) => {
     if (event.key !== THEME_STORAGE_KEY || !isTheme(event.newValue)) {
       return;
     }
-
     applyThemeToRoot(event.newValue);
     onStoreChange();
   };

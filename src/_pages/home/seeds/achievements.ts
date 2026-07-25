@@ -1,6 +1,7 @@
 import medalImage from "../assets/achievements/PROF-SARATH_AMONUGALA_MEDAL.png";
 import icacitImage from "../assets/achievements/ICACIT_EVENT.jpg";
 import codex1Image from "../assets/achievements/NIBMCODEX 1.0.jpeg";
+import lksigImage from "../assets/achievements/LKSIG_2026.jpg";
 
 const achievements = [
   {
@@ -15,8 +16,9 @@ const achievements = [
     issuer: "lkSIG",
     date: "2025",
     summary: "Awarded a fellowship to participate in the Sri Lanka School of Internet Governance (lkSIG), engaging in comprehensive discussions and training on internet governance topics.",
-    image: "https://picsum.photos/seed/lksig/600/400"
+    image: lksigImage
   },
+  /*
   {
     title: "NIBMCodeX 2.0 | IEEEXtreme 20.0 - Chairperson",
     issuer: "IEEE / NIBM",
@@ -24,6 +26,7 @@ const achievements = [
     summary: "Led the organizing committee as Chairperson, overseeing event planning, execution, and overall success.",
     image: "https://picsum.photos/seed/event/600/400"
   },
+  */
   {
     title: "ICACIT 2026 | Organizing Committee",
     issuer: "ICACIT",
@@ -38,6 +41,7 @@ const achievements = [
     summary: "Served as a Logistics Team Member, contributing to coordination and operational support during the competition.",
     image: codex1Image
   },
+  /*
   {
     title: "IEEE Student Branch - NIBM",
     issuer: "IEEE",
@@ -45,6 +49,7 @@ const achievements = [
     summary: "Active student branch involvement through technical and community-oriented initiatives.",
     image: "https://picsum.photos/seed/students/600/400"
   }
+  */
 ];
 
 export default achievements;
