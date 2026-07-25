@@ -111,13 +111,45 @@ export function HorizontalScrollCarousel({
     containerRef.current.scrollTo({ left: newLeft, behavior: 'auto' });
   };
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!containerRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - containerRef.current.offsetLeft);
+    setScrollLeft(containerRef.current.scrollLeft);
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !containerRef.current || !contentRef.current) return;
+    const x = e.touches[0].pageX - containerRef.current.offsetLeft;
+    const walk = (startX - x) * 1.5;
+    
+    let newLeft = scrollLeft + walk;
+    const contentWidth = contentRef.current.scrollWidth;
+    
+    if (newLeft < 0) {
+      newLeft += contentWidth;
+      setScrollLeft(newLeft);
+      setStartX(x);
+    } else if (newLeft >= contentWidth) {
+      newLeft -= contentWidth;
+      setScrollLeft(newLeft);
+      setStartX(x);
+    }
+    
+    containerRef.current.scrollTo({ left: newLeft, behavior: 'auto' });
+  };
+
   const maskStyle = "linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent)";
 
   return (
     <div className="relative w-full">
       <div 
         ref={containerRef}
-        className={`w-full overflow-hidden transition-[mask-image] duration-300 pb-4 pt-4 ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+        className={`w-full overflow-hidden touch-pan-y transition-[mask-image] duration-300 pb-4 pt-4 ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
         style={{
           WebkitMaskImage: maskStyle,
           maskImage: maskStyle
@@ -127,6 +159,9 @@ export function HorizontalScrollCarousel({
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
         onMouseMove={handleMouseMove}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
       >
         <div className="flex w-max">
           <div ref={contentRef} className="flex gap-6 shrink-0 pr-6 pointer-events-none sm:pointer-events-auto">

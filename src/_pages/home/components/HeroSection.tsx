@@ -79,6 +79,24 @@ export function HeroSection({
                 </p>
               </Reveal>
               
+              {/* Mobile Profile Image (No Parallax) */}
+              <Reveal variant="scale-in" delayMs={40} className="mx-auto mt-6 mb-6 block lg:hidden">
+                <div className="relative mx-auto h-48 w-48 sm:h-56 sm:w-56">
+                  <div aria-hidden="true" className="profile-google-ring absolute inset-0 rounded-full" />
+                  <div className="absolute inset-[6px] overflow-hidden rounded-full border-4 border-surface shadow-lg">
+                    <Image
+                      src={profileImageSrc}
+                      alt={resolvedProfileImageAlt}
+                      fill
+                      sizes="(max-width: 640px) 192px, 224px"
+                      className="select-none object-cover"
+                      draggable={false}
+                      priority
+                    />
+                  </div>
+                </div>
+              </Reveal>
+              
               <motion.h1 
                 className="mx-auto mt-3 max-w-[10ch] break-words text-[clamp(2.2rem,9vw,3.05rem)] font-bold tracking-tight text-app-fg sm:max-w-none lg:mx-0 lg:text-[3.2rem] lg:leading-[1.06] xl:text-[3.45rem]"
                 variants={nameVariants}
@@ -133,7 +151,8 @@ export function HeroSection({
               </Reveal>
             </div>
 
-            <Reveal variant="scale-in" delayMs={40} className="mx-auto lg:mx-0 lg:justify-self-end">
+            {/* Desktop Profile Image (With Parallax) */}
+            <Reveal variant="scale-in" delayMs={40} className="hidden mx-auto lg:block lg:mx-0 lg:justify-self-end">
               <motion.div 
                 className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
                 style={{ y: imageY }}
