@@ -32,6 +32,7 @@ const themeInitScript = getThemeInitScript();
 
 import { LenisProvider } from "@/src/components/LenisProvider";
 import { ScrollProgress } from "@/src/components/ScrollProgress";
+import { HireMePopup } from "@/src/components/HireMePopup";
 
 export default function RootLayout({
   children,
@@ -63,6 +64,7 @@ export default function RootLayout({
             </LenisProvider>
           </main>
         </div>
+        <HireMePopup />
       </body>
     </html>
   );
