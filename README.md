@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <h1>✨ Chandisa Randeni - Personal Portfolio ✨</h1>
+  <p>A modern, interactive, and beautifully designed personal portfolio built with cutting-edge web technologies.</p>
 
-## Getting Started
+  <!-- Badges -->
+  <p>
+    <img src="https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js" alt="Next.js" />
+    <img src="https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react" alt="React" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=for-the-badge&logo=tailwind-css" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer" alt="Framer Motion" />
+  </p>
+</div>
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Welcome to the source code of my personal portfolio website! This project is crafted with a focus on performance, modern aesthetics, and smooth user interactions. 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## ✨ Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Modern Tech Stack**: Powered by **Next.js 16** and **React 19**.
+- **Stunning UI**: Styled meticulously with **Tailwind CSS v4** for a fully responsive and beautiful design.
+- **Fluid Animations**: Utilizing **Framer Motion** for engaging micro-interactions and page transitions.
+- **Smooth Scrolling**: Implemented with **Lenis** to provide a premium, buttery-smooth scrolling experience.
+- **Type-Safe**: Written completely in **TypeScript** for robust and error-free code.
 
-## Learn More
+## 🛠️ Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+Follow these steps to set up the project locally on your machine.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Prerequisites
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Make sure you have [Node.js](https://nodejs.org/) installed (version 20 or higher is recommended).
 
-## Deploy on Vercel
+### Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/chandisarandeni/chandisarandeni-me.git
+   cd chandisarandeni-me
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   # or yarn install / pnpm install / bun install
+   ```
+
+3. **Run the development server:**
+   ```bash
+   npm run dev
+   ```
+
+4. **View the application:**
+   Open [http://localhost:3000](http://localhost:3000) in your browser to see the result. You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+## 📁 Project Structure
+
+This project follows the Next.js App Router architecture. Codebase structure:
+- `/app`: Contains the application routes, main pages, and layout.
+- `/public`: Static assets like images and fonts.
+
