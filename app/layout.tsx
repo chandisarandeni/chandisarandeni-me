@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Manrope, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import { getThemeInitScript } from "@/src/_pages/home/components/theme";
 import "./globals.css";
 
@@ -53,6 +54,18 @@ export default function RootLayout({
         suppressHydrationWarning
         className="min-h-full flex flex-col bg-app-bg text-app-fg"
       >
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-FZ9CPVX3Z8"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-FZ9CPVX3Z8');
+          `}
+        </Script>
         <ScrollProgress />
         <a href="#main-content" className="skip-link">
           Skip to content
