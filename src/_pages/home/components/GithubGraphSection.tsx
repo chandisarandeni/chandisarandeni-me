@@ -55,7 +55,7 @@ export function GithubGraphSection() {
                     margin: "0 auto",
                   }}
                   renderBlock={(block, activity) =>
-                    cloneElement(block as React.ReactElement, {
+                    cloneElement(block as React.ReactElement<any>, {
                       "data-tooltip-id": "github-tooltip",
                       "data-tooltip-content": `${activity.count} contributions on ${activity.date}`,
                     })
