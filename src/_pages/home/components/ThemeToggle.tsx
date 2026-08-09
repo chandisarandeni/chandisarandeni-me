@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { BsBrightnessHighFill, BsStars } from "react-icons/bs";
+import { BsSunFill, BsMoonFill } from "react-icons/bs";
 import { DEFAULT_THEME, isTheme, THEME_STORAGE_KEY, type Theme } from "./theme";
 
 type ViewTransitionController = {
@@ -126,7 +126,7 @@ export function ThemeToggle() {
   );
   const nextTheme: Theme = activeTheme === "light" ? "dark" : "light";
   const switchLabel = nextTheme === "dark" ? "Switch to dark mode" : "Switch to light mode";
-  const showSparkIcon = nextTheme === "dark";
+  const showMoonIcon = activeTheme === "dark";
 
   const updateTheme = (theme: Theme, triggerElement: HTMLElement | null) => {
     if (theme === activeTheme) {
@@ -167,8 +167,8 @@ export function ThemeToggle() {
         onClick={(event) => updateTheme(nextTheme, event.currentTarget)}
       >
         <span className="theme-toggle-icon-wrap" aria-hidden="true">
-          <BsStars className="theme-toggle-icon" data-visible={showSparkIcon} />
-          <BsBrightnessHighFill className="theme-toggle-icon" data-visible={!showSparkIcon} />
+          <BsMoonFill className="theme-toggle-icon" data-visible={showMoonIcon} />
+          <BsSunFill className="theme-toggle-icon" data-visible={!showMoonIcon} />
         </span>
       </button>
     </div>
