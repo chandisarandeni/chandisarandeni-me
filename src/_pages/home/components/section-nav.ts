@@ -6,6 +6,7 @@ export type PortfolioSectionId =
   | "about"
   | "skills"
   | "projects"
+  | "github"
   | "experience"
   | "education"
   | "achievements"

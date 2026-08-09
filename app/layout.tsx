@@ -48,7 +48,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${manrope.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <Script id="theme-init-script" dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
       <body
         suppressHydrationWarning
