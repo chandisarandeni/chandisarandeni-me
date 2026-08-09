@@ -5,6 +5,7 @@ import { ContactCtaSection } from "./components/ContactCtaSection";
 import { EducationSection } from "./components/EducationSection";
 import { ExperienceSection } from "./components/ExperienceSection";
 import { HeroSection } from "./components/HeroSection";
+import { GithubGraphSection } from "./components/GithubGraphSection";
 import { PortfolioTopNav } from "./components/PortfolioTopNav";
 import { ProjectsSection } from "./components/ProjectsSection";
 import { SkillsSection } from "./components/SkillsSection";
@@ -35,6 +36,7 @@ export function HomePage() {
       <AboutSection data={about} />
       <SkillsSection data={skills} />
       <ProjectsSection data={projects} />
+      <GithubGraphSection />
       <ExperienceSection data={experience} />
       <EducationSection data={education} />
       <div className="space-y-2 sm:space-y-4 lg:space-y-6">
