@@ -143,6 +143,22 @@ export function HorizontalScrollCarousel({
     containerRef.current.scrollTo({ left: newLeft, behavior: 'auto' });
   };
 
+  const handleWheel = (e: React.WheelEvent) => {
+    if (!containerRef.current || !contentRef.current) return;
+    if (Math.abs(e.deltaX) === 0) return;
+    
+    let newLeft = containerRef.current.scrollLeft + e.deltaX;
+    const contentWidth = contentRef.current.scrollWidth;
+    
+    if (newLeft < 0) {
+      newLeft += contentWidth;
+    } else if (newLeft >= contentWidth) {
+      newLeft -= contentWidth;
+    }
+    
+    containerRef.current.scrollTo({ left: newLeft, behavior: 'auto' });
+  };
+
   const maskStyle = "linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent)";
 
   return (
@@ -162,6 +178,7 @@ export function HorizontalScrollCarousel({
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
+        onWheel={handleWheel}
       >
         <div className="flex w-max">
           <div ref={contentRef} className="flex gap-6 shrink-0 pr-6 pointer-events-none sm:pointer-events-auto">
