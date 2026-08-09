@@ -162,7 +162,7 @@ export function GithubGraphSection() {
                         animationDuration: '0.6s',
                         animationTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
                         animationFillMode: 'forwards',
-                        animationDelay: `${activity.animDelay || 0}s`,
+                        animationDelay: `${(activity as any).animDelay || 0}s`,
                         transformBox: "fill-box",
                         transformOrigin: "center"
                       }
