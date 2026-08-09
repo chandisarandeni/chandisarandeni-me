@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, cloneElement } from "react";
 import { GitHubCalendar } from "react-github-calendar";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 import { SectionShell } from "./SectionShell";
 import { ContentCard } from "./ContentCard";
 
@@ -47,6 +49,17 @@ export function GithubGraphSection() {
               style={{
                 margin: "0 auto",
               }}
+              renderBlock={(block, activity) =>
+                cloneElement(block as React.ReactElement, {
+                  "data-tooltip-id": "github-tooltip",
+                  "data-tooltip-content": `${activity.count} contributions on ${activity.date}`,
+                })
+              }
+            />
+            <Tooltip 
+              id="github-tooltip" 
+              delayShow={50}
+              className="!bg-surface-strong !text-app-fg !rounded-lg !px-3 !py-2 !shadow-xl !border !border-border-muted !text-xs !font-semibold z-50 !transition-opacity !duration-300 ease-out"
             />
           </div>
         </div>
