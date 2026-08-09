@@ -24,7 +24,7 @@ export function HomePage() {
   const resolvedNavLinks = navLinks as PortfolioNavLink[];
 
   return (
-    <div className="space-y-8 sm:space-y-10 lg:space-y-12">
+    <div className="space-y-8 sm:space-y-10 lg:space-y-12 pb-24 sm:pb-32">
       <PortfolioTopNav links={resolvedNavLinks} />
 
       {/* ============= Section Composition ============= */}
