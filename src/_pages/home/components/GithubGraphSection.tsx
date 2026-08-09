@@ -133,7 +133,8 @@ export function GithubGraphSection() {
                   username="chandisarandeni"
                   colorScheme={theme}
                   transformData={transformData}
-                  hideTotalCount={true}
+                  labels={{ totalCount: ' ' }}
+                  {...({ hideTotalCount: true } as any)}
                   theme={{
                     light: ["#e7edf3", "#9ccfff", "#69b3ff", "#338ce5", "#0b6bcb"],
                     dark: ["#121e2a", "#0b6bcb", "#338ce5", "#69b3ff", "#9ccfff"],
