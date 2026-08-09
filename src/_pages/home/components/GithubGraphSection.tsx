@@ -2,6 +2,7 @@
 
 import { useEffect, useState, cloneElement, useRef, useCallback } from "react";
 import { GitHubCalendar } from "react-github-calendar";
+import { useInView } from "framer-motion";
 import { Tooltip } from "react-tooltip";
 import { BsGithub, BsFire, BsLightningChargeFill, BsCalendarCheck } from "react-icons/bs";
 import "react-tooltip/dist/react-tooltip.css";
@@ -12,6 +13,8 @@ export function GithubGraphSection() {
   const [theme, setTheme] = useState<"light" | "dark">("dark");
   const [mounted, setMounted] = useState(false);
   const statsCalculated = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-50px" });
   const [stats, setStats] = useState<{ total: number; maxDay: number; maxDate: string; longestStreak: number; currentStreak: number } | null>(null);
 
   const transformData = useCallback((data: any[]) => {
@@ -22,8 +25,12 @@ export function GithubGraphSection() {
       let streak = 0;
       let longestStreak = 0;
 
-      data.forEach((day) => {
+      data.forEach((day, index) => {
         total += day.count;
+        
+        // Add random staggered delay mimicking a building-block cascade 
+        day.animDelay = (index / data.length) * 2.5 + Math.random() * 0.15;
+
         if (day.count > maxDay) {
           maxDay = day.count;
           maxDate = day.date;
@@ -50,7 +57,9 @@ export function GithubGraphSection() {
         }
       }
 
-      setStats({ total, maxDay, maxDate, longestStreak, currentStreak });
+      setTimeout(() => {
+        setStats({ total, maxDay, maxDate, longestStreak, currentStreak });
+      }, 0);
       statsCalculated.current = true;
     }
     return data;
@@ -125,7 +134,7 @@ export function GithubGraphSection() {
           </div>
         )}
 
-        <div className="overflow-x-auto w-full flex justify-start sm:justify-center pb-2">
+        <div ref={containerRef} className="overflow-x-auto w-full flex justify-start sm:justify-center pb-2">
           <div className="min-w-max min-h-[140px]">
             {mounted && (
               <>
@@ -146,6 +155,17 @@ export function GithubGraphSection() {
                     cloneElement(block as React.ReactElement<any>, {
                       "data-tooltip-id": "github-tooltip",
                       "data-tooltip-content": `${activity.count} contributions on ${activity.date}`,
+                      style: {
+                        ...block.props.style,
+                        opacity: 0,
+                        animationName: isInView ? 'brick-fall' : 'none',
+                        animationDuration: '0.6s',
+                        animationTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+                        animationFillMode: 'forwards',
+                        animationDelay: `${activity.animDelay || 0}s`,
+                        transformBox: "fill-box",
+                        transformOrigin: "center"
+                      }
                     })
                   }
                 />
