@@ -314,12 +314,15 @@ export default function RecognitionsPage() {
                 </button>
               )}
 
-              {/* Close Button */}
+              {/* Close Button & ESC Hint Combined */}
               <button
-                className="absolute right-2 sm:right-4 top-2 sm:top-4 z-30 rounded-full bg-black/50 p-2 text-white hover:bg-black/80 transition-colors cursor-pointer"
+                className="absolute right-4 sm:right-6 top-4 sm:top-6 z-30 flex items-center gap-2 rounded-full bg-black/60 pl-3 pr-4 py-2 text-white/90 hover:bg-black/80 hover:text-white transition-all cursor-pointer backdrop-blur-md shadow-lg group"
                 onClick={() => setSelectedGallery(null)}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <div className="rounded-full bg-white/20 p-1 group-hover:bg-white/30 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </div>
+                <span className="text-xs font-bold tracking-widest uppercase mt-0.5">ESC to exit</span>
               </button>
 
               {/* Indicators */}
