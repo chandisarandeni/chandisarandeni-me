@@ -4,19 +4,12 @@ import { useState, useEffect } from "react";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { ContentCard } from "./ContentCard";
 import { HorizontalScrollCarousel } from "./HorizontalScrollCarousel";
 import { SectionShell } from "./SectionShell";
 import type { PortfolioSectionId } from "./section-nav";
-
-type AchievementItem = {
-  title: string;
-  issuer: string;
-  date: string;
-  summary: string;
-  image?: string | StaticImageData;
-  link?: string;
-};
+import type { AchievementItem } from "../seeds/achievements";
 
 type AchievementsSectionProps = {
   data: AchievementItem[];
@@ -93,6 +86,14 @@ export function AchievementsSection({
             </div>
           ))}
         </HorizontalScrollCarousel>
+        <div className="mt-0 flex justify-center sm:mt-4">
+          <Link 
+            href="/recognitions" 
+            className="inline-flex items-center justify-center rounded-full bg-app-fg px-8 py-3 text-sm font-semibold text-surface transition-transform hover:scale-105 active:scale-95 shadow-md"
+          >
+            Explore All Recognitions
+          </Link>
+        </div>
       </SectionShell>
 
       <AnimatePresence>

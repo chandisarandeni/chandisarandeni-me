@@ -37,7 +37,7 @@ export function GithubGraphSection() {
   interface Activity {
     count: number;
     date: string;
-    level: number;
+    level: 0 | 1 | 2 | 3 | 4;
     animDelay?: number;
   }
 
