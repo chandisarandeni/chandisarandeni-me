@@ -16,6 +16,42 @@ export default function RecognitionsPage() {
   
   const [selectedImage, setSelectedImage] = useState<string | StaticImageData | null>(null);
 
+  type MonthGroup = { month: string; items: typeof achievements };
+  type YearGroup = { year: string; months: MonthGroup[] };
+
+  const timelineData: YearGroup[] = [];
+
+  achievements.forEach(item => {
+    let year = "Other";
+    let month = "";
+    
+    if (item.date && item.date !== "Active") {
+      const parts = item.date.split(" ");
+      if (parts.length === 2) {
+        month = parts[0];
+        year = parts[1];
+      } else {
+        year = item.date;
+      }
+    } else if (item.date === "Active") {
+      year = "Active";
+    }
+
+    let yearGroup = timelineData.find(yg => yg.year === year);
+    if (!yearGroup) {
+      yearGroup = { year, months: [] };
+      timelineData.push(yearGroup);
+    }
+
+    let monthGroup = yearGroup.months.find(mg => mg.month === month);
+    if (!monthGroup) {
+      monthGroup = { month, items: [] };
+      yearGroup.months.push(monthGroup);
+    }
+
+    monthGroup.items.push(item);
+  });
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setSelectedImage(null);
@@ -117,51 +153,81 @@ export default function RecognitionsPage() {
           </section>
         )}
 
-        {/* All Activities Section */}
-        <section className="space-y-8">
+        {/* Timeline of Activities Section */}
+        <section className="space-y-12">
           <Reveal>
             <h2 className="text-2xl font-bold text-app-fg border-b border-border-muted pb-4">
-              All Activities
+              Timeline of Activities
             </h2>
           </Reveal>
           
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {achievements.map((item, index) => (
-              <Reveal key={`all-${item.title}-${index}`} className="h-full">
-                <ContentCard className="flex h-full flex-col overflow-hidden !p-0">
-                  {item.image && (
-                    <div 
-                      className="relative h-48 w-full shrink-0 cursor-zoom-in overflow-hidden bg-surface-elevated"
-                      onClick={() => setSelectedImage(item.image!)}
-                    >
-                      <Image 
-                        src={item.image} 
-                        alt={item.title}
-                        fill
-                        className="object-cover transition-transform duration-300 hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                      />
-                    </div>
-                  )}
-                  <div className="flex flex-1 flex-col p-5">
-                    <h3 className="text-lg font-semibold text-app-fg leading-snug">{item.title}</h3>
-                    <p className="mt-1.5 text-xs text-muted-fg font-medium">
-                      {[item.issuer, item.date].filter(Boolean).join(" - ")}
-                    </p>
-                    <p className="mt-3 flex-1 text-sm leading-6 text-muted-fg">{item.summary}</p>
-                    {item.link && (
-                      <a
-                        href={item.link}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="mt-4 inline-flex text-sm font-semibold text-accent hover:opacity-85 transition-opacity"
-                      >
-                        View details
-                      </a>
-                    )}
+          <div className="space-y-16">
+            {timelineData.map((yearGroup) => (
+              <div key={yearGroup.year} className="space-y-8">
+                {/* Year Divider */}
+                <Reveal>
+                  <div className="flex items-center gap-4">
+                    <h3 className="text-3xl font-black text-app-fg tracking-tight">{yearGroup.year}</h3>
+                    <div className="h-px flex-1 bg-border-muted" />
                   </div>
-                </ContentCard>
-              </Reveal>
+                </Reveal>
+
+                <div className="space-y-10 pl-0 sm:pl-4 border-l-0 sm:border-l sm:border-border-muted/50">
+                  {yearGroup.months.map((monthGroup) => (
+                    <div key={monthGroup.month || "Unknown"} className="space-y-6">
+                      {/* Month Sub-header */}
+                      {monthGroup.month && (
+                        <Reveal>
+                          <h4 className="text-sm font-bold text-accent uppercase tracking-widest pl-4 border-l-2 border-accent relative -left-[1px]">
+                            {monthGroup.month}
+                          </h4>
+                        </Reveal>
+                      )}
+                      
+                      {/* Grid for this specific time block */}
+                      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                        {monthGroup.items.map((item, index) => (
+                          <Reveal key={`timeline-${item.title}-${index}`} className="h-full">
+                            <ContentCard className="flex h-full flex-col overflow-hidden !p-0">
+                              {item.image && (
+                                <div 
+                                  className="relative h-48 w-full shrink-0 cursor-zoom-in overflow-hidden bg-surface-elevated"
+                                  onClick={() => setSelectedImage(item.image!)}
+                                >
+                                  <Image 
+                                    src={item.image} 
+                                    alt={item.title}
+                                    fill
+                                    className="object-cover transition-transform duration-300 hover:scale-105"
+                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                  />
+                                </div>
+                              )}
+                              <div className="flex flex-1 flex-col p-5">
+                                <h3 className="text-lg font-semibold text-app-fg leading-snug">{item.title}</h3>
+                                <p className="mt-1.5 text-xs text-muted-fg font-medium">
+                                  {[item.issuer, item.date].filter(Boolean).join(" - ")}
+                                </p>
+                                <p className="mt-3 flex-1 text-sm leading-6 text-muted-fg">{item.summary}</p>
+                                {item.link && (
+                                  <a
+                                    href={item.link}
+                                    target="_blank"
+                                    rel="noreferrer noopener"
+                                    className="mt-4 inline-flex text-sm font-semibold text-accent hover:opacity-85 transition-opacity"
+                                  >
+                                    View details
+                                  </a>
+                                )}
+                              </div>
+                            </ContentCard>
+                          </Reveal>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         </section>

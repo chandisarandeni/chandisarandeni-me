@@ -3,6 +3,7 @@ import medalImage from "../assets/achievements/PROF-SARATH_AMONUGALA_MEDAL.png";
 import icacitImage from "../assets/achievements/ICACIT_EVENT.jpg";
 import codex1Image from "../assets/achievements/NIBMCODEX 1.0.jpeg";
 import lksigImage from "../assets/achievements/LKSIG_2026.jpg";
+import diplomaImage from "../assets/achievements/DIPLOMA__CONVOCATION.png";
 
 export type AchievementItem = {
   title: string;
@@ -46,6 +47,14 @@ const achievements: AchievementItem[] = [
     date: "October 2025",
     summary: "Served as a Logistics Team Member, contributing to coordination and operational support during the competition.",
     image: codex1Image,
+    featured: true
+  },
+  {
+    title: "Diploma in Software Engineering",
+    issuer: "National Institute of Business Management (NIBM)",
+    date: "August 2025",
+    summary: "Successfully completed the Diploma in Software Engineering, establishing a strong foundation in modern software development practices.",
+    image: diplomaImage,
     featured: true
   },
   {
