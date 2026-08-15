@@ -34,6 +34,7 @@ const themeInitScript = getThemeInitScript();
 import { LenisProvider } from "@/src/components/LenisProvider";
 import { ScrollProgress } from "@/src/components/ScrollProgress";
 import { HireMePopup } from "@/src/components/HireMePopup";
+import { Footer } from "@/src/components/Footer";
 
 export default function RootLayout({
   children,
@@ -70,12 +71,13 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to content
         </a>
-        <div className="shell-root">
+        <div className="shell-root flex flex-col min-h-screen">
           <main id="main-content" className="flex-1">
             <LenisProvider>
               {children}
             </LenisProvider>
           </main>
+          <Footer />
         </div>
         <HireMePopup />
       </body>

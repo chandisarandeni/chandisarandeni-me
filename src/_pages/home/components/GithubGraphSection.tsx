@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, cloneElement, useRef, useCallback } from "react";
+import { useEffect, useState, cloneElement, useRef, useCallback, useMemo } from "react";
 import { GitHubCalendar } from "react-github-calendar";
 import { useInView } from "framer-motion";
 import { Tooltip } from "react-tooltip";
@@ -16,8 +16,32 @@ export function GithubGraphSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-50px" });
   const [stats, setStats] = useState<{ total: number; maxDay: number; maxDate: string; longestStreak: number; currentStreak: number } | null>(null);
+  const [selectedYear, setSelectedYear] = useState<number | "last">("last");
 
-  const transformData = useCallback((data: any[]) => {
+  const joinYear = 2024;
+  const currentYear = new Date().getFullYear();
+  const years = useMemo(() => {
+    const yearsList: (number | "last")[] = ["last"];
+    for (let i = currentYear; i >= joinYear; i--) {
+      yearsList.push(i);
+    }
+    return yearsList;
+  }, [currentYear, joinYear]);
+
+  // Reset stats calculation flag when year changes
+  useEffect(() => {
+    statsCalculated.current = false;
+  }, [selectedYear]);
+
+  // Define proper types instead of any
+  interface Activity {
+    count: number;
+    date: string;
+    level: 0 | 1 | 2 | 3 | 4;
+    animDelay?: number;
+  }
+
+  const transformData = useCallback((data: Activity[]) => {
     if (!statsCalculated.current && data.length > 0) {
       let total = 0;
       let maxDay = 0;
@@ -28,8 +52,8 @@ export function GithubGraphSection() {
       data.forEach((day, index) => {
         total += day.count;
         
-        // Add random staggered delay mimicking a building-block cascade 
-        day.animDelay = (index / data.length) * 2.5 + Math.random() * 0.15;
+        // Add random staggered delay mimicking a building-block cascade (speeded up to ~2s total)
+        day.animDelay = (index / data.length) * 1.3 + Math.random() * 0.1;
 
         if (day.count > maxDay) {
           maxDay = day.count;
@@ -66,10 +90,14 @@ export function GithubGraphSection() {
   }, []);
 
   useEffect(() => {
-    setMounted(true);
     // Check initial theme
     const root = document.documentElement;
-    setTheme(root.dataset.theme === "light" ? "light" : "dark");
+
+    // Prevent sync state update warning
+    setTimeout(() => {
+      setMounted(true);
+      setTheme(root.dataset.theme === "light" ? "light" : "dark");
+    }, 0);
 
     // Listen for theme changes
     const observer = new MutationObserver((mutations) => {
@@ -102,7 +130,7 @@ export function GithubGraphSection() {
                 <span className="text-xs sm:text-sm text-muted-fg font-semibold uppercase tracking-wider text-center">Total Commits</span>
               </div>
               <span className="text-3xl font-bold text-app-fg">{stats.total}</span>
-              <span className="text-xs text-muted-fg mt-1">In the last year</span>
+              <span className="text-xs text-muted-fg mt-1">In {selectedYear === "last" ? "the last year" : selectedYear}</span>
             </div>
 
             <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-surface border border-border-muted shadow-sm transition-transform hover:-translate-y-1">
@@ -129,10 +157,28 @@ export function GithubGraphSection() {
                 <span className="text-xs sm:text-sm text-muted-fg font-semibold uppercase tracking-wider text-center">Most Active Day</span>
               </div>
               <span className="text-3xl font-bold text-app-fg">{stats.maxDay} <span className="text-lg text-muted-fg font-medium">commits</span></span>
-              <span className="text-xs text-muted-fg mt-1">{new Date(stats.maxDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+              <span className="text-xs text-muted-fg mt-1">{stats.maxDate ? new Date(stats.maxDate).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : "-"}</span>
             </div>
           </div>
         )}
+
+        <div className="w-full max-w-4xl flex flex-col items-end mb-4">
+          <div className="flex flex-wrap gap-2 justify-end w-full">
+            {years.map((year) => (
+              <button
+                key={year}
+                onClick={() => setSelectedYear(year)}
+                className={`px-4 py-1.5 text-xs sm:text-sm rounded-full transition-all duration-300 font-medium ${
+                  selectedYear === year
+                    ? "bg-app-fg text-surface shadow-md"
+                    : "bg-surface text-muted-fg border border-border-muted hover:text-app-fg hover:border-border-strong hover:bg-surface-elevated"
+                }`}
+              >
+                {year === "last" ? "Last Year" : year}
+              </button>
+            ))}
+          </div>
+        </div>
 
         <div ref={containerRef} className="overflow-x-auto w-full flex justify-start sm:justify-center pb-2">
           <div className="min-w-max min-h-[140px]">
@@ -140,10 +186,11 @@ export function GithubGraphSection() {
               <>
                 <GitHubCalendar
                   username="chandisarandeni"
+                  year={selectedYear}
                   colorScheme={theme}
                   transformData={transformData}
                   labels={{ totalCount: ' ' }}
-                  {...({ hideTotalCount: true } as any)}
+                  {...({ hideTotalCount: true } as Record<string, unknown>)}
                   theme={{
                     light: ["#e7edf3", "#9ccfff", "#69b3ff", "#338ce5", "#0b6bcb"],
                     dark: ["#121e2a", "#0b6bcb", "#338ce5", "#69b3ff", "#9ccfff"],
@@ -152,20 +199,20 @@ export function GithubGraphSection() {
                     margin: "0 auto",
                   }}
                   renderBlock={(block, activity) =>
-                    cloneElement(block as React.ReactElement<any>, {
+                    cloneElement(block as React.ReactElement<Record<string, unknown>>, {
                       "data-tooltip-id": "github-tooltip",
                       "data-tooltip-content": `${activity.count} contributions on ${activity.date}`,
-                      style: {
-                        ...block.props.style,
-                        opacity: 0,
-                        animationName: isInView ? 'brick-fall' : 'none',
-                        animationDuration: '0.6s',
-                        animationTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
-                        animationFillMode: 'forwards',
-                        animationDelay: `${(activity as any).animDelay || 0}s`,
-                        transformBox: "fill-box",
-                        transformOrigin: "center"
-                      }
+                        style: {
+                          ...block.props.style,
+                          opacity: 0,
+                          animationName: isInView ? 'brick-fall' : 'none',
+                          animationDuration: '0.6s',
+                          animationTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
+                          animationDelay: `${(activity as Activity).animDelay || 0}s`,
+                          animationFillMode: 'forwards',
+                          transformBox: "fill-box",
+                          transformOrigin: "center"
+                        }
                     })
                   }
                 />

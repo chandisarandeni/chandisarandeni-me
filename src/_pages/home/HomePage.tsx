@@ -24,7 +24,7 @@ export function HomePage() {
   const resolvedNavLinks = navLinks as PortfolioNavLink[];
 
   return (
-    <div className="space-y-8 sm:space-y-10 lg:space-y-12 pb-24 sm:pb-32">
+    <div className="space-y-8 sm:space-y-10 lg:space-y-12 pb-12 sm:pb-16">
       <PortfolioTopNav links={resolvedNavLinks} />
 
       {/* ============= Section Composition ============= */}
@@ -39,10 +39,8 @@ export function HomePage() {
       <GithubGraphSection />
       <ExperienceSection data={experience} />
       <EducationSection data={education} />
-      <div className="space-y-2 sm:space-y-4 lg:space-y-6">
-        <AchievementsSection data={achievements} />
-        <ContactCtaSection data={contact} />
-      </div>
+      <AchievementsSection data={achievements} />
+      <ContactCtaSection data={contact} />
     </div>
   );
 }

@@ -1,22 +1,49 @@
+import type { StaticImageData } from "next/image";
 import medalImage from "../assets/achievements/PROF-SARATH_AMONUGALA_MEDAL.png";
 import icacitImage from "../assets/achievements/ICACIT_EVENT.jpg";
 import codex1Image from "../assets/achievements/NIBMCODEX 1.0.jpeg";
 import lksigImage from "../assets/achievements/LKSIG_2026.jpg";
+import diplomaImage from "../assets/achievements/DIPLOMA__CONVOCATION.png";
+import awareness1 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/1.png";
+import awareness2 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/2.png";
+import awareness3 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/3.png";
 
-const achievements = [
+
+export type AchievementItem = {
+  title: string;
+  issuer: string;
+  date: string;
+  summary: string;
+  image?: string | StaticImageData;
+  images?: (string | StaticImageData)[];
+  link?: string;
+  featured?: boolean;
+};
+
+const achievements: AchievementItem[] = [
   {
-    title: "Prof. Sarath Amunugama Gold Medal",
-    issuer: "IMBS Green Campus",
-    date: "2025",
-    summary: "Recognized for outstanding academic performance in Diploma in Information Technology.",
-    image: medalImage
+    title: "NIBMCodeX 2.0 Awareness Session | Galle and Matara",
+    issuer: "IEEE / NIBM",
+    date: "August 2026",
+    summary: "Delivered comprehensive awareness sessions on NIBMCodeX and IEEEXtreme to students in Galle and Matara.",
+    images: [awareness1, awareness2, awareness3],
+    featured: true
   },
   {
-    title: "Sri Lanka School of Internet Governance (lkSIG) | Fellowship",
-    issuer: "lkSIG",
-    date: "2025",
-    summary: "Awarded a fellowship to participate in the Sri Lanka School of Internet Governance (lkSIG), engaging in comprehensive discussions and training on internet governance topics.",
-    image: lksigImage
+    title: "Lanka School on Internet Governance (LKSIG) | Fellowship",
+    issuer: "LKSIG",
+    date: "May 2026",
+    summary: "Awarded a fellowship to participate in the Lanka School on Internet Governance (LKSIG), engaging in comprehensive discussions and training on internet governance topics.",
+    image: lksigImage,
+    featured: true
+  },
+  {
+    title: "ICACIT 2026 | Organizing Committee",
+    issuer: "ICACIT",
+    date: "March 2026",
+    summary: "Participated in planning and execution activities as part of the organizing team for the ICACIT conference.",
+    image: icacitImage,
+    featured: false
   },
   /*
   {
@@ -28,18 +55,28 @@ const achievements = [
   },
   */
   {
-    title: "ICACIT 2026 | Organizing Committee",
-    issuer: "ICACIT",
-    date: "2026",
-    summary: "Participated in planning and execution activities as part of the organizing team for the ICACIT conference.",
-    image: icacitImage
-  },
-  {
     title: "NIBMCodeX 1.0 | IEEEXtreme 19.0 - Logistics Team Member",
     issuer: "IEEE / NIBM",
-    date: "2024",
+    date: "October 2025",
     summary: "Served as a Logistics Team Member, contributing to coordination and operational support during the competition.",
-    image: codex1Image
+    image: codex1Image,
+    featured: true
+  },
+  {
+    title: "Diploma in Software Engineering",
+    issuer: "National Institute of Business Management (NIBM)",
+    date: "August 2025",
+    summary: "Successfully completed the Diploma in Software Engineering, establishing a strong foundation in modern software development practices.",
+    image: diplomaImage,
+    featured: true
+  },
+  {
+    title: "Prof. Sarath Amunugama Gold Medal",
+    issuer: "IMBS Green Campus",
+    date: "January 2025",
+    summary: "Recognized for outstanding academic performance in Diploma in Information Technology.",
+    image: medalImage,
+    featured: true
   },
   /*
   {

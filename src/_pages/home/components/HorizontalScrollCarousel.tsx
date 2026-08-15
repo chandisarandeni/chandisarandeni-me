@@ -165,7 +165,7 @@ export function HorizontalScrollCarousel({
     <div className="relative w-full">
       <div 
         ref={containerRef}
-        className={`w-full overflow-hidden touch-pan-y transition-[mask-image] duration-300 pb-4 pt-4 ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
+        className={`w-full overflow-hidden touch-pan-y transition-[mask-image] duration-300 pb-12 pt-6 ${isDragging ? 'cursor-grabbing select-none' : 'cursor-grab'}`}
         style={{
           WebkitMaskImage: maskStyle,
           maskImage: maskStyle
