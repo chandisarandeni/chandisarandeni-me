@@ -200,17 +200,17 @@ export default function RecognitionsPage() {
                         </Reveal>
                       )}
                       
-                      {/* Grid for this specific time block */}
-                      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                      {/* Vertical stack for horizontal cards */}
+                      <div className="flex flex-col gap-6">
                         {monthGroup.items.map((item, index) => (
-                          <Reveal key={`timeline-${item.title}-${index}`} className="h-full">
-                            <ContentCard className="flex h-full flex-col overflow-hidden !p-0">
+                          <Reveal key={`timeline-${item.title}-${index}`} className="w-full">
+                            <ContentCard className="flex flex-col sm:flex-row w-full overflow-hidden !p-0 items-stretch group">
                               {(() => {
                                 const thumbnail = item.image || (item.images && item.images[0]);
                                 if (!thumbnail) return null;
                                 return (
                                   <div 
-                                    className="relative h-48 w-full shrink-0 cursor-zoom-in overflow-hidden bg-surface-elevated"
+                                    className="relative w-full sm:w-72 lg:w-80 min-h-[220px] sm:min-h-full shrink-0 cursor-zoom-in overflow-hidden bg-surface-elevated"
                                     onClick={() => {
                                       const imgs = item.images || (item.image ? [item.image] : []);
                                       if (imgs.length > 0) {
@@ -222,26 +222,26 @@ export default function RecognitionsPage() {
                                       src={thumbnail} 
                                       alt={item.title}
                                       fill
-                                      className="object-cover transition-transform duration-300 hover:scale-105"
-                                      sizes="(max-width: 768px) 100vw, 33vw"
+                                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                      sizes="(max-width: 640px) 100vw, 320px"
                                     />
                                   </div>
                                 );
                               })()}
-                              <div className="flex flex-1 flex-col p-5">
-                                <h3 className="text-lg font-semibold text-app-fg leading-snug">{item.title}</h3>
-                                <p className="mt-1.5 text-xs text-muted-fg font-medium">
+                              <div className="flex flex-1 flex-col p-6 sm:p-8 justify-center">
+                                <h3 className="text-xl font-bold text-app-fg leading-snug">{item.title}</h3>
+                                <p className="mt-2 text-sm text-accent font-semibold tracking-wide">
                                   {[item.issuer, item.date].filter(Boolean).join(" - ")}
                                 </p>
-                                <p className="mt-3 flex-1 text-sm leading-6 text-muted-fg">{item.summary}</p>
+                                <p className="mt-4 flex-1 text-base leading-7 text-muted-fg">{item.summary}</p>
                                 {item.link && (
                                   <a
                                     href={item.link}
                                     target="_blank"
                                     rel="noreferrer noopener"
-                                    className="mt-4 inline-flex text-sm font-semibold text-accent hover:opacity-85 transition-opacity"
+                                    className="mt-6 inline-flex text-sm font-semibold text-app-fg hover:text-accent transition-colors"
                                   >
-                                    View details
+                                    View details &rarr;
                                   </a>
                                 )}
                               </div>

@@ -30,10 +30,10 @@ const achievements: AchievementItem[] = [
     featured: true
   },
   {
-    title: "Sri Lanka School of Internet Governance (LKSIG) | Fellowship",
+    title: "Lanka School on Internet Governance (LKSIG) | Fellowship",
     issuer: "LKSIG",
     date: "May 2026",
-    summary: "Awarded a fellowship to participate in the Sri Lanka School of Internet Governance (LKSIG), engaging in comprehensive discussions and training on internet governance topics.",
+    summary: "Awarded a fellowship to participate in the Lanka School on Internet Governance (LKSIG), engaging in comprehensive discussions and training on internet governance topics.",
     image: lksigImage,
     featured: true
   },
