@@ -4,6 +4,10 @@ import icacitImage from "../assets/achievements/ICACIT_EVENT.jpg";
 import codex1Image from "../assets/achievements/NIBMCODEX 1.0.jpeg";
 import lksigImage from "../assets/achievements/LKSIG_2026.jpg";
 import diplomaImage from "../assets/achievements/DIPLOMA__CONVOCATION.png";
+import awareness1 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/1.png";
+import awareness2 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/2.png";
+import awareness3 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/3.png";
+
 
 export type AchievementItem = {
   title: string;
@@ -11,11 +15,20 @@ export type AchievementItem = {
   date: string;
   summary: string;
   image?: string | StaticImageData;
+  images?: (string | StaticImageData)[];
   link?: string;
   featured?: boolean;
 };
 
 const achievements: AchievementItem[] = [
+  {
+    title: "NIBMCodeX 2.0 Awareness Session | Galle and Matara",
+    issuer: "IEEE / NIBM",
+    date: "August 2026",
+    summary: "Delivered comprehensive awareness sessions on NIBMCodeX and IEEEXtreme to students in Galle and Matara.",
+    images: [awareness1, awareness2, awareness3],
+    featured: true
+  },
   {
     title: "Sri Lanka School of Internet Governance (LKSIG) | Fellowship",
     issuer: "LKSIG",
