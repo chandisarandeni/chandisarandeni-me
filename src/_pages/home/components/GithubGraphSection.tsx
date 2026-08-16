@@ -202,17 +202,15 @@ export function GithubGraphSection() {
                     cloneElement(block as React.ReactElement<Record<string, unknown>>, {
                       "data-tooltip-id": "github-tooltip",
                       "data-tooltip-content": `${activity.count} contributions on ${activity.date}`,
-                        style: {
-                          ...block.props.style,
-                          opacity: 0,
-                          animationName: isInView ? 'brick-fall' : 'none',
-                          animationDuration: '0.6s',
-                          animationTimingFunction: 'cubic-bezier(0.34, 1.56, 0.64, 1)',
-                          animationDelay: `${(activity as Activity).animDelay || 0}s`,
-                          animationFillMode: 'forwards',
-                          transformBox: "fill-box",
-                          transformOrigin: "center"
-                        }
+                          style: {
+                            ...block.props.style,
+                            opacity: 0,
+                            animation: isInView 
+                              ? `brick-fall 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) ${(activity as Activity).animDelay || 0}s forwards` 
+                              : 'none',
+                            transformBox: "fill-box",
+                            transformOrigin: "center"
+                          }
                     })
                   }
                 />
