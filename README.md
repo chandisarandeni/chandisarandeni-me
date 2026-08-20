@@ -132,5 +132,5 @@ This project follows the Next.js App Router architecture. Codebase structure:
 
 ---
 <div align="center">
-  <i>Built by Chandisa Randeni</i>
+  <i>Built with ❤️ by Chandisa Randeni</i>
 </div>
