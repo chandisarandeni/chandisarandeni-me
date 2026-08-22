@@ -48,7 +48,7 @@ export function FeaturedContributionsSection({
   return (
     <>
       <SectionShell
-        id="featured-contributions" as any
+        id={"featured-contributions" as any}
         title="Community Spotlight"
         description="Latest featured contributions to the community and recent milestones."
         layout="stacked"
