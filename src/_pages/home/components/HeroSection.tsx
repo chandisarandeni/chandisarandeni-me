@@ -1,8 +1,7 @@
 "use client";
 
 import Image, { type StaticImageData } from "next/image";
-import { useRef } from "react";
-import { motion, useScroll, useTransform, type Variants } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 
 import { Reveal } from "./Reveal";
 import { Magnetic } from "@/src/components/Magnetic";
@@ -38,14 +37,6 @@ export function HeroSection({
 }: HeroSectionProps) {
   const resolvedProfileImageAlt = profileImageAlt ?? `${data.name} profile photo`;
   
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
-
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  
   // Staggered text variants
   const nameVariants: Variants = {
     hidden: { opacity: 0 },
@@ -68,7 +59,7 @@ export function HeroSection({
   };
 
   return (
-    <section id={id} className="scroll-mt-24" ref={containerRef}>
+    <section id={id} className="scroll-mt-24">
       <div className="layout-frame">
         <div className="hero-panel rounded-3xl border border-border-muted px-4 py-9 sm:px-6 sm:py-10 lg:px-8 lg:py-12 xl:px-10">
           <div className="grid gap-7 sm:gap-8 md:gap-9 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,0.9fr)] lg:items-center">
@@ -151,11 +142,10 @@ export function HeroSection({
               </Reveal>
             </div>
 
-            {/* Desktop Profile Image (With Parallax) */}
+            {/* Desktop Profile Image (No Parallax) */}
             <Reveal variant="scale-in" delayMs={40} className="hidden mx-auto lg:block lg:mx-0 lg:justify-self-end">
-              <motion.div 
+              <div 
                 className="relative h-48 w-48 sm:h-56 sm:w-56 lg:h-72 lg:w-72 xl:h-80 xl:w-80"
-                style={{ y: imageY }}
               >
                 <div aria-hidden="true" className="profile-google-ring absolute inset-0 rounded-full" />
                 <div className="absolute inset-[6px] overflow-hidden rounded-full border-4 border-surface shadow-lg">
@@ -169,7 +159,7 @@ export function HeroSection({
                     priority
                   />
                 </div>
-              </motion.div>
+              </div>
             </Reveal>
           </div>
         </div>

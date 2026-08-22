@@ -5,6 +5,7 @@ import { ContactCtaSection } from "./components/ContactCtaSection";
 import { EducationSection } from "./components/EducationSection";
 import { ExperienceSection } from "./components/ExperienceSection";
 import { HeroSection } from "./components/HeroSection";
+import { FeaturedContributionsSection } from "./components/FeaturedContributionsSection";
 import { GithubGraphSection } from "./components/GithubGraphSection";
 import { PortfolioTopNav } from "./components/PortfolioTopNav";
 import { ProjectsSection } from "./components/ProjectsSection";
@@ -33,6 +34,7 @@ export function HomePage() {
         profileImageSrc={profileImage}
         profileImageAlt="Portrait of Chandisa Randeni"
       />
+      <FeaturedContributionsSection data={achievements} />
       <AboutSection data={about} />
       <SkillsSection data={skills} />
       <ProjectsSection data={projects} />
