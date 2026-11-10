@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import type { StaticImageData } from "next/image";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ContentCard } from "./ContentCard";
@@ -50,7 +49,7 @@ export function FeaturedContributionsSection({
   return (
     <>
       <SectionShell
-        id={"featured-contributions" as any}
+        id="featured-contributions"
         title="Community Spotlight"
         description="Latest featured contributions to the community and recent milestones."
         layout="stacked"

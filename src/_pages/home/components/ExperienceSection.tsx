@@ -4,7 +4,9 @@ import type { PortfolioSectionId } from "./section-nav";
 
 type ExperienceItem = {
   company: string;
+  companyUrl?: string;
   role: string;
+  employmentType?: string;
   location: string;
   period: string;
   summary: string;
@@ -42,7 +44,19 @@ export function ExperienceSection({
                 </p>
                 <h3 className="mt-2 text-xl font-semibold text-app-fg">{item.role}</h3>
                 <p className="mt-1 text-sm text-muted-fg">
-                  {item.company}
+                  {item.companyUrl ? (
+                    <a
+                      href={item.companyUrl}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="font-medium text-app-fg transition-colors hover:text-accent"
+                    >
+                      {item.company}
+                    </a>
+                  ) : (
+                    item.company
+                  )}
+                  {item.employmentType ? ` · ${item.employmentType}` : ""}
                   {item.location ? ` - ${item.location}` : ""}
                 </p>
                 <p className="mt-4 text-sm leading-7 text-muted-fg">{item.summary}</p>

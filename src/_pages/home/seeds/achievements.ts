@@ -7,6 +7,9 @@ import diplomaImage from "../assets/achievements/DIPLOMA__CONVOCATION.png";
 import awareness1 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/1.png";
 import awareness2 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/2.png";
 import awareness3 from "../assets/achievements/NIBMCODEX_AWARENESS_SESSIONS_2026/3.png";
+import igfSriLanka1 from "../assets/achievements/IGF_SRI_LANKA_2026/1.jpg";
+import igfSriLanka2 from "../assets/achievements/IGF_SRI_LANKA_2026/2.jpg";
+import igfSriLanka3 from "../assets/achievements/IGF_SRI_LANKA_2026/3.jpg";
 
 
 export type AchievementItem = {
@@ -21,6 +24,14 @@ export type AchievementItem = {
 };
 
 const achievements: AchievementItem[] = [
+  {
+    title: "Sri Lanka Internet Governance Forum (IGF) 2026 | Participant",
+    issuer: "IGF Sri Lanka",
+    date: "October 2026",
+    summary: "Participated in the Sri Lanka Internet Governance Forum 2026, gaining insights, exchanging ideas, and engaging in meaningful discussions on the future of internet governance and digital transformation.",
+    images: [igfSriLanka1, igfSriLanka2, igfSriLanka3],
+    featured: true
+  },
   {
     title: "NIBMCodeX 2.0 Awareness Session | Galle and Matara",
     issuer: "IEEE / NIBM",

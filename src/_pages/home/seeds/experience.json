@@ -1,5 +1,20 @@
 [
   {
+    "company": "Agile Orbits",
+    "companyUrl": "https://www.linkedin.com/company/105011757/",
+    "role": "Associate Software Engineer",
+    "employmentType": "Full-time",
+    "location": "Colombo, Western Province, Sri Lanka (Remote)",
+    "period": "Sep 2026 - Present",
+    "summary": "Contributing to full-stack software delivery by building responsive, maintainable, and user-focused web solutions within a collaborative remote engineering team.",
+    "achievements": [
+      "Develop and refine frontend and backend features using modern software engineering practices.",
+      "Collaborate with the engineering team on implementation, debugging, and code quality improvements.",
+      "Build clean, reusable solutions with a focus on usability, performance, and maintainability."
+    ],
+    "technologies": ["React.js", "Next.js", "NestJS", "TypeScript"]
+  },
+  {
     "company": "NIBM Worldwide Colombo 07",
     "role": "Tutor (Part-Time)",
     "location": "Colombo, Sri Lanka",
@@ -24,5 +39,20 @@
       "Built clean interfaces for dashboards, portfolio sites, and student-oriented tools."
     ],
     "technologies": ["React.js", "Next.js", "NestJS", "TypeScript", "MySQL"]
+  },
+  {
+    "company": "Toursurv Pvt Ltd",
+    "companyUrl": "https://www.linkedin.com/company/109034538/",
+    "role": "Software Engineer Intern",
+    "employmentType": "Internship",
+    "location": "Kottawa, Western Province, Sri Lanka (Hybrid)",
+    "period": "Oct 2025 - Mar 2026",
+    "summary": "Contributed to software engineering work during a six-month hybrid internship, supporting the development and refinement of reliable, user-focused software solutions.",
+    "achievements": [
+      "Supported feature implementation, testing, and debugging across the software development lifecycle.",
+      "Collaborated with the engineering team to resolve technical issues and improve application quality.",
+      "Applied clean coding and problem-solving practices in a professional development environment."
+    ],
+    "technologies": ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "REST APIs"]
   }
 ]
