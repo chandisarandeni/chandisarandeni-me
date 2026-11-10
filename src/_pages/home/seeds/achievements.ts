@@ -30,7 +30,6 @@ const achievements: AchievementItem[] = [
     date: "October 2026",
     summary: "Participated in the Sri Lanka Internet Governance Forum 2026, gaining insights, exchanging ideas, and engaging in meaningful discussions on the future of internet governance and digital transformation.",
     images: [igfSriLanka1, igfSriLanka2, igfSriLanka3],
-    link: "https://www.linkedin.com/posts/chandisarandeni_igfsrilanka2026-internetgovernance-digitaltransformation-activity-7519083914276048896-8tbD",
     featured: true
   },
   {

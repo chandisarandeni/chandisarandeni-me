@@ -3,6 +3,7 @@ import navLinks from "../seeds/nav-links.json";
 // ============= Section Anchor IDs =============
 export type PortfolioSectionId =
   | "home"
+  | "featured-contributions"
   | "about"
   | "skills"
   | "projects"
