@@ -39,5 +39,20 @@
       "Built clean interfaces for dashboards, portfolio sites, and student-oriented tools."
     ],
     "technologies": ["React.js", "Next.js", "NestJS", "TypeScript", "MySQL"]
+  },
+  {
+    "company": "Toursurv Pvt Ltd",
+    "companyUrl": "https://www.linkedin.com/company/109034538/",
+    "role": "Software Engineer Intern",
+    "employmentType": "Internship",
+    "location": "Kottawa, Western Province, Sri Lanka (Hybrid)",
+    "period": "Oct 2025 - Mar 2026",
+    "summary": "Contributed to software engineering work during a six-month hybrid internship, supporting the development and refinement of reliable, user-focused software solutions.",
+    "achievements": [
+      "Supported feature implementation, testing, and debugging across the software development lifecycle.",
+      "Collaborated with the engineering team to resolve technical issues and improve application quality.",
+      "Applied clean coding and problem-solving practices in a professional development environment."
+    ],
+    "technologies": ["React.js", "Next.js", "TypeScript", "Tailwind CSS", "REST APIs"]
   }
 ]
